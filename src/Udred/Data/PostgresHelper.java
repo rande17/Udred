@@ -10,14 +10,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import org.postgresql.util.PSQLException;
+import java.util.ArrayList;
 
 /**
  * FXML Controller class
  *
  * @author rickie
  */
-public class PostgresHelper {
+public class PostgresHelper
+{
 
     private static Connection conn;
     private String host;
@@ -26,7 +27,8 @@ public class PostgresHelper {
     private String pass;
 
     //we don't like this constructor
-    public PostgresHelper() throws SQLException, ClassNotFoundException {
+    public PostgresHelper() throws SQLException, ClassNotFoundException
+    {
         this.host = DbContract.HOST;
         this.dbName = DbContract.DB_NAME;
         this.user = DbContract.USERNAME;
@@ -34,15 +36,18 @@ public class PostgresHelper {
         connect();
     }
 
-    public PostgresHelper(String host, String dbName, String user, String pass) {
+    public PostgresHelper(String host, String dbName, String user, String pass)
+    {
         this.host = host;
         this.dbName = dbName;
         this.user = user;
         this.pass = pass;
     }
 
-    public boolean connect() throws SQLException, ClassNotFoundException {
-        if (host.isEmpty() || dbName.isEmpty() || user.isEmpty() || pass.isEmpty()) {
+    public boolean connect() throws SQLException, ClassNotFoundException
+    {
+        if (host.isEmpty() || dbName.isEmpty() || user.isEmpty() || pass.isEmpty())
+        {
             throw new SQLException("Database credentials missing");
         }
 
@@ -53,14 +58,53 @@ public class PostgresHelper {
         return true;
     }
 
-    public ResultSet execQuery(String query) throws SQLException {
-		return this.conn.createStatement().executeQuery(query);
+    public ResultSet execQuery(String query) throws SQLException
+    {
+        return this.conn.createStatement().executeQuery(query);
     }
 
-    public void test() throws SQLException {
+    public void test() throws SQLException
+    {
         ResultSet rs = execQuery("SELECT NOW()");
         rs.next();
         String timeforoutputonrun = rs.getString(1);
         System.out.println(timeforoutputonrun);
+    }
+
+    // lave prepared statements
+    // retunere resultsæt
+    public ResultSet query(String sql, ArrayList al, String var)
+    {
+        if (var.length() == al.size())
+        {
+            try
+            {
+                PreparedStatement st = conn.prepareStatement(sql);// bruger conncetion til DB og siger har en query. 
+                for (int i = 0; i < var.length(); i++) // 
+                {
+                    switch (var.charAt(i))
+                    {
+                        case 'i':
+                            st.setInt(i, (int) al.get(i)); // int
+                            break;
+                        case 's':
+                            st.setString(i, (String) al.get(i)); // string
+                            break;
+                        case 'I':
+                            st.setLong(i, (long) al.get(i)); //Big Int -  long Java
+                            break;
+                    }
+                }
+                return st.executeQuery(); 
+
+            } catch (Exception e)
+            {
+                e.getMessage();
+            }
+            
+
+        }
+        return null;
+        
     }
 }
