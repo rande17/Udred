@@ -1,5 +1,7 @@
 package Udred;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,8 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class MainWindowController {
 
@@ -34,34 +34,34 @@ public class MainWindowController {
         choiceBoxShow.getSelectionModel().selectFirst();
         choiceBoxShow.getSelectionModel().selectedItemProperty().addListener((v, oldval,newval) -> choiceBoxSelectionChanged(newval.toString()));
 
-        listViewCases.getItems().add("151218-131959");
-        listViewCases.getItems().add("101018-080800");
-        listViewCases.getItems().add("050318-160032");
-        listViewCases.getItems().add("250718-123525");
-        listViewCases.getItems().add("010118-094810");
-        listViewCases.getItems().add("220318-103659");
-        listViewCases.getItems().add("050418-083545");
-        listViewCases.getItems().add("050918-160324");
-        listViewCases.getItems().add("191118-123502");
-        listViewCases.getItems().add("190718-101342");
-        listViewCases.getItems().add("060118-142549");
-        listViewCases.getItems().add("250518-080238");
-        listViewCases.getItems().add("290218-115823");
-        listViewCases.getItems().add("081218-091253");
-        listViewCases.getItems().add("120818-135824");
-        listViewCases.getItems().add("250818-112503");
-        listViewCases.getItems().add("030618-153409");
-        listViewCases.getItems().add("270418-120251");
-        listViewCases.getItems().add("070518-094503");
-        listViewCases.getItems().add("040918-075352");
-        listViewCases.getItems().add("220818-145832");
-        listViewCases.getItems().add("030718-105327");
-        listViewCases.getItems().add("090718-142546");
-        listViewCases.getItems().add("050818-115312");
-        listViewCases.getItems().add("230518-152105");
-        listViewCases.getItems().add("110518-080953");
-        listViewCases.getItems().add("241218-121212");
-        listViewCases.getItems().add("311218-235826");
+//        listViewCases.getItems().add("151218-131959");
+//        listViewCases.getItems().add("101018-080800");
+//        listViewCases.getItems().add("050318-160032");
+//        listViewCases.getItems().add("250718-123525");
+//        listViewCases.getItems().add("010118-094810");
+//        listViewCases.getItems().add("220318-103659");
+//        listViewCases.getItems().add("050418-083545");
+//        listViewCases.getItems().add("050918-160324");
+//        listViewCases.getItems().add("191118-123502");
+//        listViewCases.getItems().add("190718-101342");
+//        listViewCases.getItems().add("060118-142549");
+//        listViewCases.getItems().add("250518-080238");
+//        listViewCases.getItems().add("290218-115823");
+//        listViewCases.getItems().add("081218-091253");
+//        listViewCases.getItems().add("120818-135824");
+//        listViewCases.getItems().add("250818-112503");
+//        listViewCases.getItems().add("030618-153409");
+//        listViewCases.getItems().add("270418-120251");
+//        listViewCases.getItems().add("070518-094503");
+//        listViewCases.getItems().add("040918-075352");
+//        listViewCases.getItems().add("220818-145832");
+//        listViewCases.getItems().add("030718-105327");
+//        listViewCases.getItems().add("090718-142546");
+//        listViewCases.getItems().add("050818-115312");
+//        listViewCases.getItems().add("230518-152105");
+//        listViewCases.getItems().add("110518-080953");
+//        listViewCases.getItems().add("241218-121212");
+//        listViewCases.getItems().add("311218-235826");
 
 //        listViewCases.getSelectionModel().selectedItemProperty().addListener((v, oldval,newval) -> {
 //                    try {

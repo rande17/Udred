@@ -1,15 +1,13 @@
 package Udred;
 
+import Udred.caseTemplates.CustomControl;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.*;
 import javafx.scene.*;
-import Udred.caseTemplates.CustomControl;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-
-import java.io.File;
-import java.io.IOException;
 
 public class CaseEditorController {
 
@@ -53,37 +51,37 @@ public class CaseEditorController {
 
         cbxStatus.getItems().setAll(Status.values());
 
-        CustomControl cstCitizen = new CustomControl();
-        cstCitizen.getLabel().setText("Karsten Breddahl Laursen");
-        Node citizenNode = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/Citizen.fxml"));
-        cstCitizen.setContent(citizenNode);
-        vBoxCitizens.getChildren().add(cstCitizen);
-
-
-        CustomControl cstCaseWorker = new CustomControl();
-        cstCaseWorker.getLabel().setText("Jenny Corvenious Jensen");
-        Node caseWorkerNode = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/CaseWorker.fxml"));
-        cstCaseWorker.setContent(caseWorkerNode);
-        vBoxCaseWorkers.getChildren().add(cstCaseWorker);
-
-
-        CustomControl cstCaseInformation = new CustomControl();
-        cstCaseInformation.getLabel().setText("Information fra Sygehus");
-        Node caseInformationNode = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/CaseInformation.fxml"));
-        cstCaseInformation.setContent(caseInformationNode);
-        vBoxCaseInformation.getChildren().add(cstCaseInformation);
-
-        CustomControl cstCaseInformation2 = new CustomControl();
-        cstCaseInformation2.getLabel().setText("Midligtidlig addresse ændring");
-        Node caseInformationNode2 = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/CaseInformation.fxml"));
-        cstCaseInformation2.setContent(caseInformationNode2);
-        vBoxCaseInformation.getChildren().add(cstCaseInformation2);
-
-        CustomControl cstMeeting = new CustomControl();
-        cstMeeting.getLabel().setText("04/05-2018");
-        Node meetingNode = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/Meeting.fxml"));
-        cstMeeting.setContent(meetingNode);
-        vBoxMeetings.getChildren().add(cstMeeting);
+//        CustomControl cstCitizen = new CustomControl();
+//        cstCitizen.getLabel().setText("Karsten Breddahl Laursen");
+//        Node citizenNode = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/Citizen.fxml"));
+//        cstCitizen.setContent(citizenNode);
+//        vBoxCitizens.getChildren().add(cstCitizen);
+//
+//
+//        CustomControl cstCaseWorker = new CustomControl();
+//        cstCaseWorker.getLabel().setText("Jenny Corvenious Jensen");
+//        Node caseWorkerNode = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/CaseWorker.fxml"));
+//        cstCaseWorker.setContent(caseWorkerNode);
+//        vBoxCaseWorkers.getChildren().add(cstCaseWorker);
+//
+//
+//        CustomControl cstCaseInformation = new CustomControl();
+//        cstCaseInformation.getLabel().setText("Information fra Sygehus");
+//        Node caseInformationNode = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/CaseInformation.fxml"));
+//        cstCaseInformation.setContent(caseInformationNode);
+//        vBoxCaseInformation.getChildren().add(cstCaseInformation);
+//
+//        CustomControl cstCaseInformation2 = new CustomControl();
+//        cstCaseInformation2.getLabel().setText("Midligtidlig addresse ændring");
+//        Node caseInformationNode2 = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/CaseInformation.fxml"));
+//        cstCaseInformation2.setContent(caseInformationNode2);
+//        vBoxCaseInformation.getChildren().add(cstCaseInformation2);
+//
+//        CustomControl cstMeeting = new CustomControl();
+//        cstMeeting.getLabel().setText("04/05-2018");
+//        Node meetingNode = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/Meeting.fxml"));
+//        cstMeeting.setContent(meetingNode);
+//        vBoxMeetings.getChildren().add(cstMeeting);
 
         datePickerCaseCreated.valueProperty().addListener((observable, oldValue, newValue) -> Main.changesSaved = false);
         datePickerCaseClosed.valueProperty().addListener((observable, oldValue, newValue) -> Main.changesSaved = false);
