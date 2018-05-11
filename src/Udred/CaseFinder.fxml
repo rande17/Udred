@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxWidth="1.7976931348623157E308" styleClass="admin" stylesheets="@resources/css/MainStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Udred.CaseFinderController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+      <ColumnConstraints />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+         <content>
+            <VBox maxWidth="1.7976931348623157E308" spacing="5.0">
+               <children>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="70.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" percentWidth="30.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="SagsID Nummer:" />
+                        <TextField promptText="CPR" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Label text="Status:" GridPane.columnIndex="1" />
+                        <ChoiceBox fx:id="cbxStatus" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" />
+                        <ColumnConstraints hgrow="SOMETIMES" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Oprettet:" />
+                        <Label text="Afsluttet:" GridPane.columnIndex="1" />
+                        <DatePicker maxWidth="1.7976931348623157E308" promptText="Start dato" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets right="5.0" />
+                           </GridPane.margin>
+                        </DatePicker>
+                        <DatePicker maxWidth="1.7976931348623157E308" promptText="Slut dato" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <Separator prefWidth="200.0" />
+                  <TitledPane expanded="false" text="BORGER">
+                     <content>
+                        <GridPane vgap="10.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <VBox fx:id="vBoxCitizens" spacing="5.0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" />
+                           </children>
+                        </GridPane>
+                     </content>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TitledPane>
+                  <Separator prefWidth="200.0" />
+                  <TitledPane expanded="false" text="SAGSBEHANDLER">
+                     <content>
+                        <GridPane vgap="10.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <VBox fx:id="vBoxCaseWorkers" spacing="5.0" />
+                           </children>
+                        </GridPane>
+                     </content>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TitledPane>
+                  <Separator prefWidth="200.0" />
+                  <TitledPane expanded="false" text="SAMTYKKE">
+                     <content>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <CheckBox mnemonicParsing="false" text="Borgers accept" />
+                           </children>
+                        </GridPane>
+                     </content>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TitledPane>
+                  <Separator prefWidth="200.0" />
+                  <TitledPane expanded="false" text="SAGS INFORMATION">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <content>
+                        <GridPane vgap="10.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <VBox fx:id="vBoxCaseInformation" spacing="5.0" />
+                           </children>
+                        </GridPane>
+                     </content>
+                  </TitledPane>
+                  <Separator prefWidth="200.0" />
+                  <TitledPane expanded="false" text="MØDER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <content>
+                        <GridPane vgap="10.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <VBox fx:id="vBoxMeetings" spacing="5.0" />
+                           </children>
+                        </GridPane>
+                     </content>
+                  </TitledPane>
+                  <Separator prefWidth="200.0" />
+                  <Button mnemonicParsing="false" text="Søg" />
+                  <Separator prefWidth="200.0" />
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="SagsID" />
+                      <TableColumn prefWidth="75.0" text="Status" />
+                        <TableColumn prefWidth="75.0" text="Oprettet" />
+                        <TableColumn prefWidth="75.0" text="Afsluttet" />
+                        <TableColumn prefWidth="75.0" text="Borger CPR" />
+                        <TableColumn prefWidth="75.0" text="Borger Fornavn" />
+                        <TableColumn prefWidth="75.0" text="Borger Efternavn" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </content>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </ScrollPane>
+   </children>
+</GridPane>

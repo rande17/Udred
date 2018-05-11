@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane hgap="5.0" vgap="5.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Udred.LoginWindowController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="25.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <TextField fx:id="textFieldUsername" promptText="Brugernavn" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <PasswordField fx:id="passwordFieldPassword" promptText="Kodeord" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <Button fx:id="btnLogin" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="LOG IND" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Log Ind" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <image>
+            <Image url="@resources/images/icons8-user-24.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <image>
+            <Image url="@resources/images/icons8-lock-26.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <image>
+            <Image url="@resources/images/EG.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnLoginAdmin" mnemonicParsing="false" style="-fx-background-color: transparent;" GridPane.columnIndex="3" GridPane.rowIndex="8">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="5.0" translateY="-5.0">
+               <image>
+                  <Image url="@resources/images/icons8-rainbow-96.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+         </graphic>
+      </Button>
+      <CheckBox fx:id="checkBoxRememberLogin" mnemonicParsing="false" text="Husk log ind" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+   </children>
+</GridPane>

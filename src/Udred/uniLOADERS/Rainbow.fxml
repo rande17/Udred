@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Udred.uniLOADERS.RainbowController">
+   <children>
+      <Label alignment="CENTER" layoutY="35.0" maxWidth="1.7976931348623157E308" prefHeight="103.0" prefWidth="800.0" text="UniLOADER" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="70.0" />
+         </font>
+         <effect>
+            <Glow level="0.67" />
+         </effect>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#ffe800" />
+                  <Stop color="#ffe800" offset="0.007662835249042145" />
+                  <Stop color="#23ff00" offset="0.2548880199075718" />
+                  <Stop color="#0083ff" offset="0.4956748429908757" />
+                  <Stop color="#ff00f9" offset="0.7503258679938379" />
+                  <Stop color="RED" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView fx:id="imageViewUni" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/Unicorn.gif" />
+         </image>
+      </ImageView>
+      <Label fx:id="labelCounter1" alignment="CENTER" layoutX="339.0" layoutY="265.0" prefHeight="70.0" prefWidth="183.0" rotate="-15.0" text="0%" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#fff300" />
+                  <Stop color="#12ff00" offset="0.25283406406762254" />
+                  <Stop color="#0088ff" offset="0.5237587391871075" />
+                  <Stop color="#ff00e2" offset="0.7632420902950584" />
+                  <Stop color="RED" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="labelCounter2" alignment="CENTER" layoutX="339.0" layoutY="265.0" prefHeight="70.0" prefWidth="183.0" rotate="-15.0" text="0%" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" height="5.0" radius="2.0" spread="0.63" width="5.0" />
+         </effect>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#fff300" />
+                  <Stop color="#12ff00" offset="0.25283406406762254" />
+                  <Stop color="#0088ff" offset="0.5237587391871075" />
+                  <Stop color="#ff00e2" offset="0.7632420902950584" />
+                  <Stop color="RED" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label fx:id="labelCounter" alignment="CENTER" layoutX="339.0" layoutY="265.0" prefHeight="70.0" prefWidth="183.0" rotate="-15.0" text="0%" textAlignment="RIGHT" textFill="#ffcf83">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
