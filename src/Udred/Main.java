@@ -75,7 +75,7 @@ public class Main extends Application {
 
         Rainbow.setScene(r);
         PostgresHelper DB = new PostgresHelper();
-        DB.connect();
+        DB.test();
     }
 
 
