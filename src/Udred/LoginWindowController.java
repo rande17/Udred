@@ -26,7 +26,7 @@ public class LoginWindowController {
     {
         Properties prop = new Properties();
         InputStream input = null;
-
+/*
         try {
 
             input = getClass().getClassLoader().getResourceAsStream("Udred/resources/config.properties");
@@ -52,7 +52,7 @@ public class LoginWindowController {
                 }
             }
         }
-
+*/
         btnLogin.setOnMouseClicked((event) ->
         {
             if (checkBoxRememberLogin.selectedProperty().getValue()) {
