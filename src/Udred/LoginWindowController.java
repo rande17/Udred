@@ -70,9 +70,9 @@ public class LoginWindowController {
             ((Node)(event.getSource())).getScene().getWindow().hide();
 
             //region Just for fun
-            Main.Rainbow.setOpacity(0);
-            Main.Rainbow.show();
-            Main.rainbowController.start();
+           // Main.Window.setOpacity(0);
+            Main.Window.show();
+            //Main.rainbowController.start();
 
             Timeline timelineFadeOut = new Timeline();
             timelineFadeOut.setCycleCount(Timeline.INDEFINITE);
