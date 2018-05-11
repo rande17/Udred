@@ -15,7 +15,12 @@ public class PostgresHelper {
 	private String pass;
 	
 	//we don't like this constructor
-	protected PostgresHelper() {}
+	public PostgresHelper() {
+                            this.host = DbContract.HOST;
+                            this.dbName = DbContract.DB_NAME;
+                            this.user = DbContract.USERNAME;
+                            this.pass = DbContract.PASSWORD;
+                  }
 	
 	public PostgresHelper(String host, String dbName, String user, String pass) {
 		this.host = host;

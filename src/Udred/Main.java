@@ -1,5 +1,8 @@
 package Udred;
 
+import Udred.Data.PostgresHelper;
+import Udred.uniLOADERS.RainbowController2;
+import java.util.Optional;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,9 +13,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import Udred.uniLOADERS.RainbowController2;
-
-import java.util.Optional;
 
 public class Main extends Application {
 
@@ -74,6 +74,8 @@ public class Main extends Application {
         r.setFill(null);
 
         Rainbow.setScene(r);
+        PostgresHelper DB = new PostgresHelper();
+        DB.connect();
     }
 
 
