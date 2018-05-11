@@ -1,6 +1,5 @@
 package Udred;
 
-import Udred.Data.PostgresHelper;
 import Udred.uniLOADERS.RainbowController2;
 import java.util.Optional;
 import javafx.application.Application;
@@ -74,8 +73,6 @@ public class Main extends Application {
         r.setFill(null);
 
         Rainbow.setScene(r);
-        PostgresHelper DB = new PostgresHelper();
-        DB.connect();
     }
 
 
