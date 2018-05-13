@@ -46,7 +46,7 @@ public class CaseEditorController {
         User caseWorker = new User(1);
         InquiryInformation inquiryInformation = new InquiryInformation("Dette er en test sag");
         Case currentCase = new Case(caseID, patient, status, consent, caseType, caseWorker, inquiryInformation);
-        currentCase.save();
+        currentCase.save(currentCase);
     }
 
 

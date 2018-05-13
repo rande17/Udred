@@ -79,7 +79,7 @@ public class Case {
     }
 
     protected CaseTypeEnum getCaseType() {
-        return caseType;
+        return this.caseType;
     }
 
     /**
@@ -117,38 +117,14 @@ public class Case {
     public void setCaseWorker(User caseWorker) {
         this.caseWorker = caseWorker;
     }
+    
+    public User getCaseWorker(){
+        return caseWorker;
+    }
 
     //should be changed to a call to a call via the facade, but this is a dirty way of doing it, to tired to make it properly right now
-    public void save() {
-        try {
-            PostgresHelper DB = new PostgresHelper();
-            ArrayList al = new ArrayList();
-
-            al.add(caseType.toString());
-            al.add("" + caseID);
-            al.add("" + caseID);
-            al.add("" + status);
-            al.add(patient.toString());
-            al.add(caseWorker.toString());
-            // al.add(closingDate);
-            //al.add(consent);
-            al.add(caseInformation.toString());
-
-            DB.query("INSERT INTO Cases (caseType, UUID, caseID, status, patient, caseWorker, caseInformation) VALUES (?,?,?,?,?,?,?)", al, "sssssss");
-            ResultSet rs = DB.query("SELECT * FROM Cases", new ArrayList(), "");
-            while(rs.next()){
-                System.out.print(rs.getString(1) + " | ");
-                System.out.print(rs.getString(2) + " | ");
-                System.out.print(rs.getString(3) + " | ");
-                System.out.print(rs.getString(4) + " | ");
-                System.out.print(rs.getString(5) + " | ");
-                System.out.print(rs.getString(6) + " | ");
-                System.out.print(rs.getString(7) + " | ");
-                System.out.print(rs.getString(8) + " | ");
-                System.out.println(rs.getString(9) + " | ");
-            }
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(Case.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void save(Case thisCase) {
+       DatabaseFacade df = new DatabaseFacade();
+       df.saveCase(thisCase);
     }
 }

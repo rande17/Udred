@@ -21,14 +21,15 @@ import java.util.logging.Logger;
  */
 public class PostgresHelper {
 
-    private static Connection conn;
+    private static Connection conn; //this is static so we dont use up all out connections if we make some bad queries
     private String host;
     private String dbName;
     private String user;
     private String pass;
 
     //we don't like this constructor
-    public PostgresHelper() throws SQLException, ClassNotFoundException {
+    // well I do /Rickie
+    public PostgresHelper() {
         this.host = DbContract.HOST;
         this.dbName = DbContract.DB_NAME;
         this.user = DbContract.USERNAME;
@@ -42,20 +43,32 @@ public class PostgresHelper {
         this.pass = pass;
     }
 
-    public boolean connect() throws SQLException, ClassNotFoundException {
+    public boolean connect() {
         if (host.isEmpty() || dbName.isEmpty() || user.isEmpty() || pass.isEmpty()) {
-            throw new SQLException("Database credentials missing");
+            try {
+                throw new SQLException("Database credentials missing");
+            } catch (SQLException ex) {
+                Logger.getLogger(PostgresHelper.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
-        Class.forName("org.postgresql.Driver");
-        this.conn = DriverManager.getConnection(
-                this.host + this.dbName,
-                this.user, this.pass);
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PostgresHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            conn = DriverManager.getConnection(
+                    this.host + this.dbName,
+                    this.user, this.pass);
+        } catch (SQLException ex) {
+            Logger.getLogger(PostgresHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return true;
     }
 
     public ResultSet execQuery(String query) throws SQLException {
-        return this.conn.createStatement().executeQuery(query);
+        return conn.createStatement().executeQuery(query);
     }
 
     public void test() throws SQLException {
@@ -77,31 +90,22 @@ public class PostgresHelper {
                 Logger.getLogger(PostgresHelper.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        try {
-            connect();
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(PostgresHelper.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        connect();
 
-        System.out.println("var: " + var.length());
-        System.out.println("al: " + al.size());
         if (var.length() == al.size()) {
             try {
                 PreparedStatement st = conn.prepareStatement(sql);// bruger conncetion til DB og siger har en query. 
                 for (int i = 0; i < al.size(); i++) // 
                 {
-//                    System.out.println(al.get(i).toString());
-//                    System.out.println(var.charAt(i));
-//                    System.out.println(i);
                     switch (var.charAt(i)) {
                         case 'i':
-                            st.setInt(i+1, (int) al.get(i)); // int
-                           break;
+                            st.setInt(i + 1, (int) al.get(i)); // int
+                            break;
                         case 's':
-                            st.setString(i+1,(String) al.get(i)); // string
-                           break;
+                            st.setString(i + 1, (String) al.get(i)); // string
+                            break;
                         case 'I':
-                            st.setLong(i+1, (long) al.get(i)); //Big Int -  long Java
+                            st.setLong(i + 1, (long) al.get(i)); //Big Int -  long Java
                             break;
                     }
                 }
