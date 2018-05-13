@@ -57,7 +57,9 @@ public class DatabaseFacade {
         //set expected data types for the different variables in the arrayList, s for String, i for int, I for long(64bit int)
         typeString = "sssssss";
 
-        //make the call to the database and execute the query
+        //make the call to the database and execute the query,
+        //as we don't expect a result from an INSERT query,
+        //we don't assing the returned ResultSet to anything as it would never be used
         DB.query("INSERT INTO Cases (caseType, UUID, caseID, status, patient, caseWorker, caseInformation) VALUES (?,?,?,?,?,?,?)", al, typeString);
 
         //this part is a debug thing, that just lists all cases that are in the database,
