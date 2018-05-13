@@ -11,14 +11,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * FXML Controller class
  *
  * @author rickie
  */
-public class PostgresHelper
-{
+public class PostgresHelper {
 
     private static Connection conn;
     private String host;
@@ -27,27 +28,22 @@ public class PostgresHelper
     private String pass;
 
     //we don't like this constructor
-    public PostgresHelper() throws SQLException, ClassNotFoundException
-    {
+    public PostgresHelper() throws SQLException, ClassNotFoundException {
         this.host = DbContract.HOST;
         this.dbName = DbContract.DB_NAME;
         this.user = DbContract.USERNAME;
         this.pass = DbContract.PASSWORD;
-        connect();
     }
 
-    public PostgresHelper(String host, String dbName, String user, String pass)
-    {
+    public PostgresHelper(String host, String dbName, String user, String pass) {
         this.host = host;
         this.dbName = dbName;
         this.user = user;
         this.pass = pass;
     }
 
-    public boolean connect() throws SQLException, ClassNotFoundException
-    {
-        if (host.isEmpty() || dbName.isEmpty() || user.isEmpty() || pass.isEmpty())
-        {
+    public boolean connect() throws SQLException, ClassNotFoundException {
+        if (host.isEmpty() || dbName.isEmpty() || user.isEmpty() || pass.isEmpty()) {
             throw new SQLException("Database credentials missing");
         }
 
@@ -58,14 +54,12 @@ public class PostgresHelper
         return true;
     }
 
-    public ResultSet execQuery(String query) throws SQLException
-    {
+    public ResultSet execQuery(String query) throws SQLException {
         return this.conn.createStatement().executeQuery(query);
     }
 
-    public void test() throws SQLException
-    {
-        ResultSet rs = execQuery("SELECT NOW()");
+    public void test() throws SQLException {
+        ResultSet rs = query("SELECT NOW()", new ArrayList(), "");
         rs.next();
         String timeforoutputonrun = rs.getString(1);
         System.out.println(timeforoutputonrun);
@@ -73,38 +67,54 @@ public class PostgresHelper
 
     // lave prepared statements
     // retunere resultsæt
-    public ResultSet query(String sql, ArrayList al, String var)
-    {
-        if (var.length() == al.size())
-        {
-            try
-            {
+    public ResultSet query(String sql, ArrayList al, String var) {
+        if (conn != null) {
+            try {
+                if (!conn.isClosed()) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PostgresHelper.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        try {
+            connect();
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(PostgresHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        System.out.println("var: " + var.length());
+        System.out.println("al: " + al.size());
+        if (var.length() == al.size()) {
+            try {
                 PreparedStatement st = conn.prepareStatement(sql);// bruger conncetion til DB og siger har en query. 
-                for (int i = 0; i < var.length(); i++) // 
+                for (int i = 0; i < al.size(); i++) // 
                 {
-                    switch (var.charAt(i))
-                    {
+//                    System.out.println(al.get(i).toString());
+//                    System.out.println(var.charAt(i));
+//                    System.out.println(i);
+                    switch (var.charAt(i)) {
                         case 'i':
-                            st.setInt(i, (int) al.get(i)); // int
-                            break;
+                            st.setInt(i+1, (int) al.get(i)); // int
+                           break;
                         case 's':
-                            st.setString(i, (String) al.get(i)); // string
-                            break;
+                            st.setString(i+1,(String) al.get(i)); // string
+                           break;
                         case 'I':
-                            st.setLong(i, (long) al.get(i)); //Big Int -  long Java
+                            st.setLong(i+1, (long) al.get(i)); //Big Int -  long Java
                             break;
                     }
                 }
-                return st.executeQuery(); 
+                return st.executeQuery();
 
-            } catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.getMessage();
             }
-            
 
+        } else {
+            System.out.println("Query not executed, mismatch between arraylList length and vars given");
         }
         return null;
-        
+
     }
 }

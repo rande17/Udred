@@ -1,7 +1,14 @@
 package Udred;
 
+import Udred.Business.Address;
+import Udred.Business.Case;
+import Udred.Business.CaseTypeEnum;
+import Udred.Business.InquiryInformation;
+import Udred.Business.Patient;
+import Udred.Business.User;
 import Udred.caseTemplates.CustomControl;
 import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
@@ -15,8 +22,6 @@ public class CaseEditorController {
     public TextField textFieldCaseID;
     public DatePicker datePickerCaseCreated;
     public DatePicker datePickerCaseClosed;
-    @FXML
-    private TitledPane tlpCitizen;
     public TitledPane tlpCaseworker;
     public TitledPane tlpCaseInformation;
     public TitledPane tlpCaseInformation2;
@@ -26,6 +31,23 @@ public class CaseEditorController {
     public VBox vBoxCaseWorkers;
     public VBox vBoxCaseInformation;
     public VBox vBoxMeetings;
+    @FXML
+    private Button btnAddCitizen;
+    @FXML
+    private Button btnAddCase;
+
+    @FXML
+    private void addCase(ActionEvent event) {
+        int caseID = (int) Math.floor(Math.random()*2000000);
+        Patient patient = new Patient("TEST", 0000000000, 0, new Address("TESTVEJ", "00TEST", "TestBy", 0000));
+        int status = 1;
+        boolean consent = true;
+        String caseType = "social";
+        User caseWorker = new User(1);
+        InquiryInformation inquiryInformation = new InquiryInformation("Dette er en test sag");
+        Case currentCase = new Case(caseID, patient, status, consent, caseType, caseWorker, inquiryInformation);
+        currentCase.save();
+    }
 
 
     public enum Status {
@@ -45,7 +67,6 @@ public class CaseEditorController {
         }
     }
 
-    @FXML
     public void initialize() throws IOException {
 
 
@@ -98,6 +119,7 @@ public class CaseEditorController {
 //        );
     }
 
+    @FXML
     public void addCitizen() throws IOException {
         CustomControl cst = new CustomControl();
         cst.getLabel().setText("Ny Borger");
@@ -106,6 +128,7 @@ public class CaseEditorController {
         vBoxCitizens.getChildren().add(cst);
     }
 
+    @FXML
     public void addCaseWorker() throws IOException {
         CustomControl cst = new CustomControl();
         cst.getLabel().setText("Ny Sagsbehandler");
@@ -113,6 +136,7 @@ public class CaseEditorController {
         cst.setContent(citizen);
         vBoxCaseWorkers.getChildren().add(cst);
     }
+    @FXML
     public void addCaseInformation() throws IOException {
         CustomControl cst = new CustomControl();
         cst.getLabel().setText("Ny Information");
@@ -120,6 +144,7 @@ public class CaseEditorController {
         cst.setContent(citizen);
         vBoxCaseInformation.getChildren().add(cst);
     }
+    @FXML
     public void addMeeting() throws IOException {
         CustomControl cst = new CustomControl();
         cst.getLabel().setText("Nyt Møde");
@@ -132,14 +157,17 @@ public class CaseEditorController {
         textFieldCaseID.setText(caseID);
     }
 
+    @FXML
     public void mouseEnter(MouseEvent mouseEvent) {
         Main.MainController.mouseEnter(mouseEvent);
     }
 
+    @FXML
     public void mouseExit(MouseEvent mouseEvent) {
         Main.MainController.mouseExit(mouseEvent);
     }
 
+    @FXML
     public void changesRegistered() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");

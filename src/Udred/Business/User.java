@@ -17,8 +17,8 @@ public class User
     private int workerID;
     private ArrayList<Integer> caseList;
     private int accessLevel;
-
-    protected User(int workerID)
+ // changed protected to public, to make db stuff work from GUI, should be changed back when we have a properinterface
+   public User(int workerID)
     {
         this.workerID = workerID;
     }

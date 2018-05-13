@@ -22,10 +22,10 @@ public class InquiryInformation
      * @param inquiry
      * @param inquiryDate 
      */
-    
-    protected InquiryInformation(String inquiry, Date inquiryDate)
+      // changed protected to public, to make db stuff work from GUI, should be changed back when we have a properinterface
+    public InquiryInformation(String inquiry)
     {
-        this.inquiry = this.inquiry;
+        this.inquiry = inquiry;
         this.inquiryDate = new Date(); //Sets date to the time this object was created
     }
 
