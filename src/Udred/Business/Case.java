@@ -6,6 +6,7 @@
 package Udred.Business;
 
 import Udred.Data.PostgresHelper;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -134,7 +135,18 @@ public class Case {
             al.add(caseInformation.toString());
 
             DB.query("INSERT INTO Cases (caseType, UUID, caseID, status, patient, caseWorker, caseInformation) VALUES (?,?,?,?,?,?,?)", al, "sssssss");
-       //     DB.test();
+            ResultSet rs = DB.query("SELECT * FROM Cases", new ArrayList(), "");
+            while(rs.next()){
+                System.out.print(rs.getString(1) + " | ");
+                System.out.print(rs.getString(2) + " | ");
+                System.out.print(rs.getString(3) + " | ");
+                System.out.print(rs.getString(4) + " | ");
+                System.out.print(rs.getString(5) + " | ");
+                System.out.print(rs.getString(6) + " | ");
+                System.out.print(rs.getString(7) + " | ");
+                System.out.print(rs.getString(8) + " | ");
+                System.out.println(rs.getString(9) + " | ");
+            }
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(Case.class.getName()).log(Level.SEVERE, null, ex);
         }
