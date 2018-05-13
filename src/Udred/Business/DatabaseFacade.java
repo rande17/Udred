@@ -60,6 +60,10 @@ public class DatabaseFacade {
         //make the call to the database and execute the query,
         //as we don't expect a result from an INSERT query,
         //we don't assing the returned ResultSet to anything as it would never be used
+        //having SQL written here could be considered bad practice,
+        //should be discussed how we should handle this, 
+        //i.e making classes to save each type in the data package
+        //or making a collected class in the data package the serves as a standard class that have all queires
         DB.query("INSERT INTO Cases (caseType, UUID, caseID, status, patient, caseWorker, caseInformation) VALUES (?,?,?,?,?,?,?)", al, typeString);
 
         //this part is a debug thing, that just lists all cases that are in the database,
