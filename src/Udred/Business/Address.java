@@ -24,8 +24,8 @@ public class Address
      * @param city
      * @param zipCode 
      */
-    
-    protected Address(String streetName, String houseNumber, String city, int zipCode)
+     // changed protected to public, to make db stuff work from GUI, should be changed back when we have a properinterface
+   public Address(String streetName, String houseNumber, String city, int zipCode)
     {
         this.streetName = streetName;
         this.houseNumber = houseNumber;

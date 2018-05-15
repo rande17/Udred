@@ -30,8 +30,8 @@ public class Patient
      * @param patientTelephone
      * @param address 
      */
-
-    protected Patient(String patientName, int patientCPR, int patientTelephone, Address address)
+    //changed from protected to public to make DB work, should be changed back when proper constructor is created
+    public Patient(String patientName, int patientCPR, int patientTelephone, Address address)
     {
         this.patientName = patientName;
         this.patientCPR = patientCPR;
@@ -39,6 +39,11 @@ public class Patient
         this.patientGuardians = new ArrayList<>();
         this.patientAddress = address;
                 
+    }
+
+    Patient()
+    {
+        
     }
     
     protected void addGuardian (String name, int CPR, int telephone)

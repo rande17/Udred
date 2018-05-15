@@ -16,8 +16,8 @@ import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
-    static Stage Rainbow;
-    static RainbowController2 rainbowController;
+    static Stage PreLoader;
+    static PreLoaderController preLoaderController;
     static Stage Login;
     static Stage Window;
     public static MainWindowController MainController;
@@ -25,7 +25,7 @@ public class Main extends Application {
     static Boolean changesSaved = true;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
         // Setup Main Window
         Window = new Stage();
@@ -58,27 +58,29 @@ public class Main extends Application {
         Login.getIcons().add(new Image(getClass().getResource("/Udred/resources/images/EG.png").toExternalForm()));
         Login.setScene(new Scene(root));
         Login.setOnCloseRequest(e -> closeProgram());
-        Login.show();
+        //Login.show();
 
         // Setup Rainbow Window
-        Rainbow = new Stage();
+        PreLoader = new Stage();
 
-        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("uniLOADERS/Rainbow2.fxml"));
+        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("PreLoader.fxml"));
         Parent root2 = loader2.load();
-        rainbowController = loader2.getController();
+        preLoaderController = loader2.getController();
 
 //        root = FXMLLoader.load(getClass().getResource("Rainbow.fxml"));
         root2.setStyle("-fx-background-color: transparent ;");
-        Rainbow.initStyle(StageStyle.TRANSPARENT);
+        PreLoader.initStyle(StageStyle.TRANSPARENT);
         Scene r = new Scene(root2);
         r.setFill(null);
-
-        Rainbow.setScene(r);
+        PreLoader.setScene(r);
+        PreLoader.centerOnScreen();
+        PreLoader.show();
+        
+        
+        
         PostgresHelper DB = new PostgresHelper();
-        DB.connect();
+        DB.test();
     }
-
-
 
     public static void main(String[] args) {
         launch(args);
@@ -98,7 +100,7 @@ public class Main extends Application {
             alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeCancel);
 
             Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == buttonTypeOne){
+            if (result.get() == buttonTypeOne) {
                 // ... user chose "One"
             } else if (result.get() == buttonTypeTwo) {
                 // ... user chose "Two"
@@ -108,8 +110,6 @@ public class Main extends Application {
         } else {
             System.exit(0);
         }
-
-
 
     }
 }

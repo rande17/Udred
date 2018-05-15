@@ -5,7 +5,13 @@
  */
 package Udred.Business;
 
+import Udred.Data.PostgresHelper;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,20 +29,20 @@ public class Case {
     private boolean consent;
     private final CaseInformation caseInformation;
     private CaseTypeEnum caseType;
-    
+
     /**
      * Constructor for Case
+     *
      * @param caseID
      * @param patient
      * @param status
      * @param consent
      * @param caseType
      * @param caseWorker
-     * @param inquiryInformation 
+     * @param inquiryInformation
      */
-
-    protected Case(int caseID, Patient patient, int status, boolean consent, String caseType, User caseWorker, InquiryInformation inquiryInformation)
-    {
+    // changed protected to public, to make db stuff work from GUI, should be changed back when we have a properinterface
+    public Case(int caseID, Patient patient, int status, boolean consent, String caseType, User caseWorker, InquiryInformation inquiryInformation) {
         this.caseID = caseID;
         this.patient = patient;
         this.status = status;
@@ -45,6 +51,12 @@ public class Case {
         this.creationDate = new Date();
         this.closingDate = null;
         this.caseInformation = new CaseInformation(inquiryInformation);
+        setCaseType(caseType);
+    }
+
+    public Case()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     protected int getStatus() {
@@ -72,26 +84,26 @@ public class Case {
     }
 
     protected CaseTypeEnum getCaseType() {
-        return caseType;
+        return this.caseType;
     }
 
     /**
-     * Compares the string in the argument with any of the possible enums in CaseTypeEnum 
-     * and sets this.caseType to the corresponding enumerator
+     * Compares the string in the argument with any of the possible enums in
+     * CaseTypeEnum and sets this.caseType to the corresponding enumerator
+     *
      * @param caseType takes a type of case that should be in enum CaseTypeEnum
      */
-    
     // Needs proper debugging, havent been able to test this correctly
-    protected void setCaseType(String caseType) {
+    private void setCaseType(String caseType) {
         for (CaseTypeEnum caseT : CaseTypeEnum.values()) {
             if (caseType.toLowerCase().equals(caseT.toString())) {
-                this.caseType = CaseTypeEnum.valueOf(caseType.toLowerCase());
-                break; 
+                this.caseType = caseT;
+                break;
             }
         }
     }
 
-    protected int getCaseID() {
+    public int getCaseID() {
         return caseID;
     }
 
@@ -109,5 +121,15 @@ public class Case {
 
     public void setCaseWorker(User caseWorker) {
         this.caseWorker = caseWorker;
+    }
+    
+    public User getCaseWorker(){
+        return caseWorker;
+    }
+
+    //should be changed to a call to a call via the facade, but this is a dirty way of doing it, to tired to make it properly right now
+    public void save(Case thisCase) {
+       DatabaseFacade df = new DatabaseFacade();
+       df.saveCase(thisCase);
     }
 }
