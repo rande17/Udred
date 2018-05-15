@@ -5,6 +5,7 @@
  */
 package Udred.Business;
 
+import Acq.ICase;
 import Udred.Data.PostgresHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +19,7 @@ import java.util.logging.Logger;
  * @author Linea Hoffmann
  * @author Simon Pontoppidan
  */
-public class Case {
+public class Case implements ICase {
 
     private final int caseID;
     private int status; // enum
@@ -114,15 +115,18 @@ public class Case {
         return caseInformation;
     }
 
+    @Override
     public void setCaseWorker(User caseWorker) {
         this.caseWorker = caseWorker;
     }
     
+    @Override
     public User getCaseWorker(){
         return caseWorker;
     }
 
     //should be changed to a call to a call via the facade, but this is a dirty way of doing it, to tired to make it properly right now
+    @Override
     public void save(Case thisCase) {
        DatabaseFacade df = new DatabaseFacade();
        df.saveCase(thisCase);
