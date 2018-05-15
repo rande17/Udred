@@ -5,7 +5,7 @@
  */
 package Udred.Business;
 
-import Acq.ICaseTypeEnum;
+import Acq.*;
 
 /**
  *

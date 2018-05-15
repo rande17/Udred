@@ -6,6 +6,8 @@
 package Udred.Business;
 
 import java.awt.List;
+import Acq.*;
+
 
 /**
  *
@@ -14,7 +16,7 @@ import java.awt.List;
 public class Udred
 {
     private List[] Case;
-    private DatabaseFacade databaseFacede;
+    private IDatabaseFacade databaseFacede;
     
     public Udred(List Case)
     {

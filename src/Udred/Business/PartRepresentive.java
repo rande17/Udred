@@ -5,7 +5,7 @@
  */
 package Udred.Business;
 
-import Acq.IPartsRepresentive;
+import Acq.*;
 
 /**
  *

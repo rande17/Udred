@@ -5,7 +5,7 @@
  */
 package Udred.Business;
 
-import Acq.ICase;
+import Acq.*;
 import Udred.Data.PostgresHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;

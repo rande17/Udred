@@ -5,7 +5,7 @@
  */
 package Udred.Business;
 
-import Acq.IPatient;
+import Acq.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,7 +64,7 @@ public class Patient implements IPatient
     @Override
     public void removeGuardian(int CPR)
     {
-        for(Guardian guardian : this.patientGuardians)
+        for(IGuardian guardian : this.patientGuardians)
         {
             if (guardian.getGuardianCPR() == CPR)
             {

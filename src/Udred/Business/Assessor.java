@@ -5,7 +5,7 @@
  */
 package Udred.Business;
 
-import Acq.IAssessor;
+import Acq.*;
 
 /**
  *

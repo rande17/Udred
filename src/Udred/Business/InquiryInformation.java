@@ -5,7 +5,7 @@
  */
 package Udred.Business;
 
-import Acq.IInquiryInformation;
+import Acq.*;
 import java.util.Date;
 
 /**
