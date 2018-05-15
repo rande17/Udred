@@ -40,6 +40,11 @@ public class Patient
         this.patientAddress = address;
                 
     }
+
+    Patient()
+    {
+        
+    }
     
     protected void addGuardian (String name, int CPR, int telephone)
     {

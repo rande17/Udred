@@ -54,6 +54,11 @@ public class Case {
         setCaseType(caseType);
     }
 
+    public Case()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     protected int getStatus() {
         return status;
     }
@@ -98,7 +103,7 @@ public class Case {
         }
     }
 
-    protected int getCaseID() {
+    public int getCaseID() {
         return caseID;
     }
 
