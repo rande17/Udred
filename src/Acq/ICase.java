@@ -6,20 +6,45 @@
 package Acq;
 
 import Udred.Business.Case;
+import Udred.Business.CaseInformation;
+import Udred.Business.CaseTypeEnum;
+import Udred.Business.Patient;
 import Udred.Business.User;
+import java.util.Date;
 
 /**
  *
- * @author Linea Hoffmann
+ * @author niemeijeren
  */
-public interface ICase
-{
+public interface ICase {
+
+    int getCaseID();
+
+    CaseInformation getCaseInformation();
+
+    CaseTypeEnum getCaseType();
 
     User getCaseWorker();
 
-    void setCaseWorker(User caseWorker);
+    Date getClosingDate();
+
+    Date getCreationDate();
+
+    Patient getPatient();
+
+    int getStatus();
+
+    boolean isConsent();
 
     //should be changed to a call to a call via the facade, but this is a dirty way of doing it, to tired to make it properly right now
     void save(Case thisCase);
+
+    void setCaseWorker(User caseWorker);
+
+    void setClosingDate(Date closingDate);
+
+    void setConsent(boolean consent);
+
+    void setStatus(int status);
     
 }

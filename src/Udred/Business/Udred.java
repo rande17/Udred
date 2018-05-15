@@ -16,7 +16,7 @@ public class Udred
     private List[] Case;
     private DatabaseFacade databaseFacede;
     
-    protected Udred(List Case)
+    public Udred(List Case)
     {
         
     }

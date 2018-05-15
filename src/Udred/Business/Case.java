@@ -42,7 +42,7 @@ public class Case implements ICase {
      * @param caseWorker
      * @param inquiryInformation
      */
-    // changed protected to public, to make db stuff work from GUI, should be changed back when we have a properinterface
+    // changed public to public, to make db stuff work from GUI, should be changed back when we have a properinterface
     public Case(int caseID, Patient patient, int status, boolean consent, String caseType, User caseWorker, InquiryInformation inquiryInformation) {
         this.caseID = caseID;
         this.patient = patient;
@@ -55,31 +55,38 @@ public class Case implements ICase {
         setCaseType(caseType);
     }
 
-    protected int getStatus() {
+    @Override
+    public int getStatus() {
         return status;
     }
 
-    protected void setStatus(int status) {
+    @Override
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    protected Date getClosingDate() {
+    @Override
+    public Date getClosingDate() {
         return closingDate;
     }
 
-    protected void setClosingDate(Date closingDate) {
+    @Override
+    public void setClosingDate(Date closingDate) {
         this.closingDate = closingDate;
     }
 
-    protected boolean isConsent() {
+    @Override
+    public boolean isConsent() {
         return consent;
     }
 
-    protected void setConsent(boolean consent) {
+    @Override
+    public void setConsent(boolean consent) {
         this.consent = consent;
     }
 
-    protected CaseTypeEnum getCaseType() {
+    @Override
+    public CaseTypeEnum getCaseType() {
         return this.caseType;
     }
 
@@ -99,19 +106,23 @@ public class Case implements ICase {
         }
     }
 
-    protected int getCaseID() {
+    @Override
+    public int getCaseID() {
         return caseID;
     }
 
-    protected Patient getPatient() {
+    @Override
+    public Patient getPatient() {
         return patient;
     }
 
-    protected Date getCreationDate() {
+    @Override
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    protected CaseInformation getCaseInformation() {
+    @Override
+    public CaseInformation getCaseInformation() {
         return caseInformation;
     }
 

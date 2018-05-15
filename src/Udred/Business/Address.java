@@ -5,12 +5,14 @@
  */
 package Udred.Business;
 
+import Acq.IAddress;
+
 /**
  *
  * @author Linea Hoffmann
  * @author Simon Pontoppidan
  */
-public class Address
+public class Address implements IAddress
 {
     private int zipCode; 
     private String city;
@@ -24,7 +26,7 @@ public class Address
      * @param city
      * @param zipCode 
      */
-     // changed protected to public, to make db stuff work from GUI, should be changed back when we have a properinterface
+     // changed public to public, to make db stuff work from GUI, should be changed back when we have a properinterface
    public Address(String streetName, String houseNumber, String city, int zipCode)
     {
         this.streetName = streetName;
@@ -34,42 +36,50 @@ public class Address
         
     }
 
-    protected int getZipCode()
+    @Override
+    public int getZipCode()
     {
         return zipCode;
     }
     
-    protected void setZipCode(int zipCode)
+    @Override
+    public void setZipCode(int zipCode)
     {
         this.zipCode = zipCode;
     }
 
-    protected String getCity()
+    @Override
+    public String getCity()
     {
         return city;
     }
     
-    protected void setCity(String city)
+    @Override
+    public void setCity(String city)
     {
         this.city = city;
     }
 
-    protected String getStreetName()
+    @Override
+    public String getStreetName()
     {
         return streetName;
     }
     
-    protected void setStreetName(String streetName)
+    @Override
+    public void setStreetName(String streetName)
     {
         this.streetName = streetName;
     }
 
-    protected String getHouseNumber()
+    @Override
+    public String getHouseNumber()
     {
         return houseNumber;
     }
     
-    protected void setHouseNumber(String houseNumber)
+    @Override
+    public void setHouseNumber(String houseNumber)
     {
         this.houseNumber = houseNumber;
     } 

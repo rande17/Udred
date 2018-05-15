@@ -5,6 +5,7 @@
  */
 package Udred.Business;
 
+import Acq.IPatient;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @author Linea Hoffmann
  * @author Simon Pontoppidan
  */
-public class Patient
+public class Patient implements IPatient
 {
 
 
@@ -30,7 +31,7 @@ public class Patient
      * @param patientTelephone
      * @param address 
      */
-    //changed from protected to public to make DB work, should be changed back when proper constructor is created
+    //changed from public to public to make DB work, should be changed back when proper constructor is created
     public Patient(String patientName, int patientCPR, int patientTelephone, Address address)
     {
         this.patientName = patientName;
@@ -41,23 +42,27 @@ public class Patient
                 
     }
     
-    protected void addGuardian (String name, int CPR, int telephone)
+    @Override
+    public void addGuardian (String name, int CPR, int telephone)
     {
         this.patientGuardians.add(new Guardian(name, CPR, telephone));  
     }
     
-    protected void addGuardian (String name, int CPR, int telephone, Address address)
+    @Override
+    public void addGuardian (String name, int CPR, int telephone, Address address)
     {
         this.patientGuardians.add(new Guardian(name, CPR, telephone, address));   
     }
     
-    protected void setGuardianAddress(Guardian guardian, Address address)
+    @Override
+    public void setGuardianAddress(Guardian guardian, Address address)
     {
         guardian.setGuardianaddress(address);
         
     }
     
-    protected void removeGuardian(int CPR)
+    @Override
+    public void removeGuardian(int CPR)
     {
         for(Guardian guardian : this.patientGuardians)
         {
@@ -71,41 +76,49 @@ public class Patient
         
     }
     
-    protected String getPatientName()
+    @Override
+    public String getPatientName()
     {
         return patientName;
     }
 
-    protected void setPatientName(String patientName)
+    @Override
+    public void setPatientName(String patientName)
     {
         this.patientName = patientName;
     }
 
-    protected Address getPatientAddress()
+    @Override
+    public Address getPatientAddress()
     {
         return patientAddress;
     }
 
-    protected void setPatientAddress(Address patientAddress)
+    @Override
+    public void setPatientAddress(Address patientAddress)
     {
         this.patientAddress = patientAddress;
     }
 
-    protected int getPatientTelephone()
+    @Override
+    public int getPatientTelephone()
     {
         return patientTelephone;
     }
 
-    protected void setPatientTelephone(int patientTelephone)
+    @Override
+    public void setPatientTelephone(int patientTelephone)
     {
         this.patientTelephone = patientTelephone;
     }
 
+    @Override
     public int getPatientCPR()
     {
         return patientCPR;
     }
 
+    @Override
     public List<Guardian> getPatientGuardians()
     {
         return patientGuardians;

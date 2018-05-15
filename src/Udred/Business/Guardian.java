@@ -5,12 +5,14 @@
  */
 package Udred.Business;
 
+import Acq.IGuardian;
+
 /**
  *
  * @author Linea Hoffmann
  * @author Simon Pontoppidan
  */
-public class Guardian
+public class Guardian implements IGuardian
 {
     private String guardianName;
     private int guardianCPR;
@@ -24,7 +26,7 @@ public class Guardian
      * @param guardianTelephone 
      */
     
-    protected Guardian(String guardianName, int guardianCPR, int guardianTelephone)
+    public Guardian(String guardianName, int guardianCPR, int guardianTelephone)
     {
         this.guardianName = guardianName;
         this.guardianCPR = guardianCPR;
@@ -40,7 +42,7 @@ public class Guardian
      * @param guardianAddress 
      */
     
-    protected Guardian(String guardianName, int guardianCPR, int guardianTelephone, Address guardianAddress)
+    public Guardian(String guardianName, int guardianCPR, int guardianTelephone, Address guardianAddress)
     {
         this.guardianName = guardianName;
         this.guardianCPR = guardianCPR;
@@ -48,32 +50,38 @@ public class Guardian
         this.guardianaddress = guardianAddress;
     }
 
-    protected String getGuardianName()
+    @Override
+    public String getGuardianName()
     {
         return guardianName;
     }
 
-    protected int getGuardianCPR()
+    @Override
+    public int getGuardianCPR()
     {
         return guardianCPR;
     }
 
-    protected Address getGuardianaddress()
+    @Override
+    public Address getGuardianaddress()
     {
         return guardianaddress;
     }
 
-    protected int getGuardianTelephone()
+    @Override
+    public int getGuardianTelephone()
     {
         return guardianTelephone;
     }
 
-    protected void setGuardianTelephone(int guardianTelephone)
+    @Override
+    public void setGuardianTelephone(int guardianTelephone)
     {
         this.guardianTelephone = guardianTelephone;
     }
 
-    protected void setGuardianaddress(Address address)
+    @Override
+    public void setGuardianaddress(Address address)
     {
         this.guardianaddress = address;
     }

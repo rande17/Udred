@@ -5,11 +5,13 @@
  */
 package Udred.Business;
 
+import Acq.IPartsRepresentive;
+
 /**
  *
  * @author Linea Hoffmann
  */
-public class PartRepresentive
+public class PartRepresentive implements IPartsRepresentive
 {
     private String partRepresentiveName;
     private Address partRepresentiveAddress;
@@ -17,7 +19,7 @@ public class PartRepresentive
     private int partRepresentiveCPR;
     private int partRepresentiveTelephone;
 
-    protected PartRepresentive(String partRepresentiveName, Address partRepresentiveAddress, int partRepresentiveCPR, int partRepresentiveTelephone)
+    public PartRepresentive(String partRepresentiveName, Address partRepresentiveAddress, int partRepresentiveCPR, int partRepresentiveTelephone)
     {
         this.partRepresentiveName = partRepresentiveName;
         this.partRepresentiveAddress = partRepresentiveAddress;
@@ -27,47 +29,56 @@ public class PartRepresentive
     
     
 
-    protected String getPartRepresentiveName()
+    @Override
+    public String getPartRepresentiveName()
     {
         return partRepresentiveName;
     }
     
-    protected void setPartRepresentiveName(String partRepresentiveName)
+    @Override
+    public void setPartRepresentiveName(String partRepresentiveName)
     {
         this.partRepresentiveName = partRepresentiveName;
     }
     
-    protected Address getPartRepresentiveAddress()
+    @Override
+    public Address getPartRepresentiveAddress()
     {
         return partRepresentiveAddress;
     }
     
-    protected void setPartRepresentiveAddress(Address partRepresentiveAddress)
+    @Override
+    public void setPartRepresentiveAddress(Address partRepresentiveAddress)
     {
         this.partRepresentiveAddress = partRepresentiveAddress;
     }
 
-    protected Guardian getGuardian()
+    @Override
+    public Guardian getGuardian()
     {
         return guardian;
     }
     
-    protected void setGuardian(Guardian guardian)
+    @Override
+    public void setGuardian(Guardian guardian)
     {
         this.guardian = guardian;
     }
 
-    protected int getPartRepresentiveCPR()
+    @Override
+    public int getPartRepresentiveCPR()
     {
         return partRepresentiveCPR;
     }
 
-    protected int getPartRepresentiveTelephone()
+    @Override
+    public int getPartRepresentiveTelephone()
     {
         return partRepresentiveTelephone;
     }
     
-    protected void setPartRepresentiveTelephone(int partRepresentiveTelephone)
+    @Override
+    public void setPartRepresentiveTelephone(int partRepresentiveTelephone)
     {
         this.partRepresentiveTelephone = partRepresentiveTelephone;
     }

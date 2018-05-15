@@ -5,6 +5,7 @@
  */
 package Udred.Business;
 
+import Acq.IMeeting;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import java.util.Date;
  *
  * @author Linea Hoffmann
  */
-public class Meeting
+public class Meeting implements IMeeting
 {
     private Date meetingTime;
     private Patient patient;
@@ -27,7 +28,7 @@ public class Meeting
      * @param meetingAddress : The address of the meeting
      * @param partRepresentive : The part representative that is present at the meeting
      */
-    protected Meeting(Date meetingTime, Patient patient, Address meetingAddress, PartRepresentive partRepresentive)
+    public Meeting(Date meetingTime, Patient patient, Address meetingAddress, PartRepresentive partRepresentive)
     {
         this.meetingTime = meetingTime;
         this.patient = patient;
@@ -42,7 +43,8 @@ public class Meeting
      * @param assessorTelephone : Phone number of assessor
      * @param function : function of assessor
      */
-    protected void addAssessor(String name, int assessorTelephone, String function)
+    @Override
+    public void addAssessor(String name, int assessorTelephone, String function)
     {
         Assessor ass = new Assessor(name, assessorTelephone, function);
         if(!this.assessorList.contains(ass)) {
@@ -50,34 +52,42 @@ public class Meeting
         }
     }
 
+    @Override
     public Date getMeetingTime() {
         return meetingTime;
     }
 
+    @Override
     public Patient getPatient() {
         return patient;
     }
 
+    @Override
     public Address getMeetingAddress() {
         return meetingAddress;
     }
 
+    @Override
     public PartRepresentive getPartRepresentive() {
         return partRepresentive;
     }
 
+    @Override
     public ArrayList<Assessor> getAssessorList() {
         return assessorList;
     }
 
+    @Override
     public void setMeetingTime(Date meetingTime) {
         this.meetingTime = meetingTime;
     }
 
+    @Override
     public void setMeetingAddress(Address meetingAddress) {
         this.meetingAddress = meetingAddress;
     }
 
+    @Override
     public void setPartRepresentive(PartRepresentive partRepresentive) {
         this.partRepresentive = partRepresentive;
     }

@@ -5,6 +5,7 @@
  */
 package Udred.Business;
 
+import Acq.ICaseInformation;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @author Linea Hoffmann
  * @author Simon Pontoppidan
  */
-public class CaseInformation
+public class CaseInformation implements ICaseInformation
 {
     private List<AlternativeInformation> alternativeInformationList;
     private InquiryInformation inquiryInformation;
@@ -24,7 +25,7 @@ public class CaseInformation
      * @param inquiryInformation 
      */
     
-    protected CaseInformation(InquiryInformation inquiryInformation)
+    public CaseInformation(InquiryInformation inquiryInformation)
     {
         this.alternativeInformationList = new ArrayList<AlternativeInformation>();
         this.inquiryInformation = inquiryInformation;
@@ -32,27 +33,32 @@ public class CaseInformation
                 
     }
     
-    protected void addAlternativeInformation(AlternativeInformation alternativeInformation)
+    @Override
+    public void addAlternativeInformation(AlternativeInformation alternativeInformation)
     {
         this.alternativeInformationList.add(alternativeInformation);
     }
     
-    protected void addDiaryEntry(DiaryEntry diaryEntry)
+    @Override
+    public void addDiaryEntry(DiaryEntry diaryEntry)
     {
         this.diaryEntrys.add(diaryEntry);
     }
 
-    protected List<AlternativeInformation> getAlternativeInformation()
+    @Override
+    public List<AlternativeInformation> getAlternativeInformation()
     {
         return this.alternativeInformationList;
     }
 
-    protected InquiryInformation getInquiryInformation()
+    @Override
+    public InquiryInformation getInquiryInformation()
     {
         return this.inquiryInformation;
     }
 
-    protected List<DiaryEntry> getDiary()
+    @Override
+    public List<DiaryEntry> getDiary()
     {
         return this.diaryEntrys;
     }

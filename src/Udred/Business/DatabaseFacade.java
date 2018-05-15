@@ -5,6 +5,7 @@
  */
 package Udred.Business;
 
+import Acq.IDatabaseFacade;
 import Udred.Data.PostgresHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Linea Hoffmann
  */
-public class DatabaseFacade {
+public class DatabaseFacade implements IDatabaseFacade {
 
 //    INFO ABOUT THE DATABASE DOESN'T MAKE MUCH SENSE HERE    
 //    private String dataHost;
@@ -40,6 +41,7 @@ public class DatabaseFacade {
 
     }
 
+    @Override
     public void saveCase(Case thisCase) {
         //just setting up a few needed variables
         ArrayList al = new ArrayList();

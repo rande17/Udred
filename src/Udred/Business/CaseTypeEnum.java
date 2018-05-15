@@ -5,11 +5,13 @@
  */
 package Udred.Business;
 
+import Acq.ICaseTypeEnum;
+
 /**
  *
  * @author Linea Hoffmann
  */
-public enum CaseTypeEnum {
+public enum CaseTypeEnum implements ICaseTypeEnum {
 
     PHYSICALDISABILITY("social"),
     SOCIALISSUES("physical"),
