@@ -23,12 +23,12 @@ public class Case implements ICase {
 
     private final int caseID;
     private int status; // enum
-    private final Patient patient;
-    private User caseWorker;
+    private final IPatient patient;
+    private IUser caseWorker;
     private final Date creationDate;
     private Date closingDate;
     private boolean consent;
-    private final CaseInformation caseInformation;
+    private final ICaseInformation caseInformation;
     private CaseTypeEnum caseType;
 
     /**
@@ -112,7 +112,7 @@ public class Case implements ICase {
     }
 
     @Override
-    public Patient getPatient() {
+    public IPatient getPatient() {
         return patient;
     }
 
@@ -122,24 +122,24 @@ public class Case implements ICase {
     }
 
     @Override
-    public CaseInformation getCaseInformation() {
+    public ICaseInformation getCaseInformation() {
         return caseInformation;
     }
 
     @Override
-    public void setCaseWorker(User caseWorker) {
+    public void setCaseWorker(IUser caseWorker) {
         this.caseWorker = caseWorker;
     }
     
     @Override
-    public User getCaseWorker(){
+    public IUser getCaseWorker(){
         return caseWorker;
     }
 
     //should be changed to a call to a call via the facade, but this is a dirty way of doing it, to tired to make it properly right now
     @Override
-    public void save(Case thisCase) {
-       DatabaseFacade df = new DatabaseFacade();
+    public void save(ICase thisCase) {
+       IDatabaseFacade df = new DatabaseFacade();
        df.saveCase(thisCase);
     }
 }

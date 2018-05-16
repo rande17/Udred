@@ -16,10 +16,10 @@ import java.util.Date;
 public class Meeting implements IMeeting
 {
     private Date meetingTime;
-    private Patient patient;
-    private Address meetingAddress;
-    private PartRepresentive partRepresentive;
-    private ArrayList<Assessor> assessorList;
+    private IPatient patient;
+    private IAddress meetingAddress;
+    private IPartRepresentive partRepresentive;
+    private ArrayList<IAssessor> assessorList;
 
     /**
      * Constructor for Meeting
@@ -58,22 +58,22 @@ public class Meeting implements IMeeting
     }
 
     @Override
-    public Patient getPatient() {
+    public IPatient getPatient() {
         return patient;
     }
 
     @Override
-    public Address getMeetingAddress() {
+    public IAddress getMeetingAddress() {
         return meetingAddress;
     }
 
     @Override
-    public PartRepresentive getPartRepresentive() {
+    public IPartRepresentive getPartRepresentive() {
         return partRepresentive;
     }
 
     @Override
-    public ArrayList<Assessor> getAssessorList() {
+    public ArrayList<IAssessor> getAssessorList() {
         return assessorList;
     }
 
@@ -83,12 +83,12 @@ public class Meeting implements IMeeting
     }
 
     @Override
-    public void setMeetingAddress(Address meetingAddress) {
+    public void setMeetingAddress(IAddress meetingAddress) {
         this.meetingAddress = meetingAddress;
     }
 
     @Override
-    public void setPartRepresentive(PartRepresentive partRepresentive) {
+    public void setPartRepresentive(IPartRepresentive partRepresentive) {
         this.partRepresentive = partRepresentive;
     }
 

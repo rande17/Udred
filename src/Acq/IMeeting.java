@@ -26,20 +26,20 @@ public interface IMeeting {
      */
     void addAssessor(String name, int assessorTelephone, String function);
 
-    ArrayList<Assessor> getAssessorList();
+    ArrayList<IAssessor> getAssessorList();
 
-    Address getMeetingAddress();
+    IAddress getMeetingAddress();
 
     Date getMeetingTime();
 
-    PartRepresentive getPartRepresentive();
+    IPartRepresentive getPartRepresentive();
 
-    Patient getPatient();
+    IPatient getPatient();
 
-    void setMeetingAddress(Address meetingAddress);
+    void setMeetingAddress(IAddress meetingAddress);
 
     void setMeetingTime(Date meetingTime);
 
-    void setPartRepresentive(PartRepresentive partRepresentive);
+    void setPartRepresentive(IPartRepresentive partRepresentive);
     
 }

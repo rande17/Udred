@@ -42,7 +42,7 @@ public class DatabaseFacade implements IDatabaseFacade {
     }
 
     @Override
-    public void saveCase(Case thisCase) {
+    public void saveCase(ICase thisCase) {
         //just setting up a few needed variables
         ArrayList al = new ArrayList();
         String typeString;

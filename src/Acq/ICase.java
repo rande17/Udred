@@ -20,26 +20,26 @@ public interface ICase {
 
     int getCaseID();
 
-    CaseInformation getCaseInformation();
+    ICaseInformation getCaseInformation();
 
-    CaseTypeEnum getCaseType();
+    ICaseTypeEnum getCaseType();
 
-    User getCaseWorker();
+    IUser getCaseWorker();
 
     Date getClosingDate();
 
     Date getCreationDate();
 
-    Patient getPatient();
+    IPatient getPatient();
 
     int getStatus();
 
     boolean isConsent();
 
     //should be changed to a call to a call via the facade, but this is a dirty way of doing it, to tired to make it properly right now
-    void save(Case thisCase);
+    void save(ICase thisCase);
 
-    void setCaseWorker(User caseWorker);
+    void setCaseWorker(IUser caseWorker);
 
     void setClosingDate(Date closingDate);
 

@@ -13,7 +13,7 @@ import Udred.Business.Case;
  */
 public interface IDatabaseFacade {
 
-    void saveCase(Case thisCase);
+    void saveCase(ICase thisCase);
     //
     //    protected List findCasesCPR(String CPRNumber)
     //    {

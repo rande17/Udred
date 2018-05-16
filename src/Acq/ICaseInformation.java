@@ -16,14 +16,14 @@ import java.util.List;
  */
 public interface ICaseInformation {
 
-    void addAlternativeInformation(AlternativeInformation alternativeInformation);
+    void addAlternativeInformation(IAlternativeInformation alternativeInformation);
 
-    void addDiaryEntry(DiaryEntry diaryEntry);
+    void addDiaryEntry(IDiaryEntry diaryEntry);
 
-    List<AlternativeInformation> getAlternativeInformation();
+    List<IAlternativeInformation> getAlternativeInformation();
 
-    List<DiaryEntry> getDiary();
+    List<IDiaryEntry> getDiary();
 
-    InquiryInformation getInquiryInformation();
+    IInquiryInformation getInquiryInformation();
     
 }

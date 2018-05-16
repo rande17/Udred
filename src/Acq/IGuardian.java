@@ -19,10 +19,10 @@ public interface IGuardian {
 
     int getGuardianTelephone();
 
-    Address getGuardianaddress();
+    IAddress getGuardianaddress();
 
     void setGuardianTelephone(int guardianTelephone);
 
-    void setGuardianaddress(Address address);
+    void setGuardianaddress(IAddress address);
     
 }

@@ -19,10 +19,10 @@ public class Patient implements IPatient
 
 
     private String patientName;
-    private Address patientAddress;
+    private IAddress patientAddress;
     private int patientTelephone;
     private int patientCPR;
-    private List<Guardian> patientGuardians;
+    private List<IGuardian> patientGuardians;
     
     /**
      * Constructor for Patient
@@ -32,7 +32,7 @@ public class Patient implements IPatient
      * @param address 
      */
     //changed from public to public to make DB work, should be changed back when proper constructor is created
-    public Patient(String patientName, int patientCPR, int patientTelephone, Address address)
+    public Patient(String patientName, int patientCPR, int patientTelephone, IAddress address)
     {
         this.patientName = patientName;
         this.patientCPR = patientCPR;
@@ -49,13 +49,13 @@ public class Patient implements IPatient
     }
     
     @Override
-    public void addGuardian (String name, int CPR, int telephone, Address address)
+    public void addGuardian (String name, int CPR, int telephone, IAddress address)
     {
         this.patientGuardians.add(new Guardian(name, CPR, telephone, address));   
     }
     
     @Override
-    public void setGuardianAddress(Guardian guardian, Address address)
+    public void setGuardianAddress(IGuardian guardian, IAddress address)
     {
         guardian.setGuardianaddress(address);
         
@@ -89,13 +89,13 @@ public class Patient implements IPatient
     }
 
     @Override
-    public Address getPatientAddress()
+    public IAddress getPatientAddress()
     {
         return patientAddress;
     }
 
     @Override
-    public void setPatientAddress(Address patientAddress)
+    public void setPatientAddress(IAddress patientAddress)
     {
         this.patientAddress = patientAddress;
     }
@@ -119,7 +119,7 @@ public class Patient implements IPatient
     }
 
     @Override
-    public List<Guardian> getPatientGuardians()
+    public List<IGuardian> getPatientGuardians()
     {
         return patientGuardians;
     }

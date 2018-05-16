@@ -11,7 +11,7 @@ import Acq.*;
  *
  * @author Linea Hoffmann
  */
-public class PartRepresentive implements IPartsRepresentive
+public class PartRepresentive implements IPartRepresentive
 {
     private String partRepresentiveName;
     private Address partRepresentiveAddress;

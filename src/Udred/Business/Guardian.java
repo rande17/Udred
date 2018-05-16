@@ -16,7 +16,7 @@ public class Guardian implements IGuardian
 {
     private String guardianName;
     private int guardianCPR;
-    private Address guardianaddress;
+    private IAddress guardianaddress;
     private int guardianTelephone;
     
     /**
@@ -42,7 +42,7 @@ public class Guardian implements IGuardian
      * @param guardianAddress 
      */
     
-    public Guardian(String guardianName, int guardianCPR, int guardianTelephone, Address guardianAddress)
+    public Guardian(String guardianName, int guardianCPR, int guardianTelephone, IAddress guardianAddress)
     {
         this.guardianName = guardianName;
         this.guardianCPR = guardianCPR;
@@ -63,7 +63,7 @@ public class Guardian implements IGuardian
     }
 
     @Override
-    public Address getGuardianaddress()
+    public IAddress getGuardianaddress()
     {
         return guardianaddress;
     }
@@ -81,7 +81,7 @@ public class Guardian implements IGuardian
     }
 
     @Override
-    public void setGuardianaddress(Address address)
+    public void setGuardianaddress(IAddress address)
     {
         this.guardianaddress = address;
     }

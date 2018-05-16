@@ -12,7 +12,7 @@ import Udred.Business.Guardian;
  *
  * @author niemeijeren
  */
-public interface IPartsRepresentive {
+public interface IPartRepresentive {
 
     Guardian getGuardian();
 

@@ -16,9 +16,9 @@ import java.util.List;
  */
 public class CaseInformation implements ICaseInformation
 {
-    private List<AlternativeInformation> alternativeInformationList;
+    private List<IAlternativeInformation> alternativeInformationList;
     private InquiryInformation inquiryInformation;
-    private List<DiaryEntry> diaryEntrys;
+    private List<IDiaryEntry> diaryEntrys;
     
     /**
      * Constructor for CaseInformation
@@ -27,26 +27,26 @@ public class CaseInformation implements ICaseInformation
     
     public CaseInformation(InquiryInformation inquiryInformation)
     {
-        this.alternativeInformationList = new ArrayList<AlternativeInformation>();
+        this.alternativeInformationList = new ArrayList<IAlternativeInformation>();
         this.inquiryInformation = inquiryInformation;
-        this.diaryEntrys = new ArrayList<DiaryEntry>();
+        this.diaryEntrys = new ArrayList<IDiaryEntry>();
                 
     }
     
     @Override
-    public void addAlternativeInformation(AlternativeInformation alternativeInformation)
+    public void addAlternativeInformation(IAlternativeInformation alternativeInformation)
     {
         this.alternativeInformationList.add(alternativeInformation);
     }
     
     @Override
-    public void addDiaryEntry(DiaryEntry diaryEntry)
+    public void addDiaryEntry(IDiaryEntry diaryEntry)
     {
         this.diaryEntrys.add(diaryEntry);
     }
 
     @Override
-    public List<AlternativeInformation> getAlternativeInformation()
+    public List<IAlternativeInformation> getAlternativeInformation()
     {
         return this.alternativeInformationList;
     }
@@ -58,7 +58,7 @@ public class CaseInformation implements ICaseInformation
     }
 
     @Override
-    public List<DiaryEntry> getDiary()
+    public List<IDiaryEntry> getDiary()
     {
         return this.diaryEntrys;
     }

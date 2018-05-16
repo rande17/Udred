@@ -17,13 +17,13 @@ public interface IPatient {
 
     void addGuardian(String name, int CPR, int telephone);
 
-    void addGuardian(String name, int CPR, int telephone, Address address);
+    void addGuardian(String name, int CPR, int telephone, IAddress address);
 
-    Address getPatientAddress();
+    IAddress getPatientAddress();
 
     int getPatientCPR();
 
-    List<Guardian> getPatientGuardians();
+    List<IGuardian> getPatientGuardians();
 
     String getPatientName();
 
@@ -31,9 +31,9 @@ public interface IPatient {
 
     void removeGuardian(int CPR);
 
-    void setGuardianAddress(Guardian guardian, Address address);
+    void setGuardianAddress(IGuardian guardian, IAddress address);
 
-    void setPatientAddress(Address patientAddress);
+    void setPatientAddress(IAddress patientAddress);
 
     void setPatientName(String patientName);
 
