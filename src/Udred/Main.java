@@ -2,7 +2,7 @@ package Udred;
 
 import Acq.*;
 import Udred.Business.BusinessFacade;
-import Udred.Data.DatabaseFacade;
+import Udred.Data.DataFacade;
 import Udred.Data.PostgresHelper;
 import Udred.uniLOADERS.RainbowController2;
 import java.util.Optional;
@@ -27,14 +27,17 @@ public class Main extends Application {
     static Stage Admin;
     static Boolean changesSaved = true;
 
-    protected static IBusinessFacade business;
-    protected static IDatabaseFacade data;
+    static IBusinessFacade business;
+    static IDataFacade data;
+    static IMainWindowController gui;
     
     public static void main(String[] args) {
         
         business    = new BusinessFacade();
-        data        = new DatabaseFacade();
+        data        = new DataFacade();
+        gui         = new MainWindowController();
         
+        gui.injectBusiness(business);
         business.injectDataFacade(data);
         
         launch(args);

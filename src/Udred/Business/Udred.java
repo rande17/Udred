@@ -16,7 +16,7 @@ import Acq.*;
 public class Udred
 {
     private List[] Case;
-    private IDatabaseFacade databaseFacede;
+    private IDataFacade databaseFacede;
     
     public Udred(List Case)
     {

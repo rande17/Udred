@@ -20,7 +20,7 @@ public interface IBusinessFacade {
 
     ArrayList getUserCaseList(String UserID) throws SQLException;
 
-    void injectDataFacade(IDatabaseFacade db);
+    void injectDataFacade(IDataFacade db);
     
     IUser getActiveUser();
     

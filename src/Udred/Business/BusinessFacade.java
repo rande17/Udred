@@ -2,7 +2,7 @@
 package Udred.Business;
 
 import Acq.IBusinessFacade;
-import Udred.Data.DatabaseFacade;
+import Udred.Data.DataFacade;
 import Acq.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,28 +15,21 @@ import java.util.ArrayList;
 public class BusinessFacade implements IBusinessFacade 
 {
     
-    private static BusinessFacade instance;
-    private IDatabaseFacade dataFacade;
+    protected static IDataFacade dataFacade;
     private IUser activeUser;
     
     public BusinessFacade(){}
-    
-    public static BusinessFacade getInstance(){
-        if(instance == null){
-            instance = new BusinessFacade();
-        }
-        return instance;
-    }
+
     
     @Override
     public ArrayList getUserCaseList(String UserID) throws SQLException{
-        ArrayList al = dataFacade.getUserCaseList("");
+        ArrayList al = dataFacade.getUserCaseList();
         return al;
     }
     
     
     @Override
-    public void injectDataFacade(IDatabaseFacade db){
+    public void injectDataFacade(IDataFacade db){
         this.dataFacade = db;
     }
     
@@ -50,7 +43,7 @@ public class BusinessFacade implements IBusinessFacade
     }
     
         @Override
-    public ICase getCase(String caseNumber) throws SQLException
+    public Case getCase(String caseNumber) throws SQLException
     {
         ResultSet result = dataFacade.getCase(caseNumber);
         Case c = new Case(

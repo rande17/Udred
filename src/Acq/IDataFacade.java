@@ -6,17 +6,17 @@
 package Acq;
 
 import Acq.ICase;
-import Acq.IDatabaseFacade;
 import Udred.Business.Case;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import Acq.IDataFacade;
 
 /**
  *
  * @author niemeijeren
  */
-public interface IDatabaseFacade {
+public interface IDataFacade {
 
     ResultSet getCase(String caseNumber) throws SQLException;
 
@@ -31,7 +31,7 @@ public interface IDatabaseFacade {
     //        return ;
     //
     //    }
-    ArrayList getUserCaseList(String UserID) throws SQLException;
+    ArrayList getUserCaseList() throws SQLException;
 
     void saveCase(ICase thisCase);
     
