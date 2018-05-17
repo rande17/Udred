@@ -5,38 +5,45 @@
  */
 package Udred.Business;
 
+import Acq.*;
+import Udred.Data.PostgresHelper;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Linea Hoffmann
  * @author Simon Pontoppidan
  */
-public class Case {
+public class Case implements ICase {
 
     private final int caseID;
     private int status; // enum
-    private final Patient patient;
-    private User caseWorker;
+    private final IPatient patient;
+    private IUser caseWorker;
     private final Date creationDate;
     private Date closingDate;
     private boolean consent;
-    private final CaseInformation caseInformation;
+    private final ICaseInformation caseInformation;
     private CaseTypeEnum caseType;
-    
+
     /**
      * Constructor for Case
+     *
      * @param caseID
      * @param patient
      * @param status
      * @param consent
      * @param caseType
      * @param caseWorker
-     * @param inquiryInformation 
+     * @param inquiryInformation
      */
-
-    protected Case(int caseID, Patient patient, int status, boolean consent, String caseType, User caseWorker, InquiryInformation inquiryInformation)
-    {
+    // changed public to public, to make db stuff work from GUI, should be changed back when we have a properinterface
+    public Case(int caseID, Patient patient, int status, boolean consent, String caseType, User caseWorker, InquiryInformation inquiryInformation) {
         this.caseID = caseID;
         this.patient = patient;
         this.status = status;
@@ -45,69 +52,94 @@ public class Case {
         this.creationDate = new Date();
         this.closingDate = null;
         this.caseInformation = new CaseInformation(inquiryInformation);
+        setCaseType(caseType);
     }
 
-    protected int getStatus() {
+    @Override
+    public int getStatus() {
         return status;
     }
 
-    protected void setStatus(int status) {
+    @Override
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    protected Date getClosingDate() {
+    @Override
+    public Date getClosingDate() {
         return closingDate;
     }
 
-    protected void setClosingDate(Date closingDate) {
+    @Override
+    public void setClosingDate(Date closingDate) {
         this.closingDate = closingDate;
     }
 
-    protected boolean isConsent() {
+    @Override
+    public boolean isConsent() {
         return consent;
     }
 
-    protected void setConsent(boolean consent) {
+    @Override
+    public void setConsent(boolean consent) {
         this.consent = consent;
     }
 
-    protected CaseTypeEnum getCaseType() {
-        return caseType;
+    @Override
+    public CaseTypeEnum getCaseType() {
+        return this.caseType;
     }
 
     /**
-     * Compares the string in the argument with any of the possible enums in CaseTypeEnum 
-     * and sets this.caseType to the corresponding enumerator
+     * Compares the string in the argument with any of the possible enums in
+     * CaseTypeEnum and sets this.caseType to the corresponding enumerator
+     *
      * @param caseType takes a type of case that should be in enum CaseTypeEnum
      */
-    
     // Needs proper debugging, havent been able to test this correctly
-    protected void setCaseType(String caseType) {
+    private void setCaseType(String caseType) {
         for (CaseTypeEnum caseT : CaseTypeEnum.values()) {
             if (caseType.toLowerCase().equals(caseT.toString())) {
-                this.caseType = CaseTypeEnum.valueOf(caseType.toLowerCase());
-                break; 
+                this.caseType = caseT;
+                break;
             }
         }
     }
 
-    protected int getCaseID() {
+    @Override
+    public int getCaseID() {
         return caseID;
     }
 
-    protected Patient getPatient() {
+    @Override
+    public IPatient getPatient() {
         return patient;
     }
 
-    protected Date getCreationDate() {
+    @Override
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    protected CaseInformation getCaseInformation() {
+    @Override
+    public ICaseInformation getCaseInformation() {
         return caseInformation;
     }
 
-    public void setCaseWorker(User caseWorker) {
+    @Override
+    public void setCaseWorker(IUser caseWorker) {
         this.caseWorker = caseWorker;
+    }
+    
+    @Override
+    public IUser getCaseWorker(){
+        return caseWorker;
+    }
+
+    //should be changed to a call to a call via the facade, but this is a dirty way of doing it, to tired to make it properly right now
+    @Override
+    public void save(ICase thisCase) {
+       IDatabaseFacade df = new DatabaseFacade();
+       df.saveCase(thisCase);
     }
 }

@@ -5,6 +5,7 @@
  */
 package Udred.Business;
 
+import Acq.*;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Date;
  * @author Linea Hoffmann
  * @author Simon Pontoppidan
  */
-public class InquiryInformation
+public class InquiryInformation implements IInquiryInformation
 {
     private String inquiry;
     private Date inquiryDate;
@@ -22,24 +23,27 @@ public class InquiryInformation
      * @param inquiry
      * @param inquiryDate 
      */
-    
-    protected InquiryInformation(String inquiry, Date inquiryDate)
+      // changed public to public, to make db stuff work from GUI, should be changed back when we have a properinterface
+    public InquiryInformation(String inquiry)
     {
-        this.inquiry = this.inquiry;
+        this.inquiry = inquiry;
         this.inquiryDate = new Date(); //Sets date to the time this object was created
     }
 
-    protected String getInquiry()
+    @Override
+    public String getInquiry()
     {
         return inquiry;
     }
 
-    protected void setInquiry(String inquiry)
+    @Override
+    public void setInquiry(String inquiry)
     {
         this.inquiry = inquiry;
     }
 
-    protected Date getInquiryDate()
+    @Override
+    public Date getInquiryDate()
     {
         return inquiryDate;
     }

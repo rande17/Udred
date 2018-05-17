@@ -5,6 +5,7 @@
  */
 package Udred.Business;
 
+import Acq.*;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,13 +13,13 @@ import java.util.Date;
  *
  * @author Linea Hoffmann
  */
-public class Meeting
+public class Meeting implements IMeeting
 {
     private Date meetingTime;
-    private Patient patient;
-    private Address meetingAddress;
-    private PartRepresentive partRepresentive;
-    private ArrayList<Assessor> assessorList;
+    private IPatient patient;
+    private IAddress meetingAddress;
+    private IPartRepresentive partRepresentive;
+    private ArrayList<IAssessor> assessorList;
 
     /**
      * Constructor for Meeting
@@ -27,7 +28,7 @@ public class Meeting
      * @param meetingAddress : The address of the meeting
      * @param partRepresentive : The part representative that is present at the meeting
      */
-    protected Meeting(Date meetingTime, Patient patient, Address meetingAddress, PartRepresentive partRepresentive)
+    public Meeting(Date meetingTime, Patient patient, Address meetingAddress, PartRepresentive partRepresentive)
     {
         this.meetingTime = meetingTime;
         this.patient = patient;
@@ -42,7 +43,8 @@ public class Meeting
      * @param assessorTelephone : Phone number of assessor
      * @param function : function of assessor
      */
-    protected void addAssessor(String name, int assessorTelephone, String function)
+    @Override
+    public void addAssessor(String name, int assessorTelephone, String function)
     {
         Assessor ass = new Assessor(name, assessorTelephone, function);
         if(!this.assessorList.contains(ass)) {
@@ -50,35 +52,43 @@ public class Meeting
         }
     }
 
+    @Override
     public Date getMeetingTime() {
         return meetingTime;
     }
 
-    public Patient getPatient() {
+    @Override
+    public IPatient getPatient() {
         return patient;
     }
 
-    public Address getMeetingAddress() {
+    @Override
+    public IAddress getMeetingAddress() {
         return meetingAddress;
     }
 
-    public PartRepresentive getPartRepresentive() {
+    @Override
+    public IPartRepresentive getPartRepresentive() {
         return partRepresentive;
     }
 
-    public ArrayList<Assessor> getAssessorList() {
+    @Override
+    public ArrayList<IAssessor> getAssessorList() {
         return assessorList;
     }
 
+    @Override
     public void setMeetingTime(Date meetingTime) {
         this.meetingTime = meetingTime;
     }
 
-    public void setMeetingAddress(Address meetingAddress) {
+    @Override
+    public void setMeetingAddress(IAddress meetingAddress) {
         this.meetingAddress = meetingAddress;
     }
 
-    public void setPartRepresentive(PartRepresentive partRepresentive) {
+    @Override
+    public void setPartRepresentive(IPartRepresentive partRepresentive) {
         this.partRepresentive = partRepresentive;
     }
 

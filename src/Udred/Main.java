@@ -25,7 +25,7 @@ public class Main extends Application {
     static Boolean changesSaved = true;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
         // Setup Main Window
         Window = new Stage();
@@ -75,10 +75,8 @@ public class Main extends Application {
 
         Rainbow.setScene(r);
         PostgresHelper DB = new PostgresHelper();
-        DB.connect();
+        DB.test();
     }
-
-
 
     public static void main(String[] args) {
         launch(args);
@@ -98,7 +96,7 @@ public class Main extends Application {
             alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeCancel);
 
             Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == buttonTypeOne){
+            if (result.get() == buttonTypeOne) {
                 // ... user chose "One"
             } else if (result.get() == buttonTypeTwo) {
                 // ... user chose "Two"
@@ -108,8 +106,6 @@ public class Main extends Application {
         } else {
             System.exit(0);
         }
-
-
 
     }
 }

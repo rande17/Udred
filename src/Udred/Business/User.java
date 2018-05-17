@@ -5,44 +5,48 @@
  */
 package Udred.Business;
 
+import Acq.IUser;
 import java.util.ArrayList;
 
 /**
  *
  * @author Linea Hoffmann
  */
-public class User
+public class User implements IUser
 {
     private String userName;
     private int workerID;
     private ArrayList<Integer> caseList;
     private int accessLevel;
-
-    protected User(int workerID)
+ // changed public to public, to make db stuff work from GUI, should be changed back when we have a properinterface
+   public User(int workerID)
     {
         this.workerID = workerID;
     }
     
-    protected int getCase(int caseID)
+    @Override
+    public int getCase(int caseID)
     {
         return 0;
     }
     
-//    protected void addCase(Case case)
+//    public void addCase(Case case)
 //    {
 //
 //    }
-//    protected void removeCase (Case case)
+//    public void removeCase (Case case)
 //    {
 //
 //    }
 
-    protected String getUserName()
+    @Override
+    public String getUserName()
     {
         return userName;
     }
 
-    protected int getWorkerID()
+    @Override
+    public int getWorkerID()
     {
         return workerID;
     }

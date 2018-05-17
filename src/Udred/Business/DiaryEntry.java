@@ -5,13 +5,14 @@
  */
 package Udred.Business;
 
+import Acq.*;
 import java.util.Date;
 
 /**
  *
  * @author Linea Hoffmann
  */
-public class DiaryEntry
+public class DiaryEntry implements IDiaryEntry
 {
     private String topic;
     private String content;
@@ -33,22 +34,27 @@ public class DiaryEntry
         this.type = type;
     }
 
+    @Override
     public String getTopic() {
         return topic;
     }
 
+    @Override
     public String getContent() {
         return content;
     }
 
+    @Override
     public Date getDiaryTimeStamp() {
         return diaryTimeStamp;
     }
 
+    @Override
     public DiaryEntryTypeEnum getType() {
         return type;
     }
 
+    @Override
     public void setContent(String content) {
         this.content = content;
     }
