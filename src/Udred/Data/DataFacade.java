@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author Linea Hoffmann
  */
-public class DatabaseFacade implements IDatabaseFacade {
+public class DataFacade implements IDatabaseFacade {
 
 //    INFO ABOUT THE DATABASE DOESN'T MAKE MUCH SENSE HERE   
 //    private String dataHost;
@@ -24,16 +24,18 @@ public class DatabaseFacade implements IDatabaseFacade {
 //    private String userName;
 //    private String password;
     private PostgresHelper DB;
+    private SYSLog sysLog;
 
 //    INFO ABOUT THE DATABASE DOESN'T MAKE MUCH SENSE HERE
-//    protected DatabaseFacade(String dataHost, String databaseName, String userName, String password) {
+//    protected DataFacade(String dataHost, String databaseName, String userName, String password) {
 //        this.dataHost = dataHost;
 //        this.databaseName = databaseName;
 //        this.userName = userName;
 //        this.password = password;
 //    }
-    public DatabaseFacade() {
+    public DataFacade() {
         DB = new PostgresHelper();
+        sysLog = new SYSLog("SYSLog.txt");
     }
 
     protected void specific() {
@@ -84,11 +86,11 @@ public class DatabaseFacade implements IDatabaseFacade {
                     System.out.print(rs.getString(8) + " | ");
                     System.out.println(rs.getString(9) + "");
                 } catch (SQLException ex) {
-                    Logger.getLogger(DatabaseFacade.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(DataFacade.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DatabaseFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
         //debug thing ends here
     }
@@ -121,5 +123,10 @@ public class DatabaseFacade implements IDatabaseFacade {
         ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseNumber + "'", new ArrayList(), "");
 
         return result;
+    }
+
+    public ArrayList<String> getSYSList () {
+
+        return sysLog.readFromFile();
     }
 }

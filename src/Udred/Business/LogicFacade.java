@@ -2,7 +2,8 @@
 package Udred.Business;
 
 import Acq.*;
-import Udred.Data.DatabaseFacade;
+import Udred.Data.DataFacade;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,9 +17,9 @@ public class LogicFacade
     
     private static LogicFacade instance;
     
-    private LogicFacade(){}
-    
-    public static LogicFacade getInstance(){
+    private LogicFacade() {}
+    // Single-ton method to make sure there is only 1 instance of it.
+    public static LogicFacade getInstance() {
         if(instance == null){
             instance = new LogicFacade();
         }
@@ -26,13 +27,13 @@ public class LogicFacade
     }
     
     public ArrayList getUserCaseList(String UserID) throws SQLException{
-        DatabaseFacade db = new DatabaseFacade();
+        DataFacade db = new DataFacade();
         ArrayList al = db.getUserCaseList("");
         return al;
     }
     
     public ICase getCase(String caseNumber) throws SQLException{
-        DatabaseFacade db = new DatabaseFacade();
+        DataFacade db = new DataFacade();
         
         ResultSet result = db.getCase(caseNumber);
         

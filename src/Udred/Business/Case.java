@@ -5,9 +5,8 @@
  */
 package Udred.Business;
 
-import Udred.Data.DatabaseFacade;
+import Udred.Data.DataFacade;
 import Acq.*;
-import Udred.Data.DatabaseFacade;
 
 import java.util.Date;
 
@@ -143,7 +142,7 @@ public class Case implements ICase {
     //should be changed to a call to a call via the facade, but this is a dirty way of doing it, to tired to make it properly right now
     @Override
     public void save(ICase thisCase) {
-       IDatabaseFacade df = new DatabaseFacade();
+       IDatabaseFacade df = new DataFacade();
        df.saveCase(thisCase);
     }
 }
