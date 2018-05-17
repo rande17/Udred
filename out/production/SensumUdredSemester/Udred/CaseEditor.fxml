@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxWidth="1.7976931348623157E308" styleClass="admin" stylesheets="@resources/css/MainStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Udred.CaseEditorController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+        <ColumnConstraints />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+            <content>
+                <VBox maxWidth="1.7976931348623157E308" spacing="5.0">
+                    <children>
+                        <TitledPane accessibleText="Borgerens samtykke erklæring" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <graphic>
+                                <HBox alignment="CENTER" spacing="5.0">
+                                    <children>
+                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@resources/images/icons8-bulleted-list-96.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="SAG" HBox.hgrow="ALWAYS">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </graphic>
+                            <content>
+                                <VBox>
+                                    <children>
+                                        <GridPane>
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="70.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" percentWidth="30.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label text="SagsID Nummer:" />
+                                                <TextField fx:id="textFieldCaseID" accessibleText="Sags ID Nummer" editable="false" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" text="050618-143021" GridPane.rowIndex="1">
+                                                    <GridPane.margin>
+                                                        <Insets right="5.0" />
+                                                    </GridPane.margin>
+                                                    <tooltip>
+                                                        <Tooltip autoHide="true" text="Sags ID Nummer" />
+                                                    </tooltip>
+                                                </TextField>
+                                                <Label text="Status:" GridPane.columnIndex="1" />
+                                                <ChoiceBox fx:id="cbxStatus" accessibleText="Sags Status" maxWidth="1.7976931348623157E308" onInputMethodTextChanged="#changesRegistered" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                    <tooltip>
+                                                        <Tooltip autoHide="true" text="Sags Status" />
+                                                    </tooltip>
+                                                </ChoiceBox>
+                                            </children>
+                                        </GridPane>
+                                        <GridPane>
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" />
+                                                <ColumnConstraints hgrow="SOMETIMES" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label text="Oprettet:" />
+                                                <Label text="Afsluttet:" GridPane.columnIndex="1" />
+                                                <DatePicker fx:id="datePickerCaseCreated" accessibleText="Sagens oprettelses dato" maxWidth="1.7976931348623157E308" onInputMethodTextChanged="#changesRegistered" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" promptText="Start dato" showWeekNumbers="true" GridPane.rowIndex="1">
+                                                    <GridPane.margin>
+                                                        <Insets right="5.0" />
+                                                    </GridPane.margin>
+                                                    <tooltip>
+                                                        <Tooltip autoHide="true" text="Sagens oprettelses dato" />
+                                                    </tooltip>
+                                                </DatePicker>
+                                                <DatePicker fx:id="datePickerCaseClosed" accessibleText="Sagens afslutnings dato" maxWidth="1.7976931348623157E308" onInputMethodTextChanged="#changesRegistered" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" promptText="Slut dato" showWeekNumbers="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                    <tooltip>
+                                                        <Tooltip autoHide="true" text="Sagens afslutnings dato" />
+                                                    </tooltip>
+                                                </DatePicker>
+                                            </children>
+                                        </GridPane>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <Separator prefWidth="200.0" />
+                        <TitledPane accessibleText="Denne sags borger" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                            <content>
+                                <GridPane vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" />
+                                        <ColumnConstraints />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <VBox fx:id="vBoxCitizens" spacing="5.0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" />
+                                        <Button fx:id="btnAddCitizen" accessibleText="Tilføj ny borger til sagen" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addCitizen" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" GridPane.rowIndex="1">
+                                            <graphic>
+                                                <GridPane>
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="TILFØJ BORGER">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="+" GridPane.columnIndex="1">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </GridPane>
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </GridPane>
+                            </content>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <tooltip>
+                                <Tooltip autoHide="true" text="Borgere tilknyttet sagen" />
+                            </tooltip>
+                            <graphic>
+                                <HBox alignment="CENTER" spacing="5.0">
+                                    <children>
+                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@resources/images/icons8-customer-96.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="BORGERE" HBox.hgrow="ALWAYS">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </graphic>
+                        </TitledPane>
+                        <Separator prefWidth="200.0" />
+                        <TitledPane accessibleText="Denne sags sagsbehandler" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                            <content>
+                                <GridPane vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" />
+                                        <ColumnConstraints />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <VBox fx:id="vBoxCaseWorkers" spacing="5.0" />
+                                        <Button accessibleText="Tilføj ny sagsbehandler til sagen" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addCaseWorker" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" GridPane.rowIndex="1">
+                                            <graphic>
+                                                <GridPane>
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="TILFØJ SAGSBEHANDLER">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="+" GridPane.columnIndex="1">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </GridPane>
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </GridPane>
+                            </content>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <graphic>
+                                <HBox alignment="CENTER" spacing="5.0">
+                                    <children>
+                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@resources/images/icons8-team-96.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="SAGSBEHANDLERE" HBox.hgrow="ALWAYS">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </graphic>
+                        </TitledPane>
+                        <Separator accessibleText="Samtykke fra borgeren" prefWidth="200.0" />
+                        <TitledPane accessibleText="Borgerens samtykke erklæring" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                            <content>
+                                <GridPane>
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" />
+                                        <ColumnConstraints />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <CheckBox accessibleText="Borgeren acceptere samtykke" mnemonicParsing="false" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" text="Borgers accept">
+                                            <tooltip>
+                                                <Tooltip text="Empty Tooltip" />
+                                            </tooltip>
+                                        </CheckBox>
+                                    </children>
+                                </GridPane>
+                            </content>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <graphic>
+                                <HBox alignment="CENTER" spacing="5.0">
+                                    <children>
+                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@resources/images/icons8-parchment-96.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="SAMTYKKE" HBox.hgrow="ALWAYS">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </graphic>
+                        </TitledPane>
+                        <Separator prefWidth="200.0" />
+                        <TitledPane onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <content>
+                                <GridPane vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" />
+                                        <ColumnConstraints />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <VBox fx:id="vBoxCaseInformation" spacing="5.0" />
+                                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addCaseInformation" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" GridPane.rowIndex="1">
+                                            <graphic>
+                                                <GridPane>
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="TILFØJ SAGS INFORMATION">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="+" GridPane.columnIndex="1">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </GridPane>
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </GridPane>
+                            </content>
+                            <graphic>
+                                <HBox alignment="CENTER" spacing="5.0">
+                                    <children>
+                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@resources/images/icons8-course-96.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="SAGS INFORMATION" HBox.hgrow="ALWAYS">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </graphic>
+                        </TitledPane>
+                        <Separator prefWidth="200.0" />
+                        <TitledPane onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <content>
+                                <GridPane vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" />
+                                        <ColumnConstraints />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <VBox fx:id="vBoxMeetings" spacing="5.0" />
+                                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addMeeting" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" GridPane.rowIndex="1">
+                                            <graphic>
+                                                <GridPane>
+                                                    <columnConstraints>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" />
+                                                    </columnConstraints>
+                                                    <rowConstraints>
+                                                        <RowConstraints vgrow="SOMETIMES" />
+                                                    </rowConstraints>
+                                                    <children>
+                                                        <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="TILFØJ MØDE">
+                                                            <font>
+                                                                <Font size="14.0" />
+                                                            </font>
+                                                        </Label>
+                                                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="+" GridPane.columnIndex="1">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="20.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </GridPane>
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </GridPane>
+                            </content>
+                            <graphic>
+                                <HBox alignment="CENTER" spacing="5.0">
+                                    <children>
+                                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@resources/images/icons8-handshake-96.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="MØDER" HBox.hgrow="ALWAYS">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </graphic>
+                        </TitledPane>
+                        <Separator prefWidth="200.0" />
+                        <Button fx:id="btnAddCase" accessibleText="Opret Sag" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addCase" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" GridPane.rowIndex="1"></Button>
+                    </children>
+                </VBox>
+            </content>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <GridPane.margin>
+                <Insets />
+            </GridPane.margin>
+        </ScrollPane>
+    </children>
+</GridPane>

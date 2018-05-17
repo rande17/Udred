@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" stylesheets="@resources/css/MainStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Udred.MainWindowController">
+   <center>
+      <SplitPane dividerPositions="0.25" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <items>
+            <SplitPane dividerPositions="0.7" maxHeight="1.7976931348623157E308" maxWidth="300.0" minWidth="175.0" orientation="VERTICAL">
+               <items>
+                  <VBox spacing="5.0">
+                     <children>
+                        <GridPane hgap="5.0" vgap="5.0">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="ALWAYS" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <HBox accessibleText="Her kan du se alle de sager du behandler" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" spacing="5.0">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/images/icons8-binder-96.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Personlige Sager" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </GridPane>
+                        <HBox accessibleText="Filtrer sager" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" spacing="5.0">
+                           <children>
+                              <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Filter:">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ChoiceBox fx:id="choiceBoxShow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </ChoiceBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </HBox>
+                        <ListView fx:id="listViewCases" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <GridPane hgap="5.0" vgap="5.0">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="ALWAYS" />
+                              <ColumnConstraints hgrow="NEVER" />
+                              <ColumnConstraints hgrow="NEVER" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints vgrow="NEVER" />
+                           </rowConstraints>
+                           <children>
+                              <Button accessibleText="Fjern en sag fra favoritter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#removeCaseFromFavorites" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" GridPane.columnIndex="2">
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/images/icons8-star-remove-96.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <HBox accessibleText="Favorit Panel til at gemme og åbne favoritter" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" spacing="5.0">
+                                 <children>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/images/icons8-star-filled-96.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Favoritter" HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <Button accessibleText="Tilføj en sag til favoritter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addCaseToFavorites" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" GridPane.columnIndex="1">
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/images/icons8-star-add-96.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </GridPane>
+                        <ListView fx:id="listViewFavorites" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </items>
+            </SplitPane>
+            <GridPane fx:id="grdMain" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+               </rowConstraints>
+               <children>
+                  <TabPane fx:id="tabPaneMain" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" />
+                  <GridPane fx:id="gridPaneChoice" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" valignment="CENTER" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" valignment="CENTER" vgrow="ALWAYS" />
+                     </rowConstraints>
+                     <children>
+                        <Button fx:id="btnFindCase" accessibleText="Find en sag i systemet" alignment="CENTER" mnemonicParsing="false" onAction="#showCaseFinder" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                 <children>
+                                    <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/images/icons8-find-document-96.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="FIND SAG">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnCreateCase" accessibleText="Opret en ny sag" mnemonicParsing="false" onAction="#createCase" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                 <children>
+                                    <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@resources/images/icons8-document-96.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="OPRET SAG">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+         </items>
+      </SplitPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Filer">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#createCase">
+                     <graphic>
+                        <HBox accessibleText="Opret en ny sag" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                           <children>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/images/icons8-document-96.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label pickOnBounds="false" text="Opret Sag" textFill="black" />
+                           </children>
+                        </HBox>
+                     </graphic></MenuItem>
+              <MenuItem mnemonicParsing="false" onAction="#showCaseFinder">
+                     <graphic>
+                        <HBox accessibleText="Søg efter allerede eksisterende sag" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                           <children>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/images/icons8-find-document-96.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label pickOnBounds="false" text="Find Sag" textFill="black" />
+                           </children>
+                        </HBox>
+                     </graphic></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#closeAllCases">
+                     <graphic>
+                        <HBox accessibleText="Gem nuværende sag i systemet" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                           <children>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/images/icons8-save-96.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label pickOnBounds="false" text="Gem Sag" textFill="black" />
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#closeAllCases">
+                     <graphic>
+                        <HBox accessibleText="Gem alle sager i systemet" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                           <children>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/images/icons8-save-all-96.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label pickOnBounds="false" text="Gem Alle Sager" textFill="black" />
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#closeCurrentCase">
+                     <graphic>
+                        <HBox accessibleText="Luk nurærende sag ned" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                           <children>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/images/icons8-close-document-96.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label pickOnBounds="false" text="Luk Sag" textFill="black" />
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#closeAllCases">
+                     <graphic>
+                        <HBox accessibleText="Luk alle sager ned" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                           <children>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/images/icons8-close-document-96.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label pickOnBounds="false" text="Luk Alle Sager" textFill="black" />
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#logOut">
+                     <graphic>
+                        <HBox accessibleText="Log ud af programmet" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                           <children>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/images/icons8-log-out-96.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label pickOnBounds="false" text="Log ud" textFill="black" />
+                           </children>
+                        </HBox>
+                     </graphic></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#exitApplication">
+                     <graphic>
+                        <HBox accessibleText="Luk programmet" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit">
+                           <children>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@resources/images/icons8-exit-96.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label pickOnBounds="false" text="Luk" textFill="black" />
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </MenuItem>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Rediger">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Klip" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Hjælp">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="NEVER" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <HBox>
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/images/icons8-view-details-96.png" />
+                     </image></ImageView>
+                  <Label fx:id="labelStatusBarInformation" maxHeight="1.7976931348623157E308" text="Information?">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+               </children>
+            </HBox>
+            <ImageView accessibleText="Database status" fitHeight="25.0" fitWidth="25.0" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+               <image>
+                  <Image url="@resources/images/icons8-database-view-96.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets bottom="2.0" right="2.0" />
+               </GridPane.margin>
+            </ImageView>
+         </children>
+      </GridPane>
+   </bottom>
+</BorderPane>
