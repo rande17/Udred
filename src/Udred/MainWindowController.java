@@ -1,7 +1,7 @@
 package Udred;
 
 import Udred.Business.Case;
-import Udred.Business.LogicFacade;
+import Udred.Business.BusinessFacade;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -88,7 +88,7 @@ public class MainWindowController {
             if (click.getClickCount() == 2) {
                 //Use ListView's getSelected Item
                 try {
-                    Case c = LogicFacade.getInstance().getCase(listViewCases.getSelectionModel().getSelectedItem().toString());
+                    Case c = BusinessFacade.getInstance().getCase(listViewCases.getSelectionModel().getSelectedItem().toString());
                     
                     
                     showCase(c);
@@ -105,7 +105,7 @@ public class MainWindowController {
             }
         });
         
-        cases = FXCollections.observableArrayList(LogicFacade.getInstance().getUserCaseList(""));
+        cases = FXCollections.observableArrayList(BusinessFacade.getInstance().getUserCaseList(""));
         listViewCases.setItems(cases);
 
 //        listViewFavorites.getSelectionModel().selectedItemProperty().addListener((v, oldval,newval) -> {

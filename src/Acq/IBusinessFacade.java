@@ -5,7 +5,6 @@
  */
 package Acq;
 
-import Acq.ICase;
 import Acq.IDatabaseFacade;
 import Udred.Business.Case;
 import java.sql.SQLException;
@@ -15,23 +14,16 @@ import java.util.ArrayList;
  *
  * @author niemeijeren
  */
-public interface IDatabaseFacade {
+public interface IBusinessFacade {
 
     Case getCase(String caseNumber) throws SQLException;
 
-    //
-    //    protected List findCasesCPR(String CPRNumber)
-    //    {
-    //        return;
-    //    }
-    //
-    //    protected List findCasesName(String Name)
-    //    {
-    //        return ;
-    //
-    //    }
     ArrayList getUserCaseList(String UserID) throws SQLException;
 
-    void saveCase(ICase thisCase);
+    void injectDataFacade(IDatabaseFacade db);
+    
+    IUser getActiveUser();
+    
+    void setActiveUser(IUser user);
     
 }

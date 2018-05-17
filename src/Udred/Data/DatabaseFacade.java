@@ -3,15 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Udred.Business;
+package Udred.Data;
 
 import Acq.*;
+import Udred.Business.Case;
+import Udred.Business.InquiryInformation;
+import Udred.Business.Patient;
+import Udred.Business.User;
 import Udred.Data.PostgresHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Acq.IDatabaseFacade;
 
 /**
  *
@@ -105,8 +110,8 @@ public class DatabaseFacade implements IDatabaseFacade {
 //        return ;
 //
 //    }
-
-    ArrayList getUserCaseList(String UserID) throws SQLException
+    @Override
+     public ArrayList getUserCaseList(String UserID) throws SQLException
     {
         ArrayList<String> ar = new ArrayList<>();
         ResultSet result = DB.query("SELECT * FROM Cases", new ArrayList(), "");
@@ -117,7 +122,8 @@ public class DatabaseFacade implements IDatabaseFacade {
         return ar;
     }
 
-    Case getCase(String caseNumber) throws SQLException
+    @Override
+    public Case getCase(String caseNumber) throws SQLException
     {
         ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseNumber + "'", new ArrayList(), "");
         result.next();
