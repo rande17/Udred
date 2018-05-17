@@ -1,5 +1,6 @@
 package Udred;
 
+import Acq.*;
 import Udred.Business.Case;
 import Udred.Business.LogicFacade;
 import java.io.IOException;
@@ -88,14 +89,16 @@ public class MainWindowController {
             if (click.getClickCount() == 2) {
                 //Use ListView's getSelected Item
                 try {
-                    Case c = LogicFacade.getInstance().getCase(listViewCases.getSelectionModel().getSelectedItem().toString());
+                    ICase c = LogicFacade.getInstance().getCase(listViewCases.getSelectionModel().getSelectedItem().toString());
                     
                     
                     showCase(c);
-                }catch (IOException e) {
-                    e.printStackTrace();
                 }
                 catch (SQLException ex)
+                {
+                    Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                catch (IOException ex)
                 {
                     Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -143,7 +146,7 @@ public class MainWindowController {
 
     private String caseNumber = "Ny Sag";
 
-    public void showCase(Case c) throws IOException {
+    public void showCase(ICase c) throws IOException {
         Tab tab = new Tab();
         tab.setText(String.valueOf(c.getCaseID()));
         tab.setOnCloseRequest(e -> {

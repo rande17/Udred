@@ -6,7 +6,6 @@
 package Udred.Data;
 
 import Acq.*;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -117,20 +116,10 @@ public class DatabaseFacade implements IDatabaseFacade {
         return ar;
     }
 
-    public ICase getCase(String caseNumber) throws SQLException
+    public ResultSet getCase(String caseNumber) throws SQLException
     {
         ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseNumber + "'", new ArrayList(), "");
-        result.next();
-        ICase c = new ICase(
-                Integer.parseInt(result.getString("caseid")),
-                new IPatient(),
-                Integer.parseInt(result.getString("status")),
-                Boolean.parseBoolean(result.getString("consent")),
-                result.getString("casetype"),
-                new IUser(0),
-                new IInquiryInformation("")
 
-        );
-        return c;
+        return result;
     }
 }
