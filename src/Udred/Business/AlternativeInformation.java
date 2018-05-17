@@ -5,6 +5,7 @@
  */
 package Udred.Business;
 
+import Acq.*;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Date;
  * @author Linea Hoffmann
  * @author Simon Pontoppidan
  */
-public class AlternativeInformation
+public class AlternativeInformation implements IAlternativeInformation
 {
     private String title; 
     private String subject;
@@ -26,7 +27,7 @@ public class AlternativeInformation
      * @param Content 
      */
 
-    protected AlternativeInformation(String title, String subject, String Content)
+    public AlternativeInformation(String title, String subject, String Content)
     {
         this.title = title;
         this.subject = subject;
@@ -34,36 +35,43 @@ public class AlternativeInformation
         this.alternativeInformationTime = new Date();
     }
   
-    protected String getTitle()
+    @Override
+    public String getTitle()
     {
         return title;
     }
 
-    protected void setTitle(String title)
+    @Override
+    public void setTitle(String title)
     {
         this.title = title;
     }
-    protected String getSubject()
+    @Override
+    public String getSubject()
     {
         return subject;
     }
 
-    protected void setSubject(String subject)
+    @Override
+    public void setSubject(String subject)
     {
         this.subject = subject;
     }
 
-    protected String getContent()
+    @Override
+    public String getContent()
     {
         return Content;
     }
 
-    protected void setContent(String Content)
+    @Override
+    public void setContent(String Content)
     {
         this.Content = Content;
     }
 
-    protected Date getAlternativeInformationTime()
+    @Override
+    public Date getAlternativeInformationTime()
     {
         return alternativeInformationTime;
     }
