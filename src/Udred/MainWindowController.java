@@ -1,8 +1,15 @@
 package Udred;
 
+import Udred.Business.Case;
+import Udred.Business.LogicFacade;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,8 +32,9 @@ public class MainWindowController {
     public GridPane gridPaneChoice;
     public ListView listViewFavorites;
 
+    private ObservableList<String> cases = FXCollections.observableArrayList();
 
-    public void initialize() throws IOException {
+    public void initialize() throws IOException, SQLException {
         choiceBoxShow.getItems().add("Alle");
         choiceBoxShow.getItems().add("Åbne");
         choiceBoxShow.getItems().add("Afventer Samtykke");
@@ -80,14 +88,25 @@ public class MainWindowController {
             if (click.getClickCount() == 2) {
                 //Use ListView's getSelected Item
                 try {
-                    caseNumber = listViewCases.getSelectionModel().getSelectedItem().toString();
-                    showCase(new ActionEvent());
-                } catch (IOException e) {
+                    Case c = LogicFacade.getInstance().getCase(listViewCases.getSelectionModel().getSelectedItem().toString());
+                    
+                    
+                    showCase(c);
+                }catch (IOException e) {
                     e.printStackTrace();
                 }
+                catch (SQLException ex)
+                {
+                    Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //use this to do whatever you want to. Open Link etc.
+
                 //use this to do whatever you want to. Open Link etc.
             }
         });
+        
+        cases = FXCollections.observableArrayList(LogicFacade.getInstance().getUserCaseList(""));
+        listViewCases.setItems(cases);
 
 //        listViewFavorites.getSelectionModel().selectedItemProperty().addListener((v, oldval,newval) -> {
 //                    try {
@@ -100,14 +119,15 @@ public class MainWindowController {
 //
 //        );
 
-
+        
+        
         listViewFavorites.setOnMouseClicked(click -> {
 
             if (click.getClickCount() == 2) {
                 //Use ListView's getSelected Item
                 try {
                     caseNumber = listViewFavorites.getSelectionModel().getSelectedItem().toString();
-                    showCase(new ActionEvent());
+                    showCase(new Case());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -123,9 +143,9 @@ public class MainWindowController {
 
     private String caseNumber = "Ny Sag";
 
-    public void showCase(ActionEvent event) throws IOException {
+    public void showCase(Case c) throws IOException {
         Tab tab = new Tab();
-        tab.setText(caseNumber);
+        tab.setText(String.valueOf(c.getCaseID()));
         tab.setOnCloseRequest(e -> {
             TabPane tabPane = tab.getTabPane();
             if (tabPane.getTabs().size() <= 1) {
@@ -142,7 +162,8 @@ public class MainWindowController {
         // Get the Controller from the FXMLLoader
         CaseEditorController controller = loader.getController();
         // Set data in the controller
-        controller.setCaseID(caseNumber);
+        controller.setCaseID(String.valueOf(c.getCaseID()));
+
 //        grdMain.getChildren().clear();
 //        grdMain.getChildren().add(newLoadedPane);
 

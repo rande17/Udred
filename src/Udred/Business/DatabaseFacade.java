@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class DatabaseFacade implements IDatabaseFacade {
 
-//    INFO ABOUT THE DATABASE DOESN'T MAKE MUCH SENSE HERE    
+//    INFO ABOUT THE DATABASE DOESN'T MAKE MUCH SENSE HERE   
 //    private String dataHost;
 //    private String databaseName;
 //    private String userName;
@@ -105,4 +105,32 @@ public class DatabaseFacade implements IDatabaseFacade {
 //        return ;
 //
 //    }
+
+    ArrayList getUserCaseList(String UserID) throws SQLException
+    {
+        ArrayList<String> ar = new ArrayList<>();
+        ResultSet result = DB.query("SELECT * FROM Cases", new ArrayList(), "");
+        while(result.next()) 
+        {  
+            ar.add(result.getString("caseid"));
+        }
+        return ar;
+    }
+
+    Case getCase(String caseNumber) throws SQLException
+    {
+        ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseNumber + "'", new ArrayList(), "");
+        result.next();
+        Case c = new Case(
+                Integer.parseInt(result.getString("caseid")),
+                new Patient(),
+                Integer.parseInt(result.getString("status")),
+                Boolean.parseBoolean(result.getString("consent")),
+                result.getString("casetype"),
+                new User(0),
+                new InquiryInformation("")
+                
+        );
+        return c;
+    }
 }

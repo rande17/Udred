@@ -55,8 +55,14 @@ public class Case implements ICase {
         setCaseType(caseType);
     }
 
+    public Case()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public int getStatus() {
+
         return status;
     }
 
@@ -105,6 +111,7 @@ public class Case implements ICase {
             }
         }
     }
+
 
     @Override
     public int getCaseID() {

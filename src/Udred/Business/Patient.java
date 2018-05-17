@@ -41,6 +41,11 @@ public class Patient implements IPatient
         this.patientAddress = address;
                 
     }
+
+    Patient()
+    {
+        
+    }
     
     @Override
     public void addGuardian (String name, int CPR, int telephone)
