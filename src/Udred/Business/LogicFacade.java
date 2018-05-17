@@ -1,6 +1,9 @@
 
 package Udred.Business;
 
+import Acq.*;
+import Udred.Data.DatabaseFacade;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -28,10 +31,23 @@ public class LogicFacade
         return al;
     }
     
-    public Case getCase(String caseNumber) throws SQLException{
+    public ICase getCase(String caseNumber) throws SQLException{
         DatabaseFacade db = new DatabaseFacade();
-        Case case1 = db.getCase(caseNumber);
-        return case1;
+        
+        ResultSet result = db.getCase(caseNumber);
+        
+        result.next();
+        ICase newCase = new Case(
+                Integer.parseInt(result.getString("caseid")),
+                new Patient(),
+                Integer.parseInt(result.getString("status")),
+                Boolean.parseBoolean(result.getString("consent")),
+                result.getString("casetype"),
+                new User(0),
+                new InquiryInformation("")
+        );
+        
+        return newCase;
 
     }
     

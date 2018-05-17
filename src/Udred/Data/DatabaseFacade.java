@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Udred.Business;
+package Udred.Data;
 
 import Acq.*;
-import Udred.Data.PostgresHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -106,7 +105,7 @@ public class DatabaseFacade implements IDatabaseFacade {
 //
 //    }
 
-    ArrayList getUserCaseList(String UserID) throws SQLException
+    public ArrayList getUserCaseList(String UserID) throws SQLException
     {
         ArrayList<String> ar = new ArrayList<>();
         ResultSet result = DB.query("SELECT * FROM Cases", new ArrayList(), "");
@@ -117,20 +116,10 @@ public class DatabaseFacade implements IDatabaseFacade {
         return ar;
     }
 
-    Case getCase(String caseNumber) throws SQLException
+    public ResultSet getCase(String caseNumber) throws SQLException
     {
         ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseNumber + "'", new ArrayList(), "");
-        result.next();
-        Case c = new Case(
-                Integer.parseInt(result.getString("caseid")),
-                new Patient(),
-                Integer.parseInt(result.getString("status")),
-                Boolean.parseBoolean(result.getString("consent")),
-                result.getString("casetype"),
-                new User(0),
-                new InquiryInformation("")
-                
-        );
-        return c;
+
+        return result;
     }
 }
