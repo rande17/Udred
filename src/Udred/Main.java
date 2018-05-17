@@ -27,20 +27,20 @@ public class Main extends Application {
     static Stage Admin;
     static Boolean changesSaved = true;
 
+    protected static IBusinessFacade business;
+    protected static IDatabaseFacade data;
     
     public static void main(String[] args) {
         
+        business    = new BusinessFacade();
+        data        = new DatabaseFacade();
         
-        IBusinessFacade business    = new BusinessFacade();
-        IDatabaseFacade data        = new DatabaseFacade();
         business.injectDataFacade(data);
         
         launch(args);
         
     }
 
-    
-    
     
     
     @Override
