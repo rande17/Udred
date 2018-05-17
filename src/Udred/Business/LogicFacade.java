@@ -1,6 +1,8 @@
 
 package Udred.Business;
 
+import Udred.Data.DatabaseFacade;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -14,7 +16,8 @@ public class LogicFacade
     private static LogicFacade instance;
     
     private LogicFacade(){}
-    
+
+    //Single-ton pattern, so there can't be made 2 instances of the Facade.
     public static LogicFacade getInstance(){
         if(instance == null){
             instance = new LogicFacade();

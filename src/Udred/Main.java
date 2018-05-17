@@ -79,7 +79,7 @@ public class Main extends Application {
         
         
         PostgresHelper DB = new PostgresHelper();
-        DB.test();
+        DB.connect();
     }
 
     public static void main(String[] args) {
