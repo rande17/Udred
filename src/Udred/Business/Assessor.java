@@ -5,11 +5,13 @@
  */
 package Udred.Business;
 
+import Acq.*;
+
 /**
  *
  * @author Linea Hoffmann
  */
-public class Assessor
+public class Assessor implements IAssessor
 {
     private String assessorName;
     private int assessorTelephone;
@@ -28,22 +30,27 @@ public class Assessor
         this.function = function;
     }
 
+    @Override
     public String getAssessorName() {
         return assessorName;
     }
 
+    @Override
     public int getAssessorTelephone() {
         return assessorTelephone;
     }
 
+    @Override
     public String getFunction() {
         return function;
     }
 
+    @Override
     public void setAssessorTelephone(int assessorTelephone) {
         this.assessorTelephone = assessorTelephone;
     }
 
+    @Override
     public void setFunction(String function) {
         this.function = function;
     }

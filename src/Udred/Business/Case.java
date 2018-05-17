@@ -5,6 +5,7 @@
  */
 package Udred.Business;
 
+import Acq.*;
 import Udred.Data.PostgresHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,16 +19,16 @@ import java.util.logging.Logger;
  * @author Linea Hoffmann
  * @author Simon Pontoppidan
  */
-public class Case {
+public class Case implements ICase {
 
     private final int caseID;
     private int status; // enum
-    private final Patient patient;
-    private User caseWorker;
+    private final IPatient patient;
+    private IUser caseWorker;
     private final Date creationDate;
     private Date closingDate;
     private boolean consent;
-    private final CaseInformation caseInformation;
+    private final ICaseInformation caseInformation;
     private CaseTypeEnum caseType;
 
     /**
@@ -41,7 +42,7 @@ public class Case {
      * @param caseWorker
      * @param inquiryInformation
      */
-    // changed protected to public, to make db stuff work from GUI, should be changed back when we have a properinterface
+    // changed public to public, to make db stuff work from GUI, should be changed back when we have a properinterface
     public Case(int caseID, Patient patient, int status, boolean consent, String caseType, User caseWorker, InquiryInformation inquiryInformation) {
         this.caseID = caseID;
         this.patient = patient;
@@ -59,31 +60,39 @@ public class Case {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    protected int getStatus() {
+    @Override
+    public int getStatus() {
+
         return status;
     }
 
-    protected void setStatus(int status) {
+    @Override
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    protected Date getClosingDate() {
+    @Override
+    public Date getClosingDate() {
         return closingDate;
     }
 
-    protected void setClosingDate(Date closingDate) {
+    @Override
+    public void setClosingDate(Date closingDate) {
         this.closingDate = closingDate;
     }
 
-    protected boolean isConsent() {
+    @Override
+    public boolean isConsent() {
         return consent;
     }
 
-    protected void setConsent(boolean consent) {
+    @Override
+    public void setConsent(boolean consent) {
         this.consent = consent;
     }
 
-    protected CaseTypeEnum getCaseType() {
+    @Override
+    public CaseTypeEnum getCaseType() {
         return this.caseType;
     }
 
@@ -103,33 +112,41 @@ public class Case {
         }
     }
 
+
+    @Override
     public int getCaseID() {
         return caseID;
     }
 
-    protected Patient getPatient() {
+    @Override
+    public IPatient getPatient() {
         return patient;
     }
 
-    protected Date getCreationDate() {
+    @Override
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    protected CaseInformation getCaseInformation() {
+    @Override
+    public ICaseInformation getCaseInformation() {
         return caseInformation;
     }
 
-    public void setCaseWorker(User caseWorker) {
+    @Override
+    public void setCaseWorker(IUser caseWorker) {
         this.caseWorker = caseWorker;
     }
     
-    public User getCaseWorker(){
+    @Override
+    public IUser getCaseWorker(){
         return caseWorker;
     }
 
     //should be changed to a call to a call via the facade, but this is a dirty way of doing it, to tired to make it properly right now
-    public void save(Case thisCase) {
-       DatabaseFacade df = new DatabaseFacade();
+    @Override
+    public void save(ICase thisCase) {
+       IDatabaseFacade df = new DatabaseFacade();
        df.saveCase(thisCase);
     }
 }

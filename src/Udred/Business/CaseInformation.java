@@ -5,6 +5,7 @@
  */
 package Udred.Business;
 
+import Acq.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,46 +14,51 @@ import java.util.List;
  * @author Linea Hoffmann
  * @author Simon Pontoppidan
  */
-public class CaseInformation
+public class CaseInformation implements ICaseInformation
 {
-    private List<AlternativeInformation> alternativeInformationList;
+    private List<IAlternativeInformation> alternativeInformationList;
     private InquiryInformation inquiryInformation;
-    private List<DiaryEntry> diaryEntrys;
+    private List<IDiaryEntry> diaryEntrys;
     
     /**
      * Constructor for CaseInformation
      * @param inquiryInformation 
      */
     
-    protected CaseInformation(InquiryInformation inquiryInformation)
+    public CaseInformation(InquiryInformation inquiryInformation)
     {
-        this.alternativeInformationList = new ArrayList<AlternativeInformation>();
+        this.alternativeInformationList = new ArrayList<IAlternativeInformation>();
         this.inquiryInformation = inquiryInformation;
-        this.diaryEntrys = new ArrayList<DiaryEntry>();
+        this.diaryEntrys = new ArrayList<IDiaryEntry>();
                 
     }
     
-    protected void addAlternativeInformation(AlternativeInformation alternativeInformation)
+    @Override
+    public void addAlternativeInformation(IAlternativeInformation alternativeInformation)
     {
         this.alternativeInformationList.add(alternativeInformation);
     }
     
-    protected void addDiaryEntry(DiaryEntry diaryEntry)
+    @Override
+    public void addDiaryEntry(IDiaryEntry diaryEntry)
     {
         this.diaryEntrys.add(diaryEntry);
     }
 
-    protected List<AlternativeInformation> getAlternativeInformation()
+    @Override
+    public List<IAlternativeInformation> getAlternativeInformation()
     {
         return this.alternativeInformationList;
     }
 
-    protected InquiryInformation getInquiryInformation()
+    @Override
+    public InquiryInformation getInquiryInformation()
     {
         return this.inquiryInformation;
     }
 
-    protected List<DiaryEntry> getDiary()
+    @Override
+    public List<IDiaryEntry> getDiary()
     {
         return this.diaryEntrys;
     }
