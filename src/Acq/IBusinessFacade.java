@@ -5,7 +5,7 @@
  */
 package Acq;
 
-import Acq.IDatabaseFacade;
+import Acq.*;
 import Udred.Business.Case;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public interface IBusinessFacade {
 
-    Case getCase(String caseNumber) throws SQLException;
+    ICase getCase(String caseNumber) throws SQLException;
 
     ArrayList getUserCaseList(String UserID) throws SQLException;
 
@@ -25,5 +25,5 @@ public interface IBusinessFacade {
     IUser getActiveUser();
     
     void setActiveUser(IUser user);
-    
+        
 }

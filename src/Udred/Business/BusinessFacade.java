@@ -4,6 +4,7 @@ package Udred.Business;
 import Acq.IBusinessFacade;
 import Udred.Data.DatabaseFacade;
 import Acq.*;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -33,13 +34,6 @@ public class BusinessFacade implements IBusinessFacade
         return al;
     }
     
-    @Override
-    public Case getCase(String caseNumber) throws SQLException{
-        DatabaseFacade db = new DatabaseFacade();
-        Case case1 = db.getCase(caseNumber);
-        return case1;
-
-    }
     
     @Override
     public void injectDataFacade(IDatabaseFacade db){
@@ -55,5 +49,20 @@ public class BusinessFacade implements IBusinessFacade
         return this.activeUser;
     }
     
-    
+        @Override
+    public ICase getCase(String caseNumber) throws SQLException
+    {
+        ResultSet result = dataFacade.getCase(caseNumber);
+        Case c = new Case(
+                Integer.parseInt(result.getString("caseid")),
+                new Patient(),
+                Integer.parseInt(result.getString("status")),
+                Boolean.parseBoolean(result.getString("consent")),
+                result.getString("casetype"),
+                new User(0),
+                new InquiryInformation("")
+                
+        );
+        return c;
+    }
 }

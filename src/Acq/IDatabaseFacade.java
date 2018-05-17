@@ -8,6 +8,7 @@ package Acq;
 import Acq.ICase;
 import Acq.IDatabaseFacade;
 import Udred.Business.Case;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  */
 public interface IDatabaseFacade {
 
-    Case getCase(String caseNumber) throws SQLException;
+    ResultSet getCase(String caseNumber) throws SQLException;
 
     //
     //    protected List findCasesCPR(String CPRNumber)

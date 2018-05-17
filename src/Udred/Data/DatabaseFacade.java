@@ -123,20 +123,10 @@ public class DatabaseFacade implements IDatabaseFacade {
     }
 
     @Override
-    public Case getCase(String caseNumber) throws SQLException
+    public ResultSet getCase(String caseNumber) throws SQLException
     {
         ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseNumber + "'", new ArrayList(), "");
         result.next();
-        Case c = new Case(
-                Integer.parseInt(result.getString("caseid")),
-                new Patient(),
-                Integer.parseInt(result.getString("status")),
-                Boolean.parseBoolean(result.getString("consent")),
-                result.getString("casetype"),
-                new User(0),
-                new InquiryInformation("")
-                
-        );
-        return c;
+        return result;
     }
 }
