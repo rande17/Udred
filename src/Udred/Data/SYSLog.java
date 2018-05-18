@@ -1,11 +1,7 @@
 package Udred.Data;
 
-import Acq.*;
-import Udred.Business.Udred;
-
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class SYSLog
@@ -64,12 +60,13 @@ public class SYSLog
             {
                 sYSList.add(input.next());
             }
-
+            input.close(); 
         } catch (FileNotFoundException e)
         {
             e.printStackTrace();
         }
         return sYSList;
+        
     }
 
     private boolean fileExists(String filename)
