@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 public class SYSLog
 {
+    private String filename;
 
     public SYSLog(String filename)
     {
-        this.textField = textField;
         this.filename = filename;
     }
 
@@ -24,12 +24,11 @@ public class SYSLog
                 toFile.concat(s);
             }
 
-
             try
             {
                 PrintWriter out = new PrintWriter(filename);
                 {
-                    out.println(textField);
+                    out.println("");
                 }
 
                 out.flush();

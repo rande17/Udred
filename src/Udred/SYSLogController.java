@@ -1,4 +1,6 @@
-package Udred.uniLOADERS;
+package Udred;
+
+import javafx.scene.control.TextArea;
 
 public class SYSLogController
 {
@@ -8,7 +10,7 @@ public class SYSLogController
     public void initialize()
     {
         // Sets the text from the file, we get from database, readFromFile method
-        textAreaLog.setText();
+        textAreaLog.setText("");
 
     }
 }
