@@ -1,4 +1,4 @@
-package Udred;
+package Udred.GUI;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -73,22 +73,22 @@ public class LoginWindowController {
             //Main.Rainbow.setOpacity(0);
             //Main.Rainbow.show();
             //Main.rainbowController.start();
-Main.Window.setTitle("Sensum Udred - " + textFieldUsername.getText());
-                                Main.Window.show();
+GUIFacade.Window.setTitle("Sensum Udred - " + textFieldUsername.getText());
+                                GUIFacade.Window.show();
             
 //            Timeline timelineFadeOut = new Timeline();
 //            timelineFadeOut.setCycleCount(Timeline.INDEFINITE);
 //            timelineFadeOut.getKeyFrames().add(
 //                    new KeyFrame(new Duration(10), new EventHandler<ActionEvent>() {
 //                        public void handle(ActionEvent t) {
-//                            Main.Rainbow.setOpacity(Main.Rainbow.getOpacity()-0.01);
-//                            if(Main.Rainbow.getOpacity()<0.01){//30 divided by 0.01 equals 3000 so you take the duration and divide it be the opacity to get your transition time in milliseconds
+//                            GUIFacade.Rainbow.setOpacity(GUIFacade.Rainbow.getOpacity()-0.01);
+//                            if(GUIFacade.Rainbow.getOpacity()<0.01){//30 divided by 0.01 equals 3000 so you take the duration and divide it be the opacity to get your transition time in milliseconds
 //
-//                                Main.Rainbow.hide();
+//                                GUIFacade.Rainbow.hide();
 //                                timelineFadeOut.stop();
 //
-//                                Main.Window.setTitle("Sensum Udred - " + textFieldUsername.getText());
-//                                Main.Window.show();
+//                                GUIFacade.Window.setTitle("Sensum Udred - " + textFieldUsername.getText());
+//                                GUIFacade.Window.show();
 //
 //                            }
 //                        }}));
@@ -111,8 +111,8 @@ Main.Window.setTitle("Sensum Udred - " + textFieldUsername.getText());
 //            timelineFadeIn.getKeyFrames().add(
 //                    new KeyFrame(new Duration(30), new EventHandler<ActionEvent>() {
 //                        public void handle(ActionEvent t) {
-//                            Main.Rainbow.setOpacity(Main.Rainbow.getOpacity()+0.01);
-//                            if(Main.Rainbow.getOpacity()>0.99){//30 divided by 0.01 equals 3000 so you take the duration and divide it be the opacity to get your transition time in milliseconds
+//                            GUIFacade.Rainbow.setOpacity(GUIFacade.Rainbow.getOpacity()+0.01);
+//                            if(GUIFacade.Rainbow.getOpacity()>0.99){//30 divided by 0.01 equals 3000 so you take the duration and divide it be the opacity to get your transition time in milliseconds
 //                                timelineFadeIn.stop();
 //                                timelineWait.play();
 //
@@ -122,15 +122,15 @@ Main.Window.setTitle("Sensum Udred - " + textFieldUsername.getText());
 //            timelineFadeIn.play();
             //endregion
 
-//            Main.Window.setTitle("Sensum Udred - " + textFieldUsername.getText());
-//            Main.Window.show();
+//            GUIFacade.Window.setTitle("Sensum Udred - " + textFieldUsername.getText());
+//            GUIFacade.Window.show();
         });
 
         btnLoginAdmin.setOnMouseClicked((event) ->
         {
                 // Hide this current window (if this is what you want)
                 ((Node)(event.getSource())).getScene().getWindow().hide();
-                Main.Admin.show();
+                GUIFacade.Admin.show();
         });
     }
 }

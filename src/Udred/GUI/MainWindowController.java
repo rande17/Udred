@@ -1,4 +1,4 @@
-package Udred;
+package Udred.GUI;
 
 import Acq.IMainWindowController;
 import Acq.IBusinessFacade;
@@ -22,7 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
-public class MainWindowController implements IMainWindowController {
+public class MainWindowController{
 
     public GridPane grdMain;
     public Button btnFindCase;
@@ -34,12 +34,10 @@ public class MainWindowController implements IMainWindowController {
     public TabPane tabPaneMain;
     public GridPane gridPaneChoice;
     public ListView listViewFavorites;
-    
-    protected static IBusinessFacade business;
 
     private ObservableList<String> cases = FXCollections.observableArrayList();
 
-    @Override
+
     public void initialize() throws IOException, SQLException {
         choiceBoxShow.getItems().add("Alle");
         choiceBoxShow.getItems().add("Åbne");
@@ -94,7 +92,7 @@ public class MainWindowController implements IMainWindowController {
             if (click.getClickCount() == 2) {
                 //Use ListView's getSelected Item
                 try {
-                    ICase c = business.getCase(listViewCases.getSelectionModel().getSelectedItem().toString());
+                    ICase c = GUIFacade.business.getCase(listViewCases.getSelectionModel().getSelectedItem().toString());
                     
                     
                     showCase(c);
@@ -111,7 +109,7 @@ public class MainWindowController implements IMainWindowController {
             }
         });
         
-        cases = FXCollections.observableArrayList(business.getUserCaseList(""));
+        cases = FXCollections.observableArrayList(GUIFacade.business.getUserCaseList(""));
         listViewCases.setItems(cases);
 
 //        listViewFavorites.getSelectionModel().selectedItemProperty().addListener((v, oldval,newval) -> {
@@ -149,7 +147,7 @@ public class MainWindowController implements IMainWindowController {
 
     private String caseNumber = "Ny Sag";
 
-    @Override
+    
     public void showCase(ICase c) throws IOException {
         Tab tab = new Tab();
         tab.setText(String.valueOf(c.getCaseID()));
@@ -181,7 +179,7 @@ public class MainWindowController implements IMainWindowController {
         gridPaneChoice.setVisible(false);
     }
 
-    @Override
+    
     public void createCase(ActionEvent event) throws IOException {
         Tab tab = new Tab();
         tab.setText("Ny sag");
@@ -211,22 +209,22 @@ public class MainWindowController implements IMainWindowController {
 
         gridPaneChoice.setVisible(false);
 
-        Main.changesSaved = false;
+        GUIFacade.changesSaved = false;
     }
 
 
 
-    @Override
+    
     public void addCaseToFavorites() {
         listViewFavorites.getItems().add(tabPaneMain.selectionModelProperty().get().getSelectedItem().getText());
     }
 
-    @Override
+    
     public void removeCaseFromFavorites() {
         listViewFavorites.getItems().remove(listViewFavorites.getSelectionModel().getSelectedItem());
     }
 
-    @Override
+    
     public void showCaseFinder(ActionEvent event) throws IOException {
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("CaseFinder.fxml"));
         grdMain.getChildren().clear();
@@ -236,10 +234,10 @@ public class MainWindowController implements IMainWindowController {
     public ArrayList<String> statusBarInformation = new ArrayList<>();
     public Integer statusLayer = 0;
 
-    @Override
+    
     public void mouseEnter(MouseEvent mouseEvent) {
         Node n = (Node) mouseEvent.getSource();
-        Main.MainController.labelStatusBarInformation.setText(n.accessibleTextProperty().getValue());
+        GUIFacade.MainController.labelStatusBarInformation.setText(n.accessibleTextProperty().getValue());
 //        labelStatusBarInformation.setText(n.accessibleTextProperty().getValue());
 
         statusBarInformation.add(n.accessibleTextProperty().getValue());
@@ -247,27 +245,27 @@ public class MainWindowController implements IMainWindowController {
         statusLayer++;
    }
 
-    @Override
+    
     public void mouseExit(MouseEvent mouseEvent) {
-        Main.MainController.labelStatusBarInformation.setText("");
+        GUIFacade.MainController.labelStatusBarInformation.setText("");
 //        labelStatusBarInformation.setText(n.accessibleTextProperty().getValue());
 
         statusLayer--;
 
         if (statusLayer > 0) {
             statusBarInformation.remove(statusBarInformation.size()-1);
-            Main.MainController.labelStatusBarInformation.setText(statusBarInformation.get(statusBarInformation.size()-1));
+            GUIFacade.MainController.labelStatusBarInformation.setText(statusBarInformation.get(statusBarInformation.size()-1));
         }
     }
 
-    @Override
+    
     public void exitApplication() {
         Platform.exit();
 //        System.exit(0);
     }
 
 
-    @Override
+    
     public void closeCurrentCase(ActionEvent actionEvent) {
 
         tabPaneMain.getTabs().remove(tabPaneMain.getSelectionModel().getSelectedItem());
@@ -277,22 +275,19 @@ public class MainWindowController implements IMainWindowController {
         }
     }
 
-    @Override
+    
     public void logOut(ActionEvent actionEvent) {
         // Hide this current window (if this is what you want)
-        Main.Window.close();
+        GUIFacade.Window.close();
 
-        Main.Login.show();
+        GUIFacade.Login.show();
     }
 
-    @Override
+    
     public void closeAllCases(ActionEvent actionEvent) {
         tabPaneMain.getTabs().clear();
         gridPaneChoice.setVisible(true);
     }
     
-    @Override
-    public void injectBusiness(IBusinessFacade bus){
-        this.business = bus;
-    }
+
 }

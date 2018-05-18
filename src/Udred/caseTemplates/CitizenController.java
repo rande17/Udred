@@ -2,7 +2,7 @@ package Udred.caseTemplates;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import Udred.Main;
+import Udred.GUI.GUIFacade;
 
 public class CitizenController {
 
@@ -12,11 +12,11 @@ public class CitizenController {
     }
 
     public void mouseEnter(MouseEvent mouseEvent) {
-        Main.MainController.mouseEnter(mouseEvent);
+        GUIFacade.MainController.mouseEnter(mouseEvent);
     }
 
     public void mouseExit(MouseEvent mouseEvent) {
-        Main.MainController.mouseExit(mouseEvent);
+        GUIFacade.MainController.mouseExit(mouseEvent);
     }
 
 }

@@ -1,4 +1,4 @@
-package Udred;
+package Udred.GUI;
 
 public class CaseFinderController {
 }

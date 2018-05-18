@@ -1,4 +1,4 @@
-package Udred;
+package Udred.GUI;
 
 
 import javafx.scene.layout.GridPane;
