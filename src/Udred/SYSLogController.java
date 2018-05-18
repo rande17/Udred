@@ -1,13 +1,5 @@
-package Udred;
-
-import javafx.scene.control.TextArea;
+package Udred.uniLOADERS;
 
 public class SYSLogController
 {
-
-    public TextArea textAreaLog;
-
-    public void initialize() {
-        
-    }
 }
