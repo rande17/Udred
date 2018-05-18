@@ -18,14 +18,23 @@ import java.util.Date;
  */
 public class Case implements ICase {
 
+    @SYSLogAnnotation(name = "Sags ID")
     private final int caseID;
+    @SYSLogAnnotation(name = "Sags Status")
     private int status; // enum
+    @SYSLogAnnotation(name = "Sags Borger")
     private final IPatient patient;
+    @SYSLogAnnotation(name = "Sagsbehandler")
     private IUser caseWorker;
+    @SYSLogAnnotation(name = "Oprettelses Dato")
     private final Date creationDate;
+    @SYSLogAnnotation(name = "Afslutnings Dato")
     private Date closingDate;
+    @SYSLogAnnotation(name = "Sammentykke")
     private boolean consent;
+    @SYSLogAnnotation(name = "Sags Information")
     private final ICaseInformation caseInformation;
+    @SYSLogAnnotation(name = "Sags Type")
     private CaseTypeEnum caseType;
 
     /**
