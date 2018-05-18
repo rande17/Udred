@@ -1,4 +1,4 @@
-package Udred;
+package Udred.GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,7 +38,7 @@ public class PreLoaderController implements Initializable
                 public void run() {
                     imageViewUni.getScene().getWindow().hide();
 
-                    Main.Login.show();
+                    GUIFacade.Login.show();
                 }
             });
         }).start();

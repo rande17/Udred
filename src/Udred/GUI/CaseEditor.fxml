@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxWidth="1.7976931348623157E308" styleClass="admin" stylesheets="@resources/css/MainStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Udred.CaseEditorController">
+<GridPane maxWidth="1.7976931348623157E308" styleClass="admin" stylesheets="@resources/css/MainStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Udred.GUI.CaseEditorController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
         <ColumnConstraints />
@@ -45,7 +45,7 @@
                                     <children>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@resources/images/icons8-bulleted-list-96.png" />
+                                                <Image url="@../resources/images/icons8-bulleted-list-96.png" />
                                             </image>
                                         </ImageView>
                                         <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="SAG" HBox.hgrow="ALWAYS">
@@ -170,7 +170,7 @@
                                     <children>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@resources/images/icons8-customer-96.png" />
+                                                <Image url="@../resources/images/icons8-customer-96.png" />
                                             </image>
                                         </ImageView>
                                         <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="BORGERE" HBox.hgrow="ALWAYS">
@@ -232,7 +232,7 @@
                                     <children>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@resources/images/icons8-team-96.png" />
+                                                <Image url="@../resources/images/icons8-team-96.png" />
                                             </image>
                                         </ImageView>
                                         <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="SAGSBEHANDLERE" HBox.hgrow="ALWAYS">
@@ -272,7 +272,7 @@
                                     <children>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@resources/images/icons8-parchment-96.png" />
+                                                <Image url="@../resources/images/icons8-parchment-96.png" />
                                             </image>
                                         </ImageView>
                                         <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="SAMTYKKE" HBox.hgrow="ALWAYS">
@@ -334,7 +334,7 @@
                                     <children>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@resources/images/icons8-course-96.png" />
+                                                <Image url="@../resources/images/icons8-course-96.png" />
                                             </image>
                                         </ImageView>
                                         <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="SAGS INFORMATION" HBox.hgrow="ALWAYS">
@@ -396,7 +396,7 @@
                                     <children>
                                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@resources/images/icons8-handshake-96.png" />
+                                                <Image url="@../resources/images/icons8-handshake-96.png" />
                                             </image>
                                         </ImageView>
                                         <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="MØDER" HBox.hgrow="ALWAYS">
@@ -409,7 +409,7 @@
                             </graphic>
                         </TitledPane>
                         <Separator prefWidth="200.0" />
-                        <Button fx:id="btnAddCase" accessibleText="Opret Sag" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addCase" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" GridPane.rowIndex="1"></Button>
+                        <Button fx:id="btnAddCase" accessibleText="Opret Sag" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addCase" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" text="Gem Sag" GridPane.rowIndex="1" />
                     </children>
                 </VBox>
             </content>

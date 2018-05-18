@@ -1,4 +1,4 @@
-package Udred;
+package Udred.GUI;
 
 import Udred.Business.Address;
 import Udred.Business.Case;
@@ -104,8 +104,8 @@ public class CaseEditorController {
 //        cstMeeting.setContent(meetingNode);
 //        vBoxMeetings.getChildren().add(cstMeeting);
 
-        datePickerCaseCreated.valueProperty().addListener((observable, oldValue, newValue) -> Main.changesSaved = false);
-        datePickerCaseClosed.valueProperty().addListener((observable, oldValue, newValue) -> Main.changesSaved = false);
+        datePickerCaseCreated.valueProperty().addListener((observable, oldValue, newValue) -> GUIFacade.changesSaved = false);
+        datePickerCaseClosed.valueProperty().addListener((observable, oldValue, newValue) -> GUIFacade.changesSaved = false);
 
 
         // translate the titledpane arrow and header so that the arrow is displayed to right of the header.
@@ -159,12 +159,12 @@ public class CaseEditorController {
 
     @FXML
     public void mouseEnter(MouseEvent mouseEvent) {
-        Main.MainController.mouseEnter(mouseEvent);
+        GUIFacade.MainController.mouseEnter(mouseEvent);
     }
 
     @FXML
     public void mouseExit(MouseEvent mouseEvent) {
-        Main.MainController.mouseExit(mouseEvent);
+        GUIFacade.MainController.mouseExit(mouseEvent);
     }
 
     @FXML
