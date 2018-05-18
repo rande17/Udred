@@ -1,6 +1,4 @@
-package Udred;
-
-import javafx.scene.control.TextArea;
+package Udred.uniLOADERS;
 
 public class SYSLogController
 {

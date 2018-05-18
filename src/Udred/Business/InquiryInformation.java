@@ -30,6 +30,12 @@ public class InquiryInformation implements IInquiryInformation
         this.inquiryDate = new Date(); //Sets date to the time this object was created
     }
 
+    InquiryInformation()
+    {
+        this.inquiry = "";
+        this.inquiryDate = new Date(); //Sets date to the time this object was created
+    }
+
     @Override
     public String getInquiry()
     {

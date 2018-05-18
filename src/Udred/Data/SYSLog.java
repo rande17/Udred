@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class SYSLog
 {
-    private String textField;
-    private String filename;
 
     public SYSLog(String filename)
     {

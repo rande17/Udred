@@ -5,8 +5,9 @@
  */
 package Udred.Business;
 
-import Udred.Data.DataFacade;
+import Udred.Data.DatabaseFacade;
 import Acq.*;
+import Udred.Data.DatabaseFacade;
 
 import java.util.Date;
 
@@ -17,14 +18,23 @@ import java.util.Date;
  */
 public class Case implements ICase {
 
+    @SYSLogAnnotation(name = "Sags ID")
     private final int caseID;
+    @SYSLogAnnotation(name = "Sags Status")
     private int status; // enum
+    @SYSLogAnnotation(name = "Sags Borger")
     private final IPatient patient;
+    @SYSLogAnnotation(name = "Sagsbehandler")
     private IUser caseWorker;
+    @SYSLogAnnotation(name = "Oprettelses Dato")
     private final Date creationDate;
+    @SYSLogAnnotation(name = "Afslutnings Dato")
     private Date closingDate;
+    @SYSLogAnnotation(name = "Sammentykke")
     private boolean consent;
+    @SYSLogAnnotation(name = "Sags Information")
     private final ICaseInformation caseInformation;
+    @SYSLogAnnotation(name = "Sags Type")
     private CaseTypeEnum caseType;
 
     /**
@@ -142,7 +152,7 @@ public class Case implements ICase {
     //should be changed to a call to a call via the facade, but this is a dirty way of doing it, to tired to make it properly right now
     @Override
     public void save(ICase thisCase) {
-       IDatabaseFacade df = new DataFacade();
+       IDatabaseFacade df = new DatabaseFacade();
        df.saveCase(thisCase);
     }
 }
