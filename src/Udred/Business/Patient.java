@@ -42,7 +42,7 @@ public class Patient implements IPatient
                 
     }
 
-    Patient()
+    public Patient()
     {
         
     }

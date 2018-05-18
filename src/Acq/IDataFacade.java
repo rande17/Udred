@@ -5,15 +5,21 @@
  */
 package Acq;
 
+import Acq.ICase;
 import Udred.Business.Case;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import Acq.IDataFacade;
 
 /**
  *
  * @author niemeijeren
  */
-public interface IDatabaseFacade {
+public interface IDataFacade {
 
-    void saveCase(ICase thisCase);
+    ResultSet getCase(String caseNumber) throws SQLException;
+
     //
     //    protected List findCasesCPR(String CPRNumber)
     //    {
@@ -25,5 +31,8 @@ public interface IDatabaseFacade {
     //        return ;
     //
     //    }
+    ArrayList getUserCaseList() throws SQLException;
+
+    void saveCase(ICase thisCase);
     
 }

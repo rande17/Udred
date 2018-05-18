@@ -5,6 +5,7 @@
  */
 package Udred.Business;
 
+import Udred.Data.DataFacade;
 import Acq.*;
 import Udred.Data.PostgresHelper;
 import java.sql.ResultSet;
@@ -146,7 +147,7 @@ public class Case implements ICase {
     //should be changed to a call to a call via the facade, but this is a dirty way of doing it, to tired to make it properly right now
     @Override
     public void save(ICase thisCase) {
-       IDatabaseFacade df = new DatabaseFacade();
+       IDataFacade df = new DataFacade();
        df.saveCase(thisCase);
     }
 }

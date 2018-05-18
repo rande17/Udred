@@ -3,21 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Udred.Business;
+package Udred.Data;
 
 import Acq.*;
+import Udred.Business.Case;
+import Udred.Business.InquiryInformation;
+import Udred.Business.Patient;
+import Udred.Business.User;
 import Udred.Data.PostgresHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Acq.IDataFacade;
 
 /**
  *
  * @author Linea Hoffmann
  */
-public class DatabaseFacade implements IDatabaseFacade {
+public class DataFacade implements IDataFacade {
 
 //    INFO ABOUT THE DATABASE DOESN'T MAKE MUCH SENSE HERE   
 //    private String dataHost;
@@ -27,13 +32,13 @@ public class DatabaseFacade implements IDatabaseFacade {
     private PostgresHelper DB;
 
 //    INFO ABOUT THE DATABASE DOESN'T MAKE MUCH SENSE HERE
-//    protected DatabaseFacade(String dataHost, String databaseName, String userName, String password) {
+//    protected DataFacade(String dataHost, String databaseName, String userName, String password) {
 //        this.dataHost = dataHost;
 //        this.databaseName = databaseName;
 //        this.userName = userName;
 //        this.password = password;
 //    }
-    public DatabaseFacade() {
+    public DataFacade() {
         DB = new PostgresHelper();
     }
 
@@ -85,12 +90,13 @@ public class DatabaseFacade implements IDatabaseFacade {
                     System.out.print(rs.getString(8) + " | ");
                     System.out.println(rs.getString(9) + "");
                 } catch (SQLException ex) {
-                    Logger.getLogger(DatabaseFacade.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(DataFacade.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DatabaseFacade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //debug thing ends here
         //debug thing ends here
     }
 
@@ -105,8 +111,8 @@ public class DatabaseFacade implements IDatabaseFacade {
 //        return ;
 //
 //    }
-
-    ArrayList getUserCaseList(String UserID) throws SQLException
+    @Override
+     public ArrayList getUserCaseList() throws SQLException
     {
         ArrayList<String> ar = new ArrayList<>();
         ResultSet result = DB.query("SELECT * FROM Cases", new ArrayList(), "");
@@ -117,20 +123,11 @@ public class DatabaseFacade implements IDatabaseFacade {
         return ar;
     }
 
-    Case getCase(String caseNumber) throws SQLException
+    @Override
+    public ResultSet getCase(String caseNumber) throws SQLException
     {
         ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseNumber + "'", new ArrayList(), "");
         result.next();
-        Case c = new Case(
-                Integer.parseInt(result.getString("caseid")),
-                new Patient(),
-                Integer.parseInt(result.getString("status")),
-                Boolean.parseBoolean(result.getString("consent")),
-                result.getString("casetype"),
-                new User(0),
-                new InquiryInformation("")
-                
-        );
-        return c;
+        return result;
     }
 }

@@ -1,5 +1,8 @@
 package Udred;
 
+import Acq.*;
+import Udred.Business.BusinessFacade;
+import Udred.Data.DataFacade;
 import Udred.Data.PostgresHelper;
 import Udred.uniLOADERS.RainbowController2;
 import java.util.Optional;
@@ -24,6 +27,25 @@ public class Main extends Application {
     static Stage Admin;
     static Boolean changesSaved = true;
 
+    static IBusinessFacade business;
+    static IDataFacade data;
+    static IMainWindowController gui;
+    
+    public static void main(String[] args) {
+        
+        business    = new BusinessFacade();
+        data        = new DataFacade();
+        gui         = new MainWindowController();
+        
+        gui.injectBusiness(business);
+        business.injectDataFacade(data);
+        
+        launch(args);
+        
+    }
+
+    
+    
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -81,11 +103,8 @@ public class Main extends Application {
         PostgresHelper DB = new PostgresHelper();
         DB.test();
     }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
+    
+    
     private static void closeProgram() {
         if (changesSaved == false) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
