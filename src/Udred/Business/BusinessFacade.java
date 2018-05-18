@@ -17,6 +17,8 @@ public class BusinessFacade implements IBusinessFacade
     
     protected static IDataFacade dataFacade;
     private IUser activeUser;
+    private ICase activeCase;
+    private ICase activeCaseCompare;
     
     public BusinessFacade(){}
 
@@ -58,4 +60,15 @@ public class BusinessFacade implements IBusinessFacade
         );
         return c;
     }
+
+    @Override
+    public ICase getActiveCase() {
+        return this.activeCase;
+    }
+
+    @Override
+    public void setActiveCase(String caseID) throws SQLException {
+        this.activeCase = getCase(caseID);
+    }
+    
 }

@@ -25,5 +25,8 @@ public interface IBusinessFacade {
     IUser getActiveUser();
     
     void setActiveUser(IUser user);
+    
+    ICase getActiveCase();
+    void setActiveCase(String caseID) throws SQLException;
         
 }
