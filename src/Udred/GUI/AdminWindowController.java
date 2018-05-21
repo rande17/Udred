@@ -3,17 +3,24 @@ package Udred.GUI;
 
 import Acq.IUser;
 import java.sql.SQLException;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.GridPane;
+import javafx.util.Callback;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -41,14 +48,16 @@ public class AdminWindowController {
             colUsername.setCellFactory(TextFieldTableCell.<IUser> forTableColumn());
             
             colUsername.setOnEditCommit((CellEditEvent<IUser, String> event) -> {
-            TablePosition<IUser, String> pos = event.getTablePosition();
- 
-            String newFullName = event.getNewValue();
- 
-            int row = pos.getRow();
-            IUser person = event.getTableView().getItems().get(row);
- 
-            person.setUserName(newFullName);
+                TablePosition<IUser, String> pos = event.getTablePosition();
+
+                String newFullName = event.getNewValue();
+
+                int row = pos.getRow();
+                IUser user = event.getTableView().getItems().get(row);
+
+                user.setUserName(newFullName);
+
+                GUIFacade.updateUser(user.getWorkerID(), user);
             });
              
              
@@ -75,13 +84,22 @@ public class AdminWindowController {
             int newWorkerID = event.getNewValue();
  
             int row = pos.getRow();
-            IUser person = event.getTableView().getItems().get(row);
+            IUser user = event.getTableView().getItems().get(row);
  
-            person.setWorkerID(newWorkerID);
+            int workerID = user.getWorkerID();
+            user.setWorkerID(newWorkerID);
+            
+            GUIFacade.updateUser(workerID, user);
             });
             
 
+            
+            
+            
+            
             colAccessLevel.setCellValueFactory(new PropertyValueFactory<>("accessLevel"));
+
+            
             
             tabelViewUsers.setItems(GUIFacade.userList);
     }

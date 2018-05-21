@@ -185,4 +185,27 @@ public class PostgresHelper {
         
         
     }
+
+    void updateUser(int WorkerID, IUser updatedUser)
+    {
+        try
+        {
+            // create our java preparedstatement using a sql update query
+            PreparedStatement preparedStmt = conn.prepareStatement(
+                    "UPDATE users SET username = ?, workerid = ?, caselist = ?, accesslevel = ? WHERE workerid = ?");
+
+            preparedStmt.setString(1, updatedUser.getUserName());
+            preparedStmt.setInt(2, updatedUser.getWorkerID());
+            preparedStmt.setString(3, updatedUser.getCaseList());
+            preparedStmt.setInt(4, updatedUser.getAccessLevel());
+            preparedStmt.setInt(5, WorkerID);
+            preparedStmt.executeUpdate();
+            
+             conn.close();
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(PostgresHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -36,5 +36,7 @@ public interface IBusinessFacade {
     
     ICase getActiveCase();
     void setActiveCase(String caseID) throws SQLException;
+
+    public void updateUser(int workerID, IUser user);
         
 }

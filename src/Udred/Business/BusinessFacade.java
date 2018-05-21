@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javafx.collections.FXCollections;
+import static javafx.collections.FXCollections.observableList;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TextFormatter.Change;
 
 /**
  *
@@ -26,7 +29,11 @@ public class BusinessFacade implements IBusinessFacade
     
     
     
-    public BusinessFacade(){}
+    public BusinessFacade(){
+        
+        
+        
+    }
 
     
     @Override
@@ -76,6 +83,7 @@ public class BusinessFacade implements IBusinessFacade
         }
         userList = FXCollections.observableArrayList(usrlist);
        
+       
         return userList;
     }
 
@@ -109,14 +117,22 @@ public class BusinessFacade implements IBusinessFacade
     @Override
     public void addUser()
     {
-        User user = new User("new user", 0, new ArrayList<Integer>(), 0);
+        IUser user = new User("new user", 0, new ArrayList<Integer>(), 0);
         userList.add(user);
+        dataFacade.addUser(user);
     }
     
     @Override
     public void removeUser(IUser user)
     {
         userList.remove(user);
+        dataFacade.removeUser(user);
+    }
+
+    @Override
+    public void updateUser(int workerID, IUser user)
+    {
+        dataFacade.updateUser(workerID, user);
     }
     
 }

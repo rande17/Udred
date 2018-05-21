@@ -137,8 +137,22 @@ public class DataFacade implements IDataFacade {
         ResultSet result = DB.query("SELECT * FROM Users", new ArrayList(), "");
         return result;
     }
-    
-    public void deleteUser(int caseWorkerID){
-        DB.removeUser(caseWorkerID);
+
+    @Override
+    public void removeUser(IUser user)
+    {
+        DB.removeUser(user.getWorkerID());
+    }
+
+    @Override
+    public void addUser(IUser user)
+    {
+        DB.addUser(user);
+    }
+
+    @Override
+    public void updateUser(int WorkerID, IUser user)
+    {
+        DB.updateUser(WorkerID, user);
     }
 }

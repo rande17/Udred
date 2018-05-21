@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +32,11 @@ public class GUIFacade implements IGUIFacade {
     protected static IBusinessFacade business;
     
     protected static ObservableList<IUser> userList;
+
+    static void updateUser(int workerID, IUser user)
+    {
+        business.updateUser(workerID, user);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {

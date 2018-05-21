@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import Acq.IDataFacade;
+import Udred.Business.User;
 
 /**
  *
@@ -38,5 +39,11 @@ public interface IDataFacade {
     //ResultSet getAllUsers() throws SQLException;
 
     void saveCase(ICase thisCase);
+
+    public void removeUser(IUser user);
+
+    public void addUser(IUser user);
+    
+    public void updateUser(int WorkerID, IUser User);
     
 }
