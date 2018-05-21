@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
@@ -12,6 +13,7 @@ public class AdminWindowController {
 
 
     public GridPane gridPaneMain;
+    public MenuItem sYSLogButton;
 
     public void initialize() {
 

@@ -17,6 +17,8 @@ import java.util.ArrayList;
 public interface IBusinessFacade {
 
     ICase getCase(String caseNumber) throws SQLException;
+    
+    ArrayList<String> getSYSLogText();
 
     ArrayList getUserCaseList(String UserID) throws SQLException;
 

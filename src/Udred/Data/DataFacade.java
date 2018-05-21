@@ -30,6 +30,7 @@ public class DataFacade implements IDataFacade {
 //    private String userName;
 //    private String password;
     private PostgresHelper DB;
+    private SYSLog sYSLog;
 
 //    INFO ABOUT THE DATABASE DOESN'T MAKE MUCH SENSE HERE
 //    protected DataFacade(String dataHost, String databaseName, String userName, String password) {
@@ -129,5 +130,10 @@ public class DataFacade implements IDataFacade {
         ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseNumber + "'", new ArrayList(), "");
         result.next();
         return result;
+    }
+
+    @Override
+    public ArrayList<String> getSYSLogText() {
+        return sYSLog.readFromFile();
     }
 }
