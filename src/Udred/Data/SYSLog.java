@@ -40,7 +40,6 @@ public class SYSLog
                 {
                     out.println("");
                 }
- 
                 out.flush();
                 out.close();
  
