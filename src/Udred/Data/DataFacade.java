@@ -40,7 +40,7 @@ public class DataFacade implements IDataFacade {
 //    }
     public DataFacade() {
         DB = new PostgresHelper();
-        sYSLog = new SYSLog("C:\\Users\\John\\IdeaProjects\\UdredFinal\\src\\Udred\\Data\\SYSLog.txt");
+        sYSLog = new SYSLog("src\\Udred\\Data\\SYSLog.txt");
     }
 
     protected void specific() {
