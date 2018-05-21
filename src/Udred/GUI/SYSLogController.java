@@ -7,7 +7,7 @@ package Udred.GUI;
 
 /**
  *
- * @author John
+ * @author Jonathan
  */
 
 import javafx.scene.control.TextArea;
@@ -20,7 +20,6 @@ public class SYSLogController
     public void initialize()
     {
         // Sets the text from the file, we get from database, readFromFile method
-        textAreaLog.setText(GUIFacade.business.getSYSLogText().get(1));
-
+        textAreaLog.setText(GUIFacade.business.getSYSLogText().get(0));
     }
 }
