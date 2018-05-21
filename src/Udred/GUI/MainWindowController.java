@@ -1,10 +1,6 @@
 package Udred.GUI;
 
-import Acq.IMainWindowController;
-import Acq.IBusinessFacade;
-import Acq.ICase;
-import Udred.Business.Case;
-import Udred.Business.BusinessFacade;
+import Acq.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -130,10 +126,14 @@ public class MainWindowController{
             if (click.getClickCount() == 2) {
                 //Use ListView's getSelected Item
                 try {
-                    caseNumber = listViewFavorites.getSelectionModel().getSelectedItem().toString();
-                    showCase(new Case());
+                    ICase c = GUIFacade.business.getCase(listViewCases.getSelectionModel().getSelectedItem().toString());
+                    showCase(c);
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+                catch (SQLException ex)
+                {
+                    Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 //use this to do whatever you want to. Open Link etc.
             }

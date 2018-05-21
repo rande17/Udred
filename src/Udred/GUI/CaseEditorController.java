@@ -1,11 +1,6 @@
 package Udred.GUI;
 
-import Udred.Business.Address;
-import Udred.Business.Case;
-import Udred.Business.CaseTypeEnum;
-import Udred.Business.InquiryInformation;
-import Udred.Business.Patient;
-import Udred.Business.User;
+import Acq.*;
 import Udred.caseTemplates.CustomControl;
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -38,15 +33,15 @@ public class CaseEditorController {
 
     @FXML
     private void addCase(ActionEvent event) {
-        int caseID = (int) Math.floor(Math.random()*2000000);
-        Patient patient = new Patient("TEST", 0000000000, 0, new Address("TESTVEJ", "00TEST", "TestBy", 0000));
-        int status = 1;
-        boolean consent = true;
-        String caseType = "social";
-        User caseWorker = new User(1);
-        InquiryInformation inquiryInformation = new InquiryInformation("Dette er en test sag");
-        Case currentCase = new Case(caseID, patient, status, consent, caseType, caseWorker, inquiryInformation);
-        currentCase.save(currentCase);
+//        int caseID = (int) Math.floor(Math.random()*2000000);
+//        IPatient patient = new IPatient("TEST", 0000000000, 0, new Address("TESTVEJ", "00TEST", "TestBy", 0000));
+//        int status = 1;
+//        boolean consent = true;
+//        String caseType = "social";
+//        Us caseWorker = new User(1);
+//        InquiryInformation inquiryInformation = new InquiryInformation("Dette er en test sag");
+//        Case currentCase = new Case(caseID, patient, status, consent, caseType, caseWorker, inquiryInformation);
+//        currentCase.save(currentCase);
     }
 
 
@@ -70,7 +65,7 @@ public class CaseEditorController {
     public void initialize() throws IOException {
 
 
-        cbxStatus.getItems().setAll(Status.values());
+        cbxStatus.getItems().setAll((Object[])Status.values());
 
 //        CustomControl cstCitizen = new CustomControl();
 //        cstCitizen.getLabel().setText("Karsten Breddahl Laursen");

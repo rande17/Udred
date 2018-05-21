@@ -11,18 +11,22 @@ package Acq;
  */
 public interface IUser {
 
-    int getCase(int caseID);
+    void addCase(int caseID);
+    
+    void removeCase(int caseID);
 
-    //    public void addCase(Case case)
-    //    {
-    //
-    //    }
-    //    public void removeCase (Case case)
-    //    {
-    //
-    //    }
     String getUserName();
+    
+    void setUserName(String name);
 
     int getWorkerID();
+    
+    void setWorkerID(int id);
+    
+    int getAccessLevel();
+    
+    void setAccessLevel(int al);
+
+    public String getCaseList();
     
 }

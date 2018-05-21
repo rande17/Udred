@@ -32,6 +32,10 @@ public interface IDataFacade {
     //
     //    }
     ArrayList getUserCaseList() throws SQLException;
+  
+    ResultSet getAllUsers() throws SQLException;
+    
+    //ResultSet getAllUsers() throws SQLException;
 
     void saveCase(ICase thisCase);
     

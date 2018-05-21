@@ -26,9 +26,9 @@
          <children>
             <TableView fx:id="tabelViewUsers" editable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tableMenuButtonVisible="true" GridPane.hgrow="ALWAYS">
               <columns>
-                <TableColumn maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="Brugernavn" />
-                <TableColumn maxWidth="1.7976931348623157E308" minWidth="120.0" prefWidth="-1.0" text="SagsbehandlerID" />
-                  <TableColumn maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="Access Level" />
+                <TableColumn fx:id="colUsername" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="Brugernavn" />
+                <TableColumn fx:id="colWorkerID" maxWidth="1.7976931348623157E308" minWidth="120.0" prefWidth="-1.0" text="SagsbehandlerID" />
+                  <TableColumn fx:id="colAccessLevel" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="Access Level" />
                   <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="100.0" text="Fulde Navn">
                      <columns>
                         <TableColumn maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="Fornavn" />
@@ -44,8 +44,8 @@
             </TableView>
             <HBox spacing="5.0" GridPane.rowIndex="1">
                <children>
-                  <Button mnemonicParsing="false" text="Tilføj Bruger" />
-                  <Button mnemonicParsing="false" text="Slet Bruger" />
+                  <Button fx:id="buttonAddUser" mnemonicParsing="false" onAction="#addUser" text="Tilføj Bruger" />
+                  <Button fx:id="buttonRemoveUser" mnemonicParsing="false" onAction="#removeUser" text="Slet Bruger" />
                </children>
             </HBox>
          </children>

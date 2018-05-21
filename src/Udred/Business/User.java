@@ -19,36 +19,70 @@ public class User implements IUser
     private ArrayList<Integer> caseList;
     private int accessLevel;
  // changed public to public, to make db stuff work from GUI, should be changed back when we have a properinterface
-   public User(int workerID)
+   public User(String username, int workerID, ArrayList<Integer> caseList, int accessLevel)
     {
+        this.userName = username;
         this.workerID = workerID;
+        this.caseList = caseList;
+        this.accessLevel = accessLevel;
     }
     
     @Override
-    public int getCase(int caseID)
+    public void addCase(int caseID)
     {
-        return 0;
+        caseList.add(caseID);
     }
     
-//    public void addCase(Case case)
-//    {
-//
-//    }
-//    public void removeCase (Case case)
-//    {
-//
-//    }
+    @Override
+    public void removeCase(int caseID)
+    {
+        caseList.remove(caseID);
+    }
 
     @Override
     public String getUserName()
     {
         return userName;
     }
+    
+    @Override
+    public void setUserName(String name)
+    {
+        userName = name;
+    }
 
     @Override
     public int getWorkerID()
     {
         return workerID;
+    }
+    
+    @Override
+    public void setWorkerID(int id)
+    {
+        workerID = id;
+    }
+    
+    @Override
+    public int getAccessLevel()
+    {
+        return accessLevel;
+    }
+    
+    @Override
+    public void setAccessLevel(int al)
+    {
+        accessLevel = al;
+    }
+
+    @Override
+    public String getCaseList()
+    {
+        String listString = "";
+        for (Integer i : caseList){
+            listString.concat(i + ",");
+        }
+        return listString;
     }
     
     

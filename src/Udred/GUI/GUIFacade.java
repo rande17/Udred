@@ -1,13 +1,13 @@
 package Udred.GUI;
 
 import Acq.*;
-import Udred.Business.BusinessFacade;
-import Udred.Data.DataFacade;
-import Udred.Data.PostgresHelper;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,6 +29,8 @@ public class GUIFacade implements IGUIFacade {
     static Boolean changesSaved = true;
     
     protected static IBusinessFacade business;
+    
+    protected static ObservableList<IUser> userList;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -81,11 +83,6 @@ public class GUIFacade implements IGUIFacade {
         PreLoader.setScene(r);
         PreLoader.centerOnScreen();
         PreLoader.show();
-        
-        
-        
-        PostgresHelper DB = new PostgresHelper();
-        DB.test();
     }
     
     
@@ -126,4 +123,11 @@ public class GUIFacade implements IGUIFacade {
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public static void getAllUsers() throws SQLException{
+        userList = business.getAllUsers();
+    }
+    
+    
+    
 }

@@ -7,8 +7,10 @@ package Acq;
 
 import Acq.*;
 import Udred.Business.Case;
+import Udred.Business.User;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -19,6 +21,12 @@ public interface IBusinessFacade {
     ICase getCase(String caseNumber) throws SQLException;
 
     ArrayList getUserCaseList(String UserID) throws SQLException;
+    
+    ObservableList<IUser> getAllUsers() throws SQLException;
+    
+    void addUser();
+    
+    void removeUser(IUser user);
 
     void injectDataFacade(IDataFacade db);
     

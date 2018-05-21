@@ -5,6 +5,7 @@
  */
 package Udred.Data;
 
+import Acq.IUser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -71,12 +72,12 @@ public class PostgresHelper {
         return conn.createStatement().executeQuery(query);
     }
 
-    public void test() throws SQLException {
-        ResultSet rs = query("SELECT NOW()", new ArrayList(), "");
-        rs.next();
-        String timeforoutputonrun = rs.getString(1);
-        System.out.println(timeforoutputonrun);
-    }
+//    public void test() throws SQLException {
+//        ResultSet rs = query("SELECT NOW()", new ArrayList(), "");
+//        rs.next();
+//        String timeforoutputonrun = rs.getString(1);
+//        System.out.println(timeforoutputonrun);
+//    }
 
     // lave prepared statements
     // retunere resultsæt
@@ -119,6 +120,69 @@ public class PostgresHelper {
             System.out.println("Query not executed, mismatch between arraylList length and vars given");
         }
         return null;
+    }
 
+    void removeUser(int caseWorkerID)
+    {
+        if (conn != null) {
+            try {
+                if (!conn.isClosed()) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PostgresHelper.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        connect();
+            
+        
+        String query = "DELETE FROM users WHERE workerid = ?";
+        
+        try {
+            
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            preparedStmt.setInt(1, caseWorkerID);
+            
+            preparedStmt.execute();
+            
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(PostgresHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    void addUser(IUser user){
+                if (conn != null) {
+            try {
+                if (!conn.isClosed()) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PostgresHelper.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        connect();
+        
+        String query = "INSERT INTO users(username,workerid,caselist,accesslevel) VALUES(?,?,?,?)";
+ 
+        try {
+            
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            preparedStmt.setString(1, user.getUserName());
+            preparedStmt.setInt(2, user.getWorkerID());
+            preparedStmt.setString(3, user.getCaseList());
+            preparedStmt.setInt(4, user.getAccessLevel());
+            preparedStmt.executeUpdate();
+            
+             conn.close();
+             
+        } catch (SQLException e) {
+            
+            System.out.println(e.getMessage());
+        }
+        
+        
     }
 }

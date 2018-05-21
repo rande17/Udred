@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Acq.IDataFacade;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -127,7 +128,17 @@ public class DataFacade implements IDataFacade {
     public ResultSet getCase(String caseNumber) throws SQLException
     {
         ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseNumber + "'", new ArrayList(), "");
-        result.next();
         return result;
+    }
+    
+    @Override
+    public ResultSet getAllUsers() throws SQLException
+    {
+        ResultSet result = DB.query("SELECT * FROM Users", new ArrayList(), "");
+        return result;
+    }
+    
+    public void deleteUser(int caseWorkerID){
+        DB.removeUser(caseWorkerID);
     }
 }
