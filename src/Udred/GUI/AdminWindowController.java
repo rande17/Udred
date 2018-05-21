@@ -26,7 +26,7 @@ public class AdminWindowController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SYSLog.fxml"));
         Parent root = loader.load();
         
-        Window.getIcons().add(new Image(getClass().getResource("/Udred/resource/images/EG.png").toExternalForm()));
+//        Window.getIcons().add(new Image(getClass().getResource("/Udred/resource/images/EG.png").toExternalForm()));
                 
         Scene s = new Scene(root);
         Window.setScene(s);
