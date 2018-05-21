@@ -6,10 +6,7 @@
 package Udred.Data;
 
 import Acq.*;
-import Udred.Business.Case;
-import Udred.Business.InquiryInformation;
-import Udred.Business.Patient;
-import Udred.Business.User;
+import Udred.Business.*;
 import Udred.Data.PostgresHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +14,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Acq.IDataFacade;
+
+import javax.xml.crypto.Data;
 
 /**
  *
@@ -41,7 +40,7 @@ public class DataFacade implements IDataFacade {
 //    }
     public DataFacade() {
         DB = new PostgresHelper();
-        sYSLog = new SYSLog("SYSLog.txt");
+        sYSLog = new SYSLog("C:\\Users\\John\\IdeaProjects\\UdredFinal\\src\\Udred\\Data\\SYSLog.txt");
     }
 
     protected void specific() {
