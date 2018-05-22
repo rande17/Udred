@@ -6,7 +6,7 @@ import Udred.Business.CaseTypeEnum;
 import Udred.Business.InquiryInformation;
 import Udred.Business.Patient;
 import Udred.Business.User;
-import Udred.caseTemplates.CustomControl;
+import Udred.GUI.CaseControl.CustomControl;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

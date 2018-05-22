@@ -20,7 +20,7 @@ public interface IDataFacade {
     
     
 
-    ResultSet getCase(String caseNumber) throws SQLException;
+    ResultSet getCase(int caseID) throws SQLException;;
 
     //
     //    protected List findCasesCPR(String CPRNumber)

@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -45,6 +46,16 @@ public class SYSLog
             }
         }
         return resultList;
+    }
+    
+    public static Field[] getAllFields(Class currentClass) {
+        List<Field> fields = new ArrayList<Field>();
+        
+        fields.addAll(Arrays.asList(currentClass.getDeclaredFields()));
+        if (currentClass.getSuperclass() != null) {
+            fields.addAll(Arrays.asList(getAllFields(currentClass.getSuperclass())));
+        }
+        return fields.toArray(new Field[] {});
     }
 
     public void addLoginToSyslog(){

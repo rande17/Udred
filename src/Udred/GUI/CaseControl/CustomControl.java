@@ -1,4 +1,4 @@
-package Udred.caseTemplates;
+package Udred.GUI.CaseControl;
 
 import java.io.IOException;
 

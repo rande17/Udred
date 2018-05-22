@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 import Udred.Data.SYSLog;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -125,5 +127,17 @@ public class GUIFacade implements IGUIFacade {
     public void initialize() throws IOException, SQLException
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public ICase getCase(int CaseID){
+        try
+        {
+            return business.getCase(CaseID);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(GUIFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

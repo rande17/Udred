@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public interface IBusinessFacade {
 
-    ICase getCase(String caseNumber) throws SQLException;
+    ICase getCase(int caseID) throws SQLException;
     
     ArrayList<String> getSYSLogText();
 
@@ -29,6 +29,6 @@ public interface IBusinessFacade {
     void setActiveUser(IUser user);
     
     ICase getActiveCase();
-    void setActiveCase(String caseID) throws SQLException;
+    void setActiveCase(int caseID) throws SQLException;
         
 }

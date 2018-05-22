@@ -4,13 +4,17 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Udred.caseTemplates.CaseWorkerController">
+<GridPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Udred.caseTemplates.Controller">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -30,7 +34,31 @@
                </rowConstraints>
                <children>
                   <Label text="CPR Nummer:" />
-                  <TextField promptText="000000-0000" GridPane.rowIndex="1" />
+                  <GridPane GridPane.rowIndex="1">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="NEVER" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <TextField fx:id="TextFieldCitizenCPR" accessibleText="Borgerens CPR nummer" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" promptText="000000-0000">
+                           <GridPane.margin>
+                              <Insets right="5.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" GridPane.columnIndex="1">
+                           <graphic>
+                              <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/images/icons8-search-96.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </GridPane>
                </children>
             </GridPane>
             <Separator prefWidth="200.0" />
@@ -44,12 +72,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField promptText="Fornavn" GridPane.rowIndex="1">
+                  <TextField fx:id="TextFieldCitizenFirstName" accessibleText="Borgerens fornavn" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" promptText="Fornavn" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Efternavn" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="TextFieldCitizenLastName" accessibleText="Borgerens efternavn" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" promptText="Efternavn" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -69,7 +97,7 @@
                </rowConstraints>
                <children>
                   <Label text="Telefon:" GridPane.columnSpan="2" />
-                  <TextField promptText="+45 00 00 00 00" GridPane.rowIndex="1">
+                  <TextField fx:id="TextFieldCitizenTelephone" promptText="+45 00 00 00 00" GridPane.rowIndex="1">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -91,7 +119,7 @@
                </rowConstraints>
                <children>
                   <Label text="Email:" GridPane.columnSpan="2" />
-                  <TextField promptText="nothing@nothing.dk" GridPane.rowIndex="1">
+                  <TextField fx:id="TextFieldCitizenEMail" promptText="nothing@nothing.dk" GridPane.rowIndex="1">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -117,12 +145,12 @@
                </rowConstraints>
                <children>
                   <Label text="Addresse:" GridPane.columnSpan="2" />
-                  <TextField promptText="Gade" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                  <TextField fx:id="TextFieldCitizenAddressStreet" promptText="Gade" GridPane.columnSpan="2" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Postnr" GridPane.rowIndex="2">
+                  <TextField fx:id="TextFieldCitizenAddressPostalCode" promptText="Postnr" GridPane.rowIndex="2">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -130,9 +158,29 @@
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Land" GridPane.columnSpan="3" GridPane.rowIndex="3" />
-                  <TextField promptText="By" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                  <TextField promptText="Nummer" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="TextFieldCitizenAddressCountry" promptText="Land" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+                  <TextField fx:id="TextFieldCitizenAddressCity" promptText="By" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="TextFieldCitizenAddressNumber" promptText="Nummer" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <Separator prefWidth="200.0" />
+            <GridPane>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TableView fx:id="tableViewCitizenCases" accessibleText="De sager som borgeren er involvert i" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="SagsID" />
+                        <TableColumn prefWidth="75.0" text="Type" />
+                        <TableColumn prefWidth="252.0" text="Beskrivelse" />
+                     </columns>
+                  </TableView>
+                  <Label text="Sager:" />
                </children>
             </GridPane>
          </children>

@@ -44,9 +44,10 @@ public class BusinessFacade implements IBusinessFacade
     }
     
         @Override
-    public Case getCase(String caseNumber) throws SQLException
+    public Case getCase(int caseID) throws SQLException
     {
-        ResultSet result = dataFacade.getCase(caseNumber);
+        ResultSet result = dataFacade.getCase(caseID);
+        result.next();
         Case c = new Case(
                 Integer.parseInt(result.getString("caseid")),
                 new Patient(),
@@ -66,7 +67,7 @@ public class BusinessFacade implements IBusinessFacade
     }
 
     @Override
-    public void setActiveCase(String caseID) throws SQLException {
+    public void setActiveCase(int caseID) throws SQLException {
         this.activeCase = getCase(caseID);
     }
 

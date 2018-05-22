@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Udred.caseTemplates.MeetingController">
+<GridPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Udred.caseTemplates.Controller">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -30,7 +30,7 @@
                </rowConstraints>
                <children>
                   <Label text="Tidspunkt:" />
-                  <DatePicker maxWidth="1.7976931348623157E308" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="datePickerMeetingDate" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Separator prefWidth="200.0" />
@@ -45,7 +45,7 @@
                </rowConstraints>
                <children>
                   <Label text="Emne" />
-                  <TextField GridPane.rowIndex="1" />
+                  <TextField fx:id="textFieldMeetingSubject" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Separator prefWidth="200.0" />
@@ -63,12 +63,12 @@
                </rowConstraints>
                <children>
                   <Label text="Addresse:" GridPane.columnSpan="2" />
-                  <TextField promptText="Gade" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                  <TextField fx:id="textFieldMeetingAddressStreet" promptText="Gade" GridPane.columnSpan="2" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Postnr" GridPane.rowIndex="2">
+                  <TextField fx:id="textFieldMeetingAddressPostalCode" promptText="Postnr" GridPane.rowIndex="2">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -76,9 +76,9 @@
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Land" GridPane.columnSpan="3" GridPane.rowIndex="3" />
-                  <TextField promptText="By" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                  <TextField promptText="Nummer" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="textFieldMeetingAddressCountry" promptText="Land" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+                  <TextField fx:id="textFieldMeetingAddressCity" promptText="By" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="textFieldMeetingAddressNumber" promptText="Nummer" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Separator prefWidth="200.0" />

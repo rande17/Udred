@@ -17,5 +17,7 @@ public interface IGUIFacade
         void initialize() throws IOException, SQLException;
         
         void injectBusiness(IBusinessFacade bus);
+        
+        ICase getCase(int CaseID);
 
 }

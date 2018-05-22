@@ -125,10 +125,9 @@ public class DataFacade implements IDataFacade {
     }
 
     @Override
-    public ResultSet getCase(String caseNumber) throws SQLException
+    public ResultSet getCase(int caseID)
     {
-        ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseNumber + "'", new ArrayList(), "");
-        result.next();
+        ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseID + "'", new ArrayList(), "");
         return result;
     }
 
