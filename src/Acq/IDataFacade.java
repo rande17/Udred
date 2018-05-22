@@ -17,6 +17,8 @@ import Acq.IDataFacade;
  * @author niemeijeren
  */
 public interface IDataFacade {
+    
+    
 
     ResultSet getCase(String caseNumber) throws SQLException;
 
@@ -32,6 +34,8 @@ public interface IDataFacade {
     //
     //    }
     ArrayList getUserCaseList() throws SQLException;
+    
+    ArrayList <String> getSYSLogText();
 
     void saveCase(ICase thisCase);
     

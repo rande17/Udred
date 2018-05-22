@@ -6,10 +6,7 @@
 package Udred.Data;
 
 import Acq.*;
-import Udred.Business.Case;
-import Udred.Business.InquiryInformation;
-import Udred.Business.Patient;
-import Udred.Business.User;
+import Udred.Business.*;
 import Udred.Data.PostgresHelper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +14,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Acq.IDataFacade;
+
+import javax.xml.crypto.Data;
 
 /**
  *
@@ -30,6 +29,7 @@ public class DataFacade implements IDataFacade {
 //    private String userName;
 //    private String password;
     private PostgresHelper DB;
+    private SYSLog sYSLog;
 
 //    INFO ABOUT THE DATABASE DOESN'T MAKE MUCH SENSE HERE
 //    protected DataFacade(String dataHost, String databaseName, String userName, String password) {
@@ -40,6 +40,7 @@ public class DataFacade implements IDataFacade {
 //    }
     public DataFacade() {
         DB = new PostgresHelper();
+        sYSLog = new SYSLog("src\\Udred\\Data\\SYSLog.txt");
     }
 
     protected void specific() {
@@ -129,5 +130,10 @@ public class DataFacade implements IDataFacade {
         ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseNumber + "'", new ArrayList(), "");
         result.next();
         return result;
+    }
+
+    @Override
+    public ArrayList<String> getSYSLogText() {
+        return sYSLog.readFromFile();
     }
 }

@@ -2,7 +2,6 @@
 package Udred.Business;
 
 import Acq.IBusinessFacade;
-import Udred.Data.DataFacade;
 import Acq.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -69,6 +68,12 @@ public class BusinessFacade implements IBusinessFacade
     @Override
     public void setActiveCase(String caseID) throws SQLException {
         this.activeCase = getCase(caseID);
+    }
+
+    @Override
+    public ArrayList<String> getSYSLogText() {
+        ArrayList sYSText = dataFacade.getSYSLogText();
+        return sYSText;
     }
     
 }

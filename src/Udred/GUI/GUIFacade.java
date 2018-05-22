@@ -7,6 +7,8 @@ import Udred.Data.PostgresHelper;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
+
+import Udred.Data.SYSLog;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -81,8 +83,6 @@ public class GUIFacade implements IGUIFacade {
         PreLoader.setScene(r);
         PreLoader.centerOnScreen();
         PreLoader.show();
-        
-        
         
         PostgresHelper DB = new PostgresHelper();
         DB.test();

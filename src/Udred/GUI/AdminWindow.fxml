@@ -59,6 +59,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Filer">
             <items>
+              <MenuItem fx:id="sYSLogButton" mnemonicParsing="false" onAction="#openSYSLog" text="SYSLog" />
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
