@@ -5,6 +5,8 @@
  */
 package Acq;
 
+import Udred.Business.AccessLevelEnum;
+
 /**
  *
  * @author niemeijeren
@@ -23,9 +25,9 @@ public interface IUser {
     
     void setWorkerID(int id);
     
-    int getAccessLevel();
+    String getAccessLevel();
     
-    void setAccessLevel(int al);
+    void setAccessLevel(String al);
 
     public String getCaseList();
     

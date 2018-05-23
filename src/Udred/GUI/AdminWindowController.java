@@ -23,6 +23,7 @@ import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
+import Acq.IAccessLevelEnum;
 
 public class AdminWindowController {
 
@@ -79,17 +80,18 @@ public class AdminWindowController {
             }));
 
             colWorkerID.setOnEditCommit((CellEditEvent<IUser, Integer> event) -> {
-            TablePosition<IUser, Integer> pos = event.getTablePosition();
- 
-            int newWorkerID = event.getNewValue();
- 
-            int row = pos.getRow();
-            IUser user = event.getTableView().getItems().get(row);
- 
-            int workerID = user.getWorkerID();
-            user.setWorkerID(newWorkerID);
-            
-            GUIFacade.updateUser(workerID, user);
+                TablePosition<IUser, Integer> pos = event.getTablePosition();
+
+                int newWorkerID = event.getNewValue();
+
+                int row = pos.getRow();
+                IUser user = event.getTableView().getItems().get(row);
+
+                int workerID = user.getWorkerID();
+                user.setWorkerID(newWorkerID);
+                System.out.println(user.getWorkerID());
+
+                GUIFacade.updateUser(workerID, user);
             });
             
 
@@ -98,6 +100,8 @@ public class AdminWindowController {
             
             
             colAccessLevel.setCellValueFactory(new PropertyValueFactory<>("accessLevel"));
+            
+
 
             
             

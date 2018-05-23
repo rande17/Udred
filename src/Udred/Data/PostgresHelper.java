@@ -173,7 +173,7 @@ public class PostgresHelper {
             preparedStmt.setString(1, user.getUserName());
             preparedStmt.setInt(2, user.getWorkerID());
             preparedStmt.setString(3, user.getCaseList());
-            preparedStmt.setInt(4, user.getAccessLevel());
+            preparedStmt.setString(4, user.getAccessLevel());
             preparedStmt.executeUpdate();
             
              conn.close();
@@ -188,6 +188,17 @@ public class PostgresHelper {
 
     void updateUser(int WorkerID, IUser updatedUser)
     {
+         if (conn != null) {
+            try {
+                if (!conn.isClosed()) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PostgresHelper.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        connect();
+        
         try
         {
             // create our java preparedstatement using a sql update query
@@ -197,7 +208,7 @@ public class PostgresHelper {
             preparedStmt.setString(1, updatedUser.getUserName());
             preparedStmt.setInt(2, updatedUser.getWorkerID());
             preparedStmt.setString(3, updatedUser.getCaseList());
-            preparedStmt.setInt(4, updatedUser.getAccessLevel());
+            preparedStmt.setString(4, updatedUser.getAccessLevel());
             preparedStmt.setInt(5, WorkerID);
             preparedStmt.executeUpdate();
             
