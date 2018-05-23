@@ -41,5 +41,6 @@ public interface IDataFacade {
     
     void writeLoginInfoToSyslog (ArrayList<String> loginInfo);
     void writeOpenCaseInfoToSyslog (ArrayList<String> openCaseInfo);
+    public void savePatient(IPatient patient);
     
 }

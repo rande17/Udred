@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import Acq.IDataFacade;
 import java.nio.file.Paths;
+import java.util.UUID;
 
 import javax.xml.crypto.Data;
 
@@ -59,7 +60,7 @@ public class DataFacade implements IDataFacade {
         al.add("" + thisCase.getCaseID());
         al.add("" + thisCase.getCaseID());
         al.add(thisCase.getStatus());
-        al.add("" + thisCase.getPatient().getPatientCPR());
+        al.add("" + thisCase.getPatient().getPatientID().toString());
         al.add(thisCase.getCaseWorker().toString());
         al.add(thisCase.getCaseInformation().toString());
 
@@ -124,6 +125,28 @@ public class DataFacade implements IDataFacade {
         }
         return ar;
     }
+     
+    @Override
+     public void savePatient(IPatient patient){
+            ArrayList al = new ArrayList();
+            String typeString;
+            
+            al.add(""+patient.getPatientID().toString());
+            al.add(""+patient.getPatientName());
+            al.add(""+patient.getPatientCPR());
+            al.add(""+patient.getPatientAddress().toString());
+            al.add(patient.getPatientTelephone());
+            al.add(""); 
+            
+            for(int i = 0; i < al.size(); i++){
+                System.out.println(al.get(i));
+            }
+            
+            typeString = "ssssis";
+            System.out.println(patient.toString());
+            DB.query("INSERT INTO Patient (patientUUID, patientName, patientCPR, patientAddress, patientTelephone, patientGuardian) VALUES (?,?,?,?,?,?)", al, typeString);
+
+     }
 
     @Override
     public ResultSet getCase(int caseID)
