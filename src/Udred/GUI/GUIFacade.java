@@ -50,6 +50,7 @@ public class GUIFacade implements IGUIFacade {
         Scene s = new Scene(root, 1000, 800);
         Window.setScene(s);
         Window.setOnCloseRequest(e -> closeProgram());
+        Window.show();
 
         // Setup Admin Window
         Admin = new Stage();
@@ -84,7 +85,7 @@ public class GUIFacade implements IGUIFacade {
         r.setFill(null);
         PreLoader.setScene(r);
         PreLoader.centerOnScreen();
-        PreLoader.show();
+        //PreLoader.show();
         
         PostgresHelper DB = new PostgresHelper();
         DB.test();

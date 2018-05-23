@@ -32,7 +32,7 @@ public interface ICase {
 
     IPatient getPatient();
 
-    int getStatus();
+    String getStatus();
 
     boolean isConsent();
 
@@ -45,6 +45,6 @@ public interface ICase {
 
     void setConsent(boolean consent);
 
-    void setStatus(int status);
+    void setStatus(String status);
     
 }

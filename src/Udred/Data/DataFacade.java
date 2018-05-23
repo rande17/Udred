@@ -58,7 +58,7 @@ public class DataFacade implements IDataFacade {
         al.add(thisCase.getCaseType().toString());
         al.add("" + thisCase.getCaseID());
         al.add("" + thisCase.getCaseID());
-        al.add("" + thisCase.getStatus());
+        al.add(thisCase.getStatus());
         al.add(thisCase.getPatient().toString());
         al.add(thisCase.getCaseWorker().toString());
         al.add(thisCase.getCaseInformation().toString());

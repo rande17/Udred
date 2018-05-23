@@ -54,7 +54,7 @@ public class BusinessFacade implements IBusinessFacade
         Case c = new Case(
                 Integer.parseInt(result.getString("caseid")),
                 new Patient(),
-                Integer.parseInt(result.getString("status")),
+                result.getString("status"),
                 Boolean.parseBoolean(result.getString("consent")),
                 result.getString("casetype"),
                 new User(0),

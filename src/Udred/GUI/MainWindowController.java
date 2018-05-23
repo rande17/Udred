@@ -45,7 +45,7 @@ public class MainWindowController{
         choiceBoxShow.getItems().add("Lukkede");
         choiceBoxShow.getSelectionModel().selectFirst();
         choiceBoxShow.getSelectionModel().selectedItemProperty().addListener((v, oldval,newval) -> choiceBoxSelectionChanged(newval.toString()));
-
+        
 //        listViewCases.getItems().add("151218-131959");
 //        listViewCases.getItems().add("101018-080800");
 //        listViewCases.getItems().add("050318-160032");

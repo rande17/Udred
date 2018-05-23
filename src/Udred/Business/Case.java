@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 public class Case implements ICase {
 
     private final int caseID;
-    private int status; // enum
+    private String status; // enum
     private final IPatient patient;
     private IUser caseWorker;
     private final Date creationDate;
@@ -44,7 +44,7 @@ public class Case implements ICase {
      * @param inquiryInformation
      */
     // changed public to public, to make db stuff work from GUI, should be changed back when we have a properinterface
-    public Case(int caseID, Patient patient, int status, boolean consent, String caseType, User caseWorker, InquiryInformation inquiryInformation) {
+    public Case(int caseID, Patient patient, String status, boolean consent, String caseType, User caseWorker, InquiryInformation inquiryInformation) {
         this.caseID = caseID;
         this.patient = patient;
         this.status = status;
@@ -60,7 +60,7 @@ public class Case implements ICase {
     {
         this.caseID = 0;
         this.patient = new Patient();
-        this.status = 0;
+        this.status = "0";
         this.consent = false;
         this.caseWorker = new User(0);
         this.creationDate = new Date();
@@ -70,13 +70,12 @@ public class Case implements ICase {
     }
 
     @Override
-    public int getStatus() {
-
+    public String getStatus() {
         return status;
     }
-
+    
     @Override
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

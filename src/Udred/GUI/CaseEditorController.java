@@ -1,5 +1,7 @@
 package Udred.GUI;
 
+import Acq.ICase;
+import Acq.IUser;
 import Udred.Business.Address;
 import Udred.Business.Case;
 import Udred.Business.CaseTypeEnum;
@@ -38,14 +40,16 @@ public class CaseEditorController {
 
     @FXML
     private void addCase(ActionEvent event) {
-        int caseID = (int) Math.floor(Math.random()*2000000);
-        Patient patient = new Patient("TEST", 0000000000, 0, new Address("TESTVEJ", "00TEST", "TestBy", 0000));
-        int status = 1;
+        Address address = new Address("TESTVEJ", "00TEST", "TestBy", 0000);
+        Patient patient = new Patient("", 0000000000, 0, address);
+        int caseID = Integer.parseInt(textFieldCaseID.getText());
+        String status = cbxStatus.getValue().toString();
         boolean consent = true;
         String caseType = "social";
-        User caseWorker = new User(1);
+        IUser caseWorker =  GUIFacade.business.getActiveUser();
         InquiryInformation inquiryInformation = new InquiryInformation("Dette er en test sag");
-        Case currentCase = new Case(caseID, patient, status, consent, caseType, caseWorker, inquiryInformation);
+        ICase currentCase = new Case(caseID, patient, status, consent, caseType, (User) caseWorker, inquiryInformation);
+        
         currentCase.save(currentCase);
     }
 
