@@ -19,7 +19,10 @@ public class BusinessFacade implements IBusinessFacade
     private ICase activeCase;
     private ICase activeCaseCompare;
     
-    public BusinessFacade(){}
+    public BusinessFacade(){
+    activeUser = new User(000000);
+    activeCase = new Case();
+    }
 
     
     @Override
@@ -75,6 +78,16 @@ public class BusinessFacade implements IBusinessFacade
     public ArrayList<String> getSYSLogText() {
         ArrayList sYSText = dataFacade.getSYSLogText();
         return sYSText;
+    }
+    
+    public void writeLoginInfoToSyslog (){
+        SYSLog log = new SYSLog();
+        dataFacade.writeLoginInfoToSyslog(log.addLoginToSyslog(activeUser));
+    }
+    
+    public void writeOpenCaseInfoToSyslog (){
+        SYSLog log = new SYSLog();
+        dataFacade.writeOpenCaseInfoToSyslog(log.addOpenCaseToSyslog(activeUser, activeCase));
     }
     
 }

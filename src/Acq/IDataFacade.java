@@ -39,4 +39,7 @@ public interface IDataFacade {
 
     void saveCase(ICase thisCase);
     
+    void writeLoginInfoToSyslog (ArrayList<String> loginInfo);
+    void writeOpenCaseInfoToSyslog (ArrayList<String> openCaseInfo);
+    
 }

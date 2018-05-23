@@ -2,6 +2,7 @@
 package Udred.Business;
 
 import Acq.ICase;
+import Acq.IUser;
 import Acq.SYSLogAnnotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -58,7 +59,23 @@ public class SYSLog
         return fields.toArray(new Field[] {});
     }
 
-    public void addLoginToSyslog(){
+    public ArrayList<String> addLoginToSyslog(IUser user){
+        Date d = new Date();
+        
+        ArrayList<String> loginInfo = new ArrayList<>();
+        String info = "Bruger: " + user.getUserName() + " logged ind d. " + d.toString() ;
+                     
+        loginInfo.add(info);
 
+        return loginInfo;
+    }
+    
+    public ArrayList<String> addOpenCaseToSyslog(IUser user, ICase openCase){
+        ArrayList<String> caseOpenInfo = new ArrayList<>();
+        String info = "Bruger: " + user.getUserName() + " åbnede sagen " + openCase.getCaseID();
+                     
+        caseOpenInfo.add(info);
+
+        return caseOpenInfo;
     }
 }

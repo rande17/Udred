@@ -123,7 +123,7 @@ public class CaseEditorController {
     public void addCitizen() throws IOException {
         CustomControl cst = new CustomControl();
         cst.getLabel().setText("Ny Borger");
-        Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/Citizen.fxml"));
+        Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/GUI/CaseControl/Citizen.fxml"));
         cst.setContent(citizen);
         vBoxCitizens.getChildren().add(cst);
     }
@@ -132,7 +132,7 @@ public class CaseEditorController {
     public void addCaseWorker() throws IOException {
         CustomControl cst = new CustomControl();
         cst.getLabel().setText("Ny Sagsbehandler");
-        Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/CaseWorker.fxml"));
+        Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/GUI/CaseControl/CaseWorker.fxml"));
         cst.setContent(citizen);
         vBoxCaseWorkers.getChildren().add(cst);
     }
@@ -140,7 +140,7 @@ public class CaseEditorController {
     public void addCaseInformation() throws IOException {
         CustomControl cst = new CustomControl();
         cst.getLabel().setText("Ny Information");
-        Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/CaseInformation.fxml"));
+        Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/GUI/CaseControl/CaseInformation.fxml"));
         cst.setContent(citizen);
         vBoxCaseInformation.getChildren().add(cst);
     }
@@ -148,7 +148,7 @@ public class CaseEditorController {
     public void addMeeting() throws IOException {
         CustomControl cst = new CustomControl();
         cst.getLabel().setText("Nyt Møde");
-        Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/Meeting.fxml"));
+        Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/GUI/CaseControl/Meeting.fxml"));
         cst.setContent(citizen);
         vBoxMeetings.getChildren().add(cst);
     }

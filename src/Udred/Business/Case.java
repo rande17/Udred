@@ -58,7 +58,15 @@ public class Case implements ICase {
 
     public Case()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.caseID = 0;
+        this.patient = new Patient();
+        this.status = 0;
+        this.consent = false;
+        this.caseWorker = new User(0);
+        this.creationDate = new Date();
+        this.closingDate = null;
+        this.caseInformation = new CaseInformation(new InquiryInformation(""));
+        setCaseType("");
     }
 
     @Override

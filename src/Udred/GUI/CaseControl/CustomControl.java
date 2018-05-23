@@ -13,7 +13,7 @@ public class CustomControl extends TitledPane {
 
     public CustomControl() {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Udred/caseTemplates/CustomControl.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Udred/GUI/CaseControl/CustomControl.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         fxmlLoader.setClassLoader(getClass().getClassLoader());

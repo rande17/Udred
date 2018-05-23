@@ -30,5 +30,8 @@ public interface IBusinessFacade {
     
     ICase getActiveCase();
     void setActiveCase(int caseID) throws SQLException;
+    
+    void writeLoginInfoToSyslog ();
+    void writeOpenCaseInfoToSyslog ();
         
 }

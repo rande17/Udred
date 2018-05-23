@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Acq.IDataFacade;
+import java.nio.file.Paths;
 
 import javax.xml.crypto.Data;
 
@@ -40,7 +41,7 @@ public class DataFacade implements IDataFacade {
 //    }
     public DataFacade() {
         DB = new PostgresHelper();
-        sYSLog = new SYSLog("src\\Udred\\Data\\SYSLog.txt");
+        sYSLog = new SYSLog(Paths.get("").toAbsolutePath().toString() + "\\SYSLOG.txt");
     }
 
     protected void specific() {
@@ -134,5 +135,15 @@ public class DataFacade implements IDataFacade {
     @Override
     public ArrayList<String> getSYSLogText() {
         return sYSLog.readFromFile();
+    }
+    
+    public void writeLoginInfoToSyslog (ArrayList<String> loginInfo){
+       
+        sYSLog.writeText(loginInfo);
+    }
+    
+    public void writeOpenCaseInfoToSyslog (ArrayList<String> openCaseInfo){
+           
+        sYSLog.writeText(openCaseInfo);
     }
 }

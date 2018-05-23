@@ -13,6 +13,8 @@ package Udred.Data;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
  
 public class SYSLog
 {
@@ -29,6 +31,7 @@ public class SYSLog
         //checks if file exists, if file doesn't exist it creates the file in our else statement.
         if (fileExists(filename))
         {
+            System.err.println(filename);
             String toFile = "";
             for (String s: sYSList){
                 toFile.concat(s);
@@ -36,9 +39,9 @@ public class SYSLog
  
             try
             {
-                PrintWriter out = new PrintWriter(filename);
+                FileWriter out = new FileWriter(filename);
                 {
-                    out.println("");
+                    out.write(toFile);
                 }
                 out.flush();
                 out.close();
@@ -46,6 +49,10 @@ public class SYSLog
             } catch (FileNotFoundException e)
             {
                 e.printStackTrace();
+            }
+            catch (IOException ex)
+            {
+                Logger.getLogger(SYSLog.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else
         {
