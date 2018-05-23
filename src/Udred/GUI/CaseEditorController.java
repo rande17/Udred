@@ -43,7 +43,7 @@ public class CaseEditorController {
     private void addCase(ActionEvent event) {
         CustomControl c = (CustomControl) vBoxCitizens.getChildren().get(0);
         Address address = new Address("TESTVEJ", "00TEST", "TestBy", 0000);
-        Patient patient = new Patient(c.getController()., 0000000000, 0, address);
+        Patient patient = new Patient(c.getController().getTextFieldCitizenFirstName().getText() + " " + c.getController().getTextFieldCitizenLastName().getText(), Integer.parseInt(c.getController().getTextFieldCitizenCPR().getText()), Integer.parseInt(c.getController().getTextFieldCitizenTelephone().getText()), address);
         int caseID = Integer.parseInt(textFieldCaseID.getText());
         String status = cbxStatus.getValue().toString();
         boolean consent = true;

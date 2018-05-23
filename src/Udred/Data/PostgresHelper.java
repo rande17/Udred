@@ -76,6 +76,7 @@ public class PostgresHelper {
         rs.next();
         String timeforoutputonrun = rs.getString(1);
         System.out.println(timeforoutputonrun);
+      //  query("DELETE FROM Cases", new ArrayList(), "");
     }
 
     // lave prepared statements
