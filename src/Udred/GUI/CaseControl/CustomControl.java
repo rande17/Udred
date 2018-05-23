@@ -10,6 +10,8 @@ import javafx.scene.layout.VBox;
 
 public class CustomControl extends TitledPane {
     @FXML private Label lblText;
+    
+    private Controller controller;
 
     public CustomControl() {
 
@@ -34,5 +36,15 @@ public class CustomControl extends TitledPane {
         VBox par = (VBox)this.getParent();
         par.getChildren().remove(this);
     }
+    
+    public Controller getController(){
+        return controller;
+    }
+
+    public void setController(Controller controller){
+       this.controller = controller;
+    }
+    
+    
 
 }

@@ -34,15 +34,13 @@ public class SYSLog
             System.err.println(filename);
             String toFile = "";
             for (String s: sYSList){
-                toFile.concat(s);
+                toFile = toFile.concat(s);
             }
- 
+
             try
             {
                 FileWriter out = new FileWriter(filename);
-                {
-                    out.write(toFile);
-                }
+                out.write(toFile);
                 out.flush();
                 out.close();
  
