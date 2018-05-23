@@ -72,19 +72,19 @@ public class GUIFacade implements IGUIFacade {
         //Login.show();
 
         // Setup Rainbow Window
-        PreLoader = new Stage();
-
-        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("PreLoader.fxml"));
-        Parent root2 = loader2.load();
-        preLoaderController = loader2.getController();
-
-//        root = FXMLLoader.load(getClass().getResource("Rainbow.fxml"));
-        root2.setStyle("-fx-background-color: transparent ;");
-        PreLoader.initStyle(StageStyle.TRANSPARENT);
-        Scene r = new Scene(root2);
-        r.setFill(null);
-        PreLoader.setScene(r);
-        PreLoader.centerOnScreen();
+//        PreLoader = new Stage();
+//
+//        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("PreLoader.fxml"));
+//        Parent root2 = loader2.load();
+//        preLoaderController = loader2.getController();
+//
+////        root = FXMLLoader.load(getClass().getResource("Rainbow.fxml"));
+//        root2.setStyle("-fx-background-color: transparent ;");
+//        PreLoader.initStyle(StageStyle.TRANSPARENT);
+//        Scene r = new Scene(root2);
+//        r.setFill(null);
+//        PreLoader.setScene(r);
+//        PreLoader.centerOnScreen();
         //PreLoader.show();
         
         PostgresHelper DB = new PostgresHelper();
