@@ -8,6 +8,7 @@ package Acq;
 import Udred.Business.Address;
 import Udred.Business.Guardian;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -38,5 +39,9 @@ public interface IPatient {
     void setPatientName(String patientName);
 
     void setPatientTelephone(int patientTelephone);
+    
+    public void savePatient(IPatient patient);
+
+    public UUID getPatientID();
     
 }

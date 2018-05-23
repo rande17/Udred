@@ -1,6 +1,7 @@
 package Udred.GUI;
 
 import Acq.ICase;
+import Acq.IPatient;
 import Acq.IUser;
 import Udred.Business.Address;
 import Udred.Business.Case;
@@ -11,6 +12,7 @@ import Udred.Business.User;
 import Udred.GUI.CaseControl.Controller;
 import Udred.GUI.CaseControl.CustomControl;
 import java.io.IOException;
+import java.util.UUID;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,15 +45,15 @@ public class CaseEditorController {
     private void addCase(ActionEvent event) {
         CustomControl c = (CustomControl) vBoxCitizens.getChildren().get(0);
         Address address = new Address("TESTVEJ", "00TEST", "TestBy", 0000);
-        Patient patient = new Patient(c.getController().getTextFieldCitizenFirstName().getText() + " " + c.getController().getTextFieldCitizenLastName().getText(), Integer.parseInt(c.getController().getTextFieldCitizenCPR().getText()), Integer.parseInt(c.getController().getTextFieldCitizenTelephone().getText()), address);
+        IPatient patient = new Patient(c.getController().getTextFieldCitizenFirstName().getText() + " " + c.getController().getTextFieldCitizenLastName().getText(), Integer.parseInt(c.getController().getTextFieldCitizenCPR().getText()), Integer.parseInt(c.getController().getTextFieldCitizenTelephone().getText()), address);
         int caseID = Integer.parseInt(textFieldCaseID.getText());
         String status = cbxStatus.getValue().toString();
         boolean consent = true;
         String caseType = "social";
         IUser caseWorker =  GUIFacade.business.getActiveUser();
         InquiryInformation inquiryInformation = new InquiryInformation("Dette er en test sag");
-        ICase currentCase = new Case(caseID, patient, status, consent, caseType, (User) caseWorker, inquiryInformation);
-        
+        ICase currentCase = new Case(caseID, (Patient) patient, status, consent, caseType, (User) caseWorker, inquiryInformation);
+        patient.savePatient(patient);
         currentCase.save(currentCase);
     }
 
