@@ -5,19 +5,15 @@
  */
 package Udred.Data;
 
-import Acq.*;
-import Udred.Business.*;
-import Udred.Data.PostgresHelper;
+import Udred.Acq.*;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Acq.IDataFacade;
+import Udred.Acq.IDataFacade;
 import java.nio.file.Paths;
-import java.util.UUID;
-
-import javax.xml.crypto.Data;
 
 /**
  *

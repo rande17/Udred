@@ -5,7 +5,7 @@
  */
 package Udred.Business;
 
-import Acq.IUser;
+import Udred.Acq.IUser;
 import java.util.ArrayList;
 
 /**

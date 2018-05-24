@@ -1,9 +1,9 @@
 
 package Udred.Business;
 
-import Acq.ICase;
-import Acq.IUser;
-import Acq.SYSLogAnnotation;
+import Udred.Acq.ICase;
+import Udred.Acq.IUser;
+import Udred.Acq.SYSLogAnnotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;

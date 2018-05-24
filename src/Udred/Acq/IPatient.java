@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Acq;
+package Udred.Acq;
 
-import Udred.Business.Address;
-import Udred.Business.Guardian;
 import java.util.List;
 import java.util.UUID;
 

@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Acq;
+package Udred.Acq;
 
-import Acq.*;
-import Udred.Business.Case;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
