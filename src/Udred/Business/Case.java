@@ -6,14 +6,9 @@
 package Udred.Business;
 
 import Udred.Data.DataFacade;
-import Acq.*;
-import Udred.Data.PostgresHelper;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import Udred.Acq.*;
+
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

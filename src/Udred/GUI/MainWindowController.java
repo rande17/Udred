@@ -1,10 +1,7 @@
 package Udred.GUI;
 
-import Acq.IMainWindowController;
-import Acq.IBusinessFacade;
-import Acq.ICase;
-import Udred.Business.Case;
-import Udred.Business.BusinessFacade;
+import Udred.Acq.ICase;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;

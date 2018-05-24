@@ -3,13 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Acq;
+package Udred.Acq;
 
-import Udred.Business.Case;
-import Udred.Business.CaseInformation;
-import Udred.Business.CaseTypeEnum;
-import Udred.Business.Patient;
-import Udred.Business.User;
 import java.util.Date;
 
 /**

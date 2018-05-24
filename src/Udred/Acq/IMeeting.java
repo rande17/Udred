@@ -3,12 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Acq;
+package Udred.Acq;
 
-import Udred.Business.Address;
-import Udred.Business.Assessor;
-import Udred.Business.PartRepresentive;
-import Udred.Business.Patient;
 import java.util.ArrayList;
 import java.util.Date;
 

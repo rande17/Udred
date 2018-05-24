@@ -1,18 +1,17 @@
 package Udred.GUI;
 
-import Acq.ICase;
-import Acq.IPatient;
-import Acq.IUser;
+import Udred.Acq.ICase;
+import Udred.Acq.IPatient;
+import Udred.Acq.IUser;
 import Udred.Business.Address;
 import Udred.Business.Case;
-import Udred.Business.CaseTypeEnum;
 import Udred.Business.InquiryInformation;
 import Udred.Business.Patient;
 import Udred.Business.User;
 import Udred.GUI.CaseControl.Controller;
 import Udred.GUI.CaseControl.CustomControl;
 import java.io.IOException;
-import java.util.UUID;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

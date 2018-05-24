@@ -3,22 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Acq;
+package Udred.Acq;
 
 /**
  *
  * @author niemeijeren
  */
-public interface IAssessor {
+public interface ICaseTypeEnum {
 
-    String getAssessorName();
-
-    int getAssessorTelephone();
-
-    String getFunction();
-
-    void setAssessorTelephone(int assessorTelephone);
-
-    void setFunction(String function);
+    String toString();
     
 }

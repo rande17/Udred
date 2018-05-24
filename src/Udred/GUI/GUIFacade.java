@@ -1,17 +1,14 @@
 package Udred.GUI;
 
-import Acq.*;
-import Udred.Business.BusinessFacade;
-import Udred.Data.DataFacade;
+import Udred.Acq.*;
 import Udred.Data.PostgresHelper;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 
-import Udred.Data.SYSLog;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Application;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,7 +17,6 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  *
