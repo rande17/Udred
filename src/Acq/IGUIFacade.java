@@ -12,12 +12,31 @@ import javafx.stage.Stage;
 public interface IGUIFacade 
 {
     
-        void start(Stage primaryStage)throws Exception ;
+    /**
+     *
+     * @param primaryStage
+     * @throws Exception
+     */
+    void start(Stage primaryStage)throws Exception ;
         
-        void initialize() throws IOException, SQLException;
+    /**
+     *
+     * @throws IOException
+     * @throws SQLException
+     */
+    void initialize() throws IOException, SQLException;
         
-        void injectBusiness(IBusinessFacade bus);
+    /**
+     *
+     * @param bus
+     */
+    void injectBusiness(IBusinessFacade bus);
         
-        ICase getCase(int CaseID);
+    /**
+     *
+     * @param CaseID
+     * @return
+     */
+    ICase getCase(int CaseID);
 
 }

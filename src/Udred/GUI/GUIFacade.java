@@ -22,18 +22,34 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ *
+ * @author JogGez
+ */
 public class GUIFacade implements IGUIFacade {
 
     static Stage PreLoader;
     static PreLoaderController preLoaderController;
     static Stage Login;
     static Stage Window;
+
+    /**
+     *
+     */
     public static MainWindowController MainController;
     static Stage Admin;
     static Boolean changesSaved = true;
     
+    /**
+     *
+     */
     protected static IBusinessFacade business;
 
+    /**
+     *
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -50,7 +66,7 @@ public class GUIFacade implements IGUIFacade {
         Scene s = new Scene(root, 1000, 800);
         Window.setScene(s);
         Window.setOnCloseRequest(e -> closeProgram());
-        Window.show();
+//        Window.show();
 
         // Setup Admin Window
         Admin = new Stage();
@@ -69,7 +85,7 @@ public class GUIFacade implements IGUIFacade {
         Login.getIcons().add(new Image(getClass().getResource("/Udred/resources/images/EG.png").toExternalForm()));
         Login.setScene(new Scene(root));
         Login.setOnCloseRequest(e -> closeProgram());
-        //Login.show();
+        Login.show();
 
         // Setup Rainbow Window
 //        PreLoader = new Stage();
@@ -119,17 +135,31 @@ public class GUIFacade implements IGUIFacade {
 
     }
     
+    /**
+     *
+     * @param bus
+     */
     @Override
     public void injectBusiness(IBusinessFacade bus){
         this.business = bus;
     }
 
+    /**
+     *
+     * @throws IOException
+     * @throws SQLException
+     */
     @Override
     public void initialize() throws IOException, SQLException
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    /**
+     *
+     * @param CaseID
+     * @return
+     */
     public ICase getCase(int CaseID){
         try
         {
