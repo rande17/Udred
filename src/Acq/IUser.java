@@ -25,9 +25,9 @@ public interface IUser {
     
     void setWorkerID(int id);
     
-    String getAccessLevel();
+    int getAccessLevel();
     
-    void setAccessLevel(String al);
+    void setAccessLevel(int al);
 
     public String getCaseList();
     

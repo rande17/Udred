@@ -75,7 +75,7 @@ public class BusinessFacade implements IBusinessFacade
                 result.getString("username"),
                 Integer.parseInt(result.getString("workerid")),
                 ilist,
-                "0");
+                Integer.parseInt(result.getString("accesslevel")));
             
             usrlist.add(u);
         }
@@ -95,7 +95,7 @@ public class BusinessFacade implements IBusinessFacade
                 Integer.parseInt(result.getString("status")),
                 Boolean.parseBoolean(result.getString("consent")),
                 result.getString("casetype"),
-                new User("", 0, new ArrayList<Integer>(), "0"),
+                new User("", 0, new ArrayList<Integer>(), 0),
                 new InquiryInformation("")
                 
         );
@@ -115,7 +115,7 @@ public class BusinessFacade implements IBusinessFacade
     @Override
     public void addUser()
     {
-        IUser user = new User("new user", 0, new ArrayList<Integer>(), "0");
+        IUser user = new User("new user", 0, new ArrayList<Integer>(), 0);
         userList.add(user);
         dataFacade.addUser(user);
     }

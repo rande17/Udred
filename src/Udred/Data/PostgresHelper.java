@@ -173,7 +173,7 @@ public class PostgresHelper {
             preparedStmt.setString(1, user.getUserName());
             preparedStmt.setInt(2, user.getWorkerID());
             preparedStmt.setString(3, user.getCaseList());
-            preparedStmt.setString(4, user.getAccessLevel());
+            preparedStmt.setInt(4, user.getAccessLevel());
             preparedStmt.executeUpdate();
             
              conn.close();
@@ -208,7 +208,7 @@ public class PostgresHelper {
             preparedStmt.setString(1, updatedUser.getUserName());
             preparedStmt.setInt(2, updatedUser.getWorkerID());
             preparedStmt.setString(3, updatedUser.getCaseList());
-            preparedStmt.setString(4, updatedUser.getAccessLevel());
+            preparedStmt.setInt(4, updatedUser.getAccessLevel());
             preparedStmt.setInt(5, WorkerID);
             preparedStmt.executeUpdate();
             

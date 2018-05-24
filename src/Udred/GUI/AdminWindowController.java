@@ -100,6 +100,22 @@ public class AdminWindowController {
             
             
             colAccessLevel.setCellValueFactory(new PropertyValueFactory<>("accessLevel"));
+            colAccessLevel.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Integer>(){
+
+                @Override
+                public String toString(Integer object) {
+                    return object.toString();
+                }
+
+                @Override
+                public Integer fromString(String string) {
+                    return Integer.parseInt(string);
+                }
+
+            }));
+            
+            
+            
             
 
 

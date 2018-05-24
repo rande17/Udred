@@ -17,9 +17,9 @@ public class User implements IUser
     private String userName;
     private int workerID;
     private ArrayList<Integer> caseList;
-    private String accessLevel;
+    private int accessLevel;
  // changed public to public, to make db stuff work from GUI, should be changed back when we have a properinterface
-   public User(String username, int workerID, ArrayList<Integer> caseList, String accessLevel)
+   public User(String username, int workerID, ArrayList<Integer> caseList, int accessLevel)
     {
         this.userName = username;
         this.workerID = workerID;
@@ -64,13 +64,13 @@ public class User implements IUser
     }
     
     @Override
-    public String getAccessLevel()
+    public int getAccessLevel()
     {
         return accessLevel;
     }
     
     @Override
-    public void setAccessLevel(String al)
+    public void setAccessLevel(int al)
     {
         accessLevel = al;
     }
