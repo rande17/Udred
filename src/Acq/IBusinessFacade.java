@@ -19,6 +19,8 @@ import javafx.collections.ObservableList;
 public interface IBusinessFacade {
 
     ICase getCase(String caseNumber) throws SQLException;
+    
+    ArrayList<String> getSYSLogText();
 
     ArrayList getUserCaseList(String UserID) throws SQLException;
     

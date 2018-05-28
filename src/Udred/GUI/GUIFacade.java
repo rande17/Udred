@@ -4,6 +4,8 @@ import Acq.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
+
+import Udred.Data.SYSLog;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;

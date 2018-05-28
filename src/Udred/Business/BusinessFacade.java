@@ -1,6 +1,8 @@
 package Udred.Business;
 
+
 import Udred.Data.DataFacade;
+import Acq.IBusinessFacade;
 import Acq.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -131,6 +133,13 @@ public class BusinessFacade implements IBusinessFacade
     public void updateUser(int workerID, IUser user)
     {
         dataFacade.updateUser(workerID, user);
+    }
+    
+    @Override
+    public ArrayList<String> getSYSLogText() 
+    {
+        ArrayList sYSText = dataFacade.getSYSLogText();
+        return sYSText;
     }
     
 }

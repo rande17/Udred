@@ -19,6 +19,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
+
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
@@ -29,6 +38,7 @@ public class AdminWindowController {
 
 
     public GridPane gridPaneMain;
+
     @FXML
     private TableView<IUser> tabelViewUsers;
     @FXML
@@ -41,6 +51,9 @@ public class AdminWindowController {
     private Button buttonAddUser;
     @FXML
     private Button buttonRemoveUser;
+
+    public MenuItem sYSLogButton;
+
 
     public void initialize() throws SQLException {
             GUIFacade.getAllUsers();
@@ -95,10 +108,6 @@ public class AdminWindowController {
             });
             
 
-            
-            
-            
-            
             colAccessLevel.setCellValueFactory(new PropertyValueFactory<>("accessLevel"));
             colAccessLevel.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Integer>(){
 
@@ -114,13 +123,7 @@ public class AdminWindowController {
 
             }));
             
-            
-            
-            
 
-
-            
-            
             tabelViewUsers.setItems(GUIFacade.userList);
     }
 
@@ -134,5 +137,19 @@ public class AdminWindowController {
     private void removeUser(ActionEvent event)
     {
         GUIFacade.business.removeUser((IUser)tabelViewUsers.getSelectionModel().getSelectedItem());
+    }
+    
+    public void openSYSLog (ActionEvent actionEvent) throws Exception
+    {
+        // Setup Main Window
+        Stage Window = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SYSLog.fxml"));
+        Parent root = loader.load();
+        
+//        Window.getIcons().add(new Image(getClass().getResource("/Udred/resource/images/EG.png").toExternalForm()));
+                
+        Scene s = new Scene(root);
+        Window.setScene(s);
+        Window.show();
     }
 }

@@ -18,25 +18,15 @@ import Udred.Business.User;
  * @author niemeijeren
  */
 public interface IDataFacade {
-
+    
+   
     ResultSet getCase(String caseNumber) throws SQLException;
 
-    //
-    //    protected List findCasesCPR(String CPRNumber)
-    //    {
-    //        return;
-    //    }
-    //
-    //    protected List findCasesName(String Name)
-    //    {
-    //        return ;
-    //
-    //    }
     ArrayList getUserCaseList() throws SQLException;
-  
+
     ResultSet getAllUsers() throws SQLException;
-    
-    //ResultSet getAllUsers() throws SQLException;
+  
+    ArrayList <String> getSYSLogText();
 
     void saveCase(ICase thisCase);
 
