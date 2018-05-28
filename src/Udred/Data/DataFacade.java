@@ -5,17 +5,15 @@
  */
 package Udred.Data;
 
-import Acq.*;
-import Udred.Business.*;
-import Udred.Data.PostgresHelper;
+import Udred.Acq.*;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Acq.IDataFacade;
-
-import javax.xml.crypto.Data;
+import Udred.Acq.IDataFacade;
+import java.nio.file.Paths;
 
 /**
  *
@@ -40,7 +38,7 @@ public class DataFacade implements IDataFacade {
 //    }
     public DataFacade() {
         DB = new PostgresHelper();
-        sYSLog = new SYSLog("src\\Udred\\Data\\SYSLog.txt");
+        sYSLog = new SYSLog(Paths.get("").toAbsolutePath().toString() + "\\SYSLOG.txt");
     }
 
     protected void specific() {
@@ -57,8 +55,8 @@ public class DataFacade implements IDataFacade {
         al.add(thisCase.getCaseType().toString());
         al.add("" + thisCase.getCaseID());
         al.add("" + thisCase.getCaseID());
-        al.add("" + thisCase.getStatus());
-        al.add(thisCase.getPatient().toString());
+        al.add(thisCase.getStatus());
+        al.add("" + thisCase.getPatient().getPatientID().toString());
         al.add(thisCase.getCaseWorker().toString());
         al.add(thisCase.getCaseInformation().toString());
 
@@ -123,17 +121,48 @@ public class DataFacade implements IDataFacade {
         }
         return ar;
     }
+     
+    @Override
+     public void savePatient(IPatient patient){
+            ArrayList al = new ArrayList();
+            String typeString;
+            
+            al.add(""+patient.getPatientID().toString());
+            al.add(""+patient.getPatientName());
+            al.add(""+patient.getPatientCPR());
+            al.add(""+patient.getPatientAddress().toString());
+            al.add(patient.getPatientTelephone());
+            al.add(""); 
+            
+            for(int i = 0; i < al.size(); i++){
+                System.out.println(al.get(i));
+            }
+            
+            typeString = "ssssis";
+            System.out.println(patient.toString());
+            DB.query("INSERT INTO Patient (patientUUID, patientName, patientCPR, patientAddress, patientTelephone, patientGuardian) VALUES (?,?,?,?,?,?)", al, typeString);
+
+     }
 
     @Override
-    public ResultSet getCase(String caseNumber) throws SQLException
+    public ResultSet getCase(int caseID)
     {
-        ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseNumber + "'", new ArrayList(), "");
-        result.next();
+        ResultSet result = DB.query("SELECT * FROM Cases WHERE caseid='" + caseID + "'", new ArrayList(), "");
         return result;
     }
 
     @Override
     public ArrayList<String> getSYSLogText() {
         return sYSLog.readFromFile();
+    }
+    
+    public void writeLoginInfoToSyslog (ArrayList<String> loginInfo){
+       
+        sYSLog.writeText(loginInfo);
+    }
+    
+    public void writeOpenCaseInfoToSyslog (ArrayList<String> openCaseInfo){
+           
+        sYSLog.writeText(openCaseInfo);
     }
 }

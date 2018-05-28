@@ -1,10 +1,7 @@
 package Udred.GUI;
 
-import Acq.IMainWindowController;
-import Acq.IBusinessFacade;
-import Acq.ICase;
-import Udred.Business.Case;
-import Udred.Business.BusinessFacade;
+import Udred.Acq.ICase;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -35,7 +32,7 @@ public class MainWindowController{
     public GridPane gridPaneChoice;
     public ListView listViewFavorites;
 
-    private ObservableList<String> cases = FXCollections.observableArrayList();
+    private ObservableList<Integer> cases = FXCollections.observableArrayList();
 
 
     public void initialize() throws IOException, SQLException {
@@ -45,7 +42,7 @@ public class MainWindowController{
         choiceBoxShow.getItems().add("Lukkede");
         choiceBoxShow.getSelectionModel().selectFirst();
         choiceBoxShow.getSelectionModel().selectedItemProperty().addListener((v, oldval,newval) -> choiceBoxSelectionChanged(newval.toString()));
-
+        
 //        listViewCases.getItems().add("151218-131959");
 //        listViewCases.getItems().add("101018-080800");
 //        listViewCases.getItems().add("050318-160032");
@@ -92,9 +89,7 @@ public class MainWindowController{
             if (click.getClickCount() == 2) {
                 //Use ListView's getSelected Item
                 try {
-                    ICase c = GUIFacade.business.getCase(listViewCases.getSelectionModel().getSelectedItem().toString());
-                    
-                    
+                    ICase c = GUIFacade.business.getCase(Integer.parseInt(listViewCases.getSelectionModel().getSelectedItem().toString()));
                     showCase(c);
                 }catch (IOException e) {
                     e.printStackTrace();
@@ -130,10 +125,15 @@ public class MainWindowController{
             if (click.getClickCount() == 2) {
                 //Use ListView's getSelected Item
                 try {
-                    caseNumber = listViewFavorites.getSelectionModel().getSelectedItem().toString();
-                    showCase(new Case());
+                    caseNumber = Integer.parseInt(listViewFavorites.getSelectionModel().getSelectedItem().toString());
+                    ICase c = GUIFacade.business.getCase(caseNumber);
+                    showCase(c);
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+                catch (SQLException ex)
+                {
+                    Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 //use this to do whatever you want to. Open Link etc.
             }
@@ -145,7 +145,7 @@ public class MainWindowController{
 
     }
 
-    private String caseNumber = "Ny Sag";
+    private int caseNumber = 0;
 
     
     public void showCase(ICase c) throws IOException {
@@ -168,6 +168,8 @@ public class MainWindowController{
         CaseEditorController controller = loader.getController();
         // Set data in the controller
         controller.setCaseID(String.valueOf(c.getCaseID()));
+        
+        
 
 //        grdMain.getChildren().clear();
 //        grdMain.getChildren().add(newLoadedPane);
@@ -199,7 +201,7 @@ public class MainWindowController{
         // Get the Controller from the FXMLLoader
         CaseEditorController controller = loader.getController();
         // Set data in the controller
-        controller.setCaseID(caseNumber);
+        controller.setCaseID("");
 //        grdMain.getChildren().clear();
 //        grdMain.getChildren().add(newLoadedPane);
 

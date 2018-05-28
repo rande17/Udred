@@ -5,9 +5,11 @@
  */
 package Udred.Business;
 
-import Acq.*;
+import Udred.Acq.*;
+import Udred.Data.DataFacade;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -23,6 +25,7 @@ public class Patient implements IPatient
     private int patientTelephone;
     private int patientCPR;
     private List<IGuardian> patientGuardians;
+    private UUID patientID;
     
     /**
      * Constructor for Patient
@@ -39,12 +42,17 @@ public class Patient implements IPatient
         this.patientTelephone = patientTelephone;
         this.patientGuardians = new ArrayList<>();
         this.patientAddress = address;
-                
+        this.patientID = UUID.randomUUID();
     }
 
     public Patient()
     {
         
+    }
+    
+    public void savePatient(Patient patient){
+        IDataFacade df = new DataFacade();
+       df.savePatient(patient);
     }
     
     @Override
@@ -127,6 +135,17 @@ public class Patient implements IPatient
     public List<IGuardian> getPatientGuardians()
     {
         return patientGuardians;
+    }
+
+    @Override
+    public void savePatient(IPatient patient) {
+            IDataFacade df = new DataFacade();
+            df.savePatient(patient);
+    }
+
+    @Override
+    public UUID getPatientID() {
+        return this.patientID;
     }
     
     

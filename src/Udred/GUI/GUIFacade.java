@@ -1,15 +1,14 @@
 package Udred.GUI;
 
-import Acq.*;
-import Udred.Business.BusinessFacade;
-import Udred.Data.DataFacade;
+import Udred.Acq.*;
 import Udred.Data.PostgresHelper;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 
-import Udred.Data.SYSLog;
-import javafx.application.Application;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,20 +17,35 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
+/**
+ *
+ * @author JogGez
+ */
 public class GUIFacade implements IGUIFacade {
 
     static Stage PreLoader;
     static PreLoaderController preLoaderController;
     static Stage Login;
     static Stage Window;
+
+    /**
+     *
+     */
     public static MainWindowController MainController;
     static Stage Admin;
     static Boolean changesSaved = true;
     
+    /**
+     *
+     */
     protected static IBusinessFacade business;
 
+    /**
+     *
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -48,6 +62,7 @@ public class GUIFacade implements IGUIFacade {
         Scene s = new Scene(root, 1000, 800);
         Window.setScene(s);
         Window.setOnCloseRequest(e -> closeProgram());
+//        Window.show();
 
         // Setup Admin Window
         Admin = new Stage();
@@ -66,23 +81,23 @@ public class GUIFacade implements IGUIFacade {
         Login.getIcons().add(new Image(getClass().getResource("/Udred/resources/images/EG.png").toExternalForm()));
         Login.setScene(new Scene(root));
         Login.setOnCloseRequest(e -> closeProgram());
-        //Login.show();
+        Login.show();
 
         // Setup Rainbow Window
-        PreLoader = new Stage();
-
-        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("PreLoader.fxml"));
-        Parent root2 = loader2.load();
-        preLoaderController = loader2.getController();
-
-//        root = FXMLLoader.load(getClass().getResource("Rainbow.fxml"));
-        root2.setStyle("-fx-background-color: transparent ;");
-        PreLoader.initStyle(StageStyle.TRANSPARENT);
-        Scene r = new Scene(root2);
-        r.setFill(null);
-        PreLoader.setScene(r);
-        PreLoader.centerOnScreen();
-        PreLoader.show();
+//        PreLoader = new Stage();
+//
+//        FXMLLoader loader2 = new FXMLLoader(getClass().getResource("PreLoader.fxml"));
+//        Parent root2 = loader2.load();
+//        preLoaderController = loader2.getController();
+//
+////        root = FXMLLoader.load(getClass().getResource("Rainbow.fxml"));
+//        root2.setStyle("-fx-background-color: transparent ;");
+//        PreLoader.initStyle(StageStyle.TRANSPARENT);
+//        Scene r = new Scene(root2);
+//        r.setFill(null);
+//        PreLoader.setScene(r);
+//        PreLoader.centerOnScreen();
+        //PreLoader.show();
         
         PostgresHelper DB = new PostgresHelper();
         DB.test();
@@ -116,14 +131,40 @@ public class GUIFacade implements IGUIFacade {
 
     }
     
+    /**
+     *
+     * @param bus
+     */
     @Override
     public void injectBusiness(IBusinessFacade bus){
         this.business = bus;
     }
 
+    /**
+     *
+     * @throws IOException
+     * @throws SQLException
+     */
     @Override
     public void initialize() throws IOException, SQLException
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    /**
+     *
+     * @param CaseID
+     * @return
+     */
+    public ICase getCase(int CaseID){
+        try
+        {
+            return business.getCase(CaseID);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(GUIFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

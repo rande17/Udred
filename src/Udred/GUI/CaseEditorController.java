@@ -1,13 +1,17 @@
 package Udred.GUI;
 
+import Udred.Acq.ICase;
+import Udred.Acq.IPatient;
+import Udred.Acq.IUser;
 import Udred.Business.Address;
 import Udred.Business.Case;
-import Udred.Business.CaseTypeEnum;
 import Udred.Business.InquiryInformation;
 import Udred.Business.Patient;
 import Udred.Business.User;
-import Udred.caseTemplates.CustomControl;
+import Udred.GUI.CaseControl.Controller;
+import Udred.GUI.CaseControl.CustomControl;
 import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,14 +42,20 @@ public class CaseEditorController {
 
     @FXML
     private void addCase(ActionEvent event) {
-        int caseID = (int) Math.floor(Math.random()*2000000);
-        Patient patient = new Patient("TEST", 0000000000, 0, new Address("TESTVEJ", "00TEST", "TestBy", 0000));
-        int status = 1;
+        CustomControl c = (CustomControl) vBoxCitizens.getChildren().get(0);
+        Address address = new Address("TESTVEJ", "00TEST", "TestBy", 0000);
+        IPatient patient = new Patient(c.getController().getTextFieldCitizenFirstName().getText() + " " + 
+                                       c.getController().getTextFieldCitizenLastName().getText(), 
+                                        Integer.parseInt(c.getController().getTextFieldCitizenCPR().getText()), 
+                                        Integer.parseInt(c.getController().getTextFieldCitizenTelephone().getText()), address);
+        int caseID = Integer.parseInt(textFieldCaseID.getText());
+        String status = cbxStatus.getValue().toString();
         boolean consent = true;
         String caseType = "social";
-        User caseWorker = new User(1);
+        IUser caseWorker =  GUIFacade.business.getActiveUser();
         InquiryInformation inquiryInformation = new InquiryInformation("Dette er en test sag");
-        Case currentCase = new Case(caseID, patient, status, consent, caseType, caseWorker, inquiryInformation);
+        ICase currentCase = new Case(caseID, (Patient) patient, status, consent, caseType, (User) caseWorker, inquiryInformation);
+        patient.savePatient(patient);
         currentCase.save(currentCase);
     }
 
@@ -123,8 +133,15 @@ public class CaseEditorController {
     public void addCitizen() throws IOException {
         CustomControl cst = new CustomControl();
         cst.getLabel().setText("Ny Borger");
-        Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/Citizen.fxml"));
+        //Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/GUI/CaseControl/Citizen.fxml"));
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Udred/GUI/CaseControl/Citizen.fxml"));
+        Node citizen = (Node)loader.load();
+        Controller c = loader.getController();
+        cst.setController(c);
+        
         cst.setContent(citizen);
+        
         vBoxCitizens.getChildren().add(cst);
     }
 
@@ -132,7 +149,13 @@ public class CaseEditorController {
     public void addCaseWorker() throws IOException {
         CustomControl cst = new CustomControl();
         cst.getLabel().setText("Ny Sagsbehandler");
-        Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/CaseWorker.fxml"));
+        //Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/GUI/CaseControl/CaseWorker.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Udred/GUI/CaseControl/CaseWorker.fxml"));
+        Node citizen = (Node)loader.load();
+        Controller c = loader.getController();
+        cst.setController(c);
+
         cst.setContent(citizen);
         vBoxCaseWorkers.getChildren().add(cst);
     }
@@ -140,7 +163,13 @@ public class CaseEditorController {
     public void addCaseInformation() throws IOException {
         CustomControl cst = new CustomControl();
         cst.getLabel().setText("Ny Information");
-        Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/CaseInformation.fxml"));
+        //Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/GUI/CaseControl/CaseInformation.fxml"));
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Udred/GUI/CaseControl/CaseInformation.fxml"));
+        Node citizen = (Node)loader.load();
+        Controller c = loader.getController();
+        cst.setController(c);
+        
         cst.setContent(citizen);
         vBoxCaseInformation.getChildren().add(cst);
     }
@@ -148,7 +177,13 @@ public class CaseEditorController {
     public void addMeeting() throws IOException {
         CustomControl cst = new CustomControl();
         cst.getLabel().setText("Nyt Møde");
-        Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/caseTemplates/Meeting.fxml"));
+        //Node citizen = (Node)FXMLLoader.load(getClass().getResource("/Udred/GUI/CaseControl/Meeting.fxml"));
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Udred/GUI/CaseControl/Meeting.fxml"));
+        Node citizen = (Node)loader.load();
+        Controller c = loader.getController();
+        cst.setController(c);
+        
         cst.setContent(citizen);
         vBoxMeetings.getChildren().add(cst);
     }

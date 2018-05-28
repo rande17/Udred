@@ -66,6 +66,7 @@ public class LoginWindowController {
                 prop.setProperty("password", "");
             }
 
+            GUIFacade.business.writeLoginInfoToSyslog();
             // Hide this current window (if this is what you want)
             ((Node)(event.getSource())).getScene().getWindow().hide();
 
@@ -73,8 +74,8 @@ public class LoginWindowController {
             //Main.Rainbow.setOpacity(0);
             //Main.Rainbow.show();
             //Main.rainbowController.start();
-GUIFacade.Window.setTitle("Sensum Udred - " + textFieldUsername.getText());
-                                GUIFacade.Window.show();
+            GUIFacade.Window.setTitle("Sensum Udred - " + textFieldUsername.getText());
+            GUIFacade.Window.show();
             
 //            Timeline timelineFadeOut = new Timeline();
 //            timelineFadeOut.setCycleCount(Timeline.INDEFINITE);
@@ -130,6 +131,10 @@ GUIFacade.Window.setTitle("Sensum Udred - " + textFieldUsername.getText());
         {
                 // Hide this current window (if this is what you want)
                 ((Node)(event.getSource())).getScene().getWindow().hide();
+                
+                // write login information to syslog
+                
+                
                 GUIFacade.Admin.show();
         });
     }

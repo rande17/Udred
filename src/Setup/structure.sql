@@ -44,11 +44,11 @@ DROP TABLE IF EXISTS Patient;
 
 CREATE TABLE Patient (
 patientName text,
-patientAddress text,
-patientTelephone bigint,
-patientCPR text,
-patientGuardian text,
-patientUUID text PRIMARY KEY
+patientAddressID text,
+patientTelephone integer,
+patientCPR bigint,
+patientGuardianID text,
+patientID text PRIMARY KEY
 );
 
 DROP TABLE IF EXISTS Users;
@@ -58,14 +58,6 @@ userName text,
 workerID integer PRIMARY KEY,
 caseList text,
 accessLevel int 
-);
-
-DROP TABLE IF EXISTS Udred;
-
-CREATE TABLE Udred (
-udredCase text,
-databaseFacade text,
-udredUUID text PRIMARY KEY
 );
 
 DROP TABLE IF EXISTS Assessor;

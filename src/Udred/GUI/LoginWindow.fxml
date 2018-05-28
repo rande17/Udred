@@ -66,7 +66,7 @@
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="5.0" translateY="-5.0">
                <image>
-                  <Image url="@../resources/images/icons8-rainbow-96.png" />
+                  <Image url="@../resources/images/icons8-administrative-tools-96.png" />
                </image>
                <viewport>
                   <Rectangle2D />

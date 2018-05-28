@@ -1,8 +1,8 @@
 
 package Udred.Business;
 
-import Acq.IBusinessFacade;
-import Acq.*;
+import Udred.Acq.IBusinessFacade;
+import Udred.Acq.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +19,10 @@ public class BusinessFacade implements IBusinessFacade
     private ICase activeCase;
     private ICase activeCaseCompare;
     
-    public BusinessFacade(){}
+    public BusinessFacade(){
+    activeUser = new User(000000);
+    activeCase = new Case();
+    }
 
     
     @Override
@@ -44,13 +47,14 @@ public class BusinessFacade implements IBusinessFacade
     }
     
         @Override
-    public Case getCase(String caseNumber) throws SQLException
+    public Case getCase(int caseID) throws SQLException
     {
-        ResultSet result = dataFacade.getCase(caseNumber);
+        ResultSet result = dataFacade.getCase(caseID);
+        result.next();
         Case c = new Case(
                 Integer.parseInt(result.getString("caseid")),
                 new Patient(),
-                Integer.parseInt(result.getString("status")),
+                result.getString("status"),
                 Boolean.parseBoolean(result.getString("consent")),
                 result.getString("casetype"),
                 new User(0),
@@ -66,7 +70,7 @@ public class BusinessFacade implements IBusinessFacade
     }
 
     @Override
-    public void setActiveCase(String caseID) throws SQLException {
+    public void setActiveCase(int caseID) throws SQLException {
         this.activeCase = getCase(caseID);
     }
 
@@ -74,6 +78,16 @@ public class BusinessFacade implements IBusinessFacade
     public ArrayList<String> getSYSLogText() {
         ArrayList sYSText = dataFacade.getSYSLogText();
         return sYSText;
+    }
+    
+    public void writeLoginInfoToSyslog (){
+        SYSLog log = new SYSLog();
+        dataFacade.writeLoginInfoToSyslog(log.addLoginToSyslog(activeUser));
+    }
+    
+    public void writeOpenCaseInfoToSyslog (){
+        SYSLog log = new SYSLog();
+        dataFacade.writeOpenCaseInfoToSyslog(log.addOpenCaseToSyslog(activeUser, activeCase));
     }
     
 }
